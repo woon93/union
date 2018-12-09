@@ -20,7 +20,7 @@ flush privileges;
 -------------------然后重启MySQL---------------------------------------------
 
 CREATE USER 'tester'@'loaclhost' IDENTIFIED BY 'tester';
---创建用户'tester'，授予访问权限'%'
+--创建用户'tester'，授予访问权限'loaclhost'
 
 flush privileges ;
 --刷新权限

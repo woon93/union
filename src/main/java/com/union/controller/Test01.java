@@ -1,4 +1,4 @@
-package com.union.Controller;
+package com.union.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
