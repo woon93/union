@@ -6,10 +6,10 @@
           xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
 
   <localRepository>E:/maven/my_local_repository</localRepository>
-  <mirror>
-    <id>nexus-aliyun</id>
-    <mirrorOf>central</mirrorOf>
-    <name>Nexus aliyun</name>
-    <url>http://maven.aliyun.com/nexus/content/groups/public</url>
-  </mirror>
+  <!--<mirror>-->
+    <!--<id>nexus-aliyun</id>-->
+    <!--<mirrorOf>central</mirrorOf>-->
+    <!--<name>Nexus aliyun</name>-->
+    <!--<url>http://maven.aliyun.com/nexus/content/groups/public</url>-->
+  <!--</mirror>-->
 </settings>
