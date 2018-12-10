@@ -9,6 +9,87 @@
     <result column="INDEX" property="index" jdbcType="CHAR" />
     <result column="FLDNM" property="fldnm" jdbcType="VARCHAR" />
   </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, CLASS1, CLASS2, CLASS3, INDEX, FLDNM
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.union.model.InfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from infomst
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.union.model.InfoExample" >
+    delete from infomst
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
   <insert id="insert" parameterType="com.union.model.Info" >
     insert into infomst (ID, CLASS1, CLASS2, 
       CLASS3, INDEX, FLDNM)
@@ -58,4 +139,48 @@
       </if>
     </trim>
   </insert>
+  <select id="countByExample" parameterType="com.union.model.InfoExample" resultType="java.lang.Integer" >
+    select count(*) from infomst
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update infomst
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.class1 != null" >
+        CLASS1 = #{record.class1,jdbcType=CHAR},
+      </if>
+      <if test="record.class2 != null" >
+        CLASS2 = #{record.class2,jdbcType=CHAR},
+      </if>
+      <if test="record.class3 != null" >
+        CLASS3 = #{record.class3,jdbcType=CHAR},
+      </if>
+      <if test="record.index != null" >
+        INDEX = #{record.index,jdbcType=CHAR},
+      </if>
+      <if test="record.fldnm != null" >
+        FLDNM = #{record.fldnm,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update infomst
+    set ID = #{record.id,jdbcType=INTEGER},
+      CLASS1 = #{record.class1,jdbcType=CHAR},
+      CLASS2 = #{record.class2,jdbcType=CHAR},
+      CLASS3 = #{record.class3,jdbcType=CHAR},
+      INDEX = #{record.index,jdbcType=CHAR},
+      FLDNM = #{record.fldnm,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
 </mapper>
