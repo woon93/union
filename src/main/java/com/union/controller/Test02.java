@@ -12,7 +12,7 @@ import javax.annotation.Resource;
 
 //@Controller
 @RestController
-public class InfoMstController_test02 {
+public class Test02 {
     @Autowired
     private InfoMstService infoMstService;
 
