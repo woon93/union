@@ -1,5 +1,8 @@
 package com.union.model;
 
+import lombok.ToString;
+
+@ToString(exclude="id")
 public class Info {
     private Integer id;
 

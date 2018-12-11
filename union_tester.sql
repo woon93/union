@@ -1,3 +1,7 @@
+--MySQL Workbench 画E-R图, 并根据E-R生成sql
+--MySql:注意要使用 【&amp;】 符号,否则spring的配置文件会报错;useSSL=false不使用服务器验证;
+---------------------------------------------------------------------------------------------------------------
+
 CREATE DATABASE `union` CHARACTER SET utf8 COLLATE utf8_general_ci;
 --创建数据库`union`
 
