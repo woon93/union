@@ -2,7 +2,7 @@ package com.union.model;
 
 import lombok.ToString;
 
-@ToString(exclude="id")
+@ToString()
 public class Info {
     private Integer id;
 
