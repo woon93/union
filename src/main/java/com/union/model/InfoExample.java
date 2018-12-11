@@ -374,73 +374,73 @@ public class InfoExample {
             return (Criteria) this;
         }
 
-        public Criteria andIndexIsNull() {
-            addCriterion("INDEX is null");
+        public Criteria andIndxIsNull() {
+            addCriterion("INDX is null");
             return (Criteria) this;
         }
 
-        public Criteria andIndexIsNotNull() {
-            addCriterion("INDEX is not null");
+        public Criteria andIndxIsNotNull() {
+            addCriterion("INDX is not null");
             return (Criteria) this;
         }
 
-        public Criteria andIndexEqualTo(String value) {
-            addCriterion("INDEX =", value, "index");
+        public Criteria andIndxEqualTo(String value) {
+            addCriterion("INDX =", value, "indx");
             return (Criteria) this;
         }
 
-        public Criteria andIndexNotEqualTo(String value) {
-            addCriterion("INDEX <>", value, "index");
+        public Criteria andIndxNotEqualTo(String value) {
+            addCriterion("INDX <>", value, "indx");
             return (Criteria) this;
         }
 
-        public Criteria andIndexGreaterThan(String value) {
-            addCriterion("INDEX >", value, "index");
+        public Criteria andIndxGreaterThan(String value) {
+            addCriterion("INDX >", value, "indx");
             return (Criteria) this;
         }
 
-        public Criteria andIndexGreaterThanOrEqualTo(String value) {
-            addCriterion("INDEX >=", value, "index");
+        public Criteria andIndxGreaterThanOrEqualTo(String value) {
+            addCriterion("INDX >=", value, "indx");
             return (Criteria) this;
         }
 
-        public Criteria andIndexLessThan(String value) {
-            addCriterion("INDEX <", value, "index");
+        public Criteria andIndxLessThan(String value) {
+            addCriterion("INDX <", value, "indx");
             return (Criteria) this;
         }
 
-        public Criteria andIndexLessThanOrEqualTo(String value) {
-            addCriterion("INDEX <=", value, "index");
+        public Criteria andIndxLessThanOrEqualTo(String value) {
+            addCriterion("INDX <=", value, "indx");
             return (Criteria) this;
         }
 
-        public Criteria andIndexLike(String value) {
-            addCriterion("INDEX like", value, "index");
+        public Criteria andIndxLike(String value) {
+            addCriterion("INDX like", value, "indx");
             return (Criteria) this;
         }
 
-        public Criteria andIndexNotLike(String value) {
-            addCriterion("INDEX not like", value, "index");
+        public Criteria andIndxNotLike(String value) {
+            addCriterion("INDX not like", value, "indx");
             return (Criteria) this;
         }
 
-        public Criteria andIndexIn(List<String> values) {
-            addCriterion("INDEX in", values, "index");
+        public Criteria andIndxIn(List<String> values) {
+            addCriterion("INDX in", values, "indx");
             return (Criteria) this;
         }
 
-        public Criteria andIndexNotIn(List<String> values) {
-            addCriterion("INDEX not in", values, "index");
+        public Criteria andIndxNotIn(List<String> values) {
+            addCriterion("INDX not in", values, "indx");
             return (Criteria) this;
         }
 
-        public Criteria andIndexBetween(String value1, String value2) {
-            addCriterion("INDEX between", value1, value2, "index");
+        public Criteria andIndxBetween(String value1, String value2) {
+            addCriterion("INDX between", value1, value2, "indx");
             return (Criteria) this;
         }
 
-        public Criteria andIndexNotBetween(String value1, String value2) {
-            addCriterion("INDEX not between", value1, value2, "index");
+        public Criteria andIndxNotBetween(String value1, String value2) {
+            addCriterion("INDX not between", value1, value2, "indx");
             return (Criteria) this;
         }
 

@@ -6,7 +6,7 @@
     <result column="CLASS1" property="class1" jdbcType="CHAR" />
     <result column="CLASS2" property="class2" jdbcType="CHAR" />
     <result column="CLASS3" property="class3" jdbcType="CHAR" />
-    <result column="INDEX" property="index" jdbcType="CHAR" />
+    <result column="INDX" property="indx" jdbcType="CHAR" />
     <result column="FLDNM" property="fldnm" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -68,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    ID, CLASS1, CLASS2, CLASS3, INDEX, FLDNM
+    ID, CLASS1, CLASS2, CLASS3, INDX, FLDNM
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.union.model.InfoExample" >
     select
@@ -92,9 +92,9 @@
   </delete>
   <insert id="insert" parameterType="com.union.model.Info" >
     insert into infomst (ID, CLASS1, CLASS2, 
-      CLASS3, INDEX, FLDNM)
+      CLASS3, INDX, FLDNM)
     values (#{id,jdbcType=INTEGER}, #{class1,jdbcType=CHAR}, #{class2,jdbcType=CHAR}, 
-      #{class3,jdbcType=CHAR}, #{index,jdbcType=CHAR}, #{fldnm,jdbcType=VARCHAR})
+      #{class3,jdbcType=CHAR}, #{indx,jdbcType=CHAR}, #{fldnm,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.union.model.Info" >
     insert into infomst
@@ -111,8 +111,8 @@
       <if test="class3 != null" >
         CLASS3,
       </if>
-      <if test="index != null" >
-        INDEX,
+      <if test="indx != null" >
+        INDX,
       </if>
       <if test="fldnm != null" >
         FLDNM,
@@ -131,8 +131,8 @@
       <if test="class3 != null" >
         #{class3,jdbcType=CHAR},
       </if>
-      <if test="index != null" >
-        #{index,jdbcType=CHAR},
+      <if test="indx != null" >
+        #{indx,jdbcType=CHAR},
       </if>
       <if test="fldnm != null" >
         #{fldnm,jdbcType=VARCHAR},
@@ -160,8 +160,8 @@
       <if test="record.class3 != null" >
         CLASS3 = #{record.class3,jdbcType=CHAR},
       </if>
-      <if test="record.index != null" >
-        INDEX = #{record.index,jdbcType=CHAR},
+      <if test="record.indx != null" >
+        INDX = #{record.indx,jdbcType=CHAR},
       </if>
       <if test="record.fldnm != null" >
         FLDNM = #{record.fldnm,jdbcType=VARCHAR},
@@ -177,7 +177,7 @@
       CLASS1 = #{record.class1,jdbcType=CHAR},
       CLASS2 = #{record.class2,jdbcType=CHAR},
       CLASS3 = #{record.class3,jdbcType=CHAR},
-      INDEX = #{record.index,jdbcType=CHAR},
+      INDX = #{record.indx,jdbcType=CHAR},
       FLDNM = #{record.fldnm,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />

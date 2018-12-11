@@ -1,5 +1,7 @@
 --MySQL Workbench 画E-R图, 并根据E-R生成sql
 --MySql:注意要使用 【&amp;】 符号,否则spring的配置文件会报错;useSSL=false不使用服务器验证;
+-- ALTER TABLE 表名 CHANGE 原字段名 新字段名 字段类型 约束条件
+-- ALTER TABLE user10 CHANGE test test1 CHAR(32) NOT NULL DEFAULT '123';
 ---------------------------------------------------------------------------------------------------------------
 
 CREATE DATABASE `union` CHARACTER SET utf8 COLLATE utf8_general_ci;
@@ -35,12 +37,12 @@ grant all privileges on `union`.* to 'tester'@'loaclhost' --identified by 'teste
 use union;
 --切换到`union`
 
-CREATE TABLE `INFOMST` (
+CREATE TABLE `union`.`INFOMST` (
   `ID` INT UNSIGNED AUTO_INCREMENT,
   `CLASS1` CHAR(3) NOT NULL COMMENT '一级分类',
   `CLASS2` CHAR(3) COMMENT '二级分类',
   `CLASS3` CHAR(3) COMMENT '三级分类',
-  `INDEX` CHAR(3) NOT NULL COMMENT '索引',
+  `INDX` CHAR(3) NOT NULL COMMENT '索引',
   `FLDNM` VARCHAR(30) NOT NULL COMMENT '板块名称',
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT '信息表';

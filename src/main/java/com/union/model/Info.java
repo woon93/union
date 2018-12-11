@@ -1,7 +1,9 @@
 package com.union.model;
 
+import lombok.Data;
 import lombok.ToString;
 
+@Data
 @ToString()
 public class Info {
     private Integer id;
@@ -12,7 +14,7 @@ public class Info {
 
     private String class3;
 
-    private String index;
+    private String indx;
 
     private String fldnm;
 
@@ -46,14 +48,6 @@ public class Info {
 
     public void setClass3(String class3) {
         this.class3 = class3 == null ? null : class3.trim();
-    }
-
-    public String getIndex() {
-        return index;
-    }
-
-    public void setIndex(String index) {
-        this.index = index == null ? null : index.trim();
     }
 
     public String getFldnm() {
