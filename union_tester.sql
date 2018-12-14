@@ -9,9 +9,12 @@ CREATE DATABASE `union` CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 ---------------------查看权限script-----------------------------------------
 -- select Host,User,Grant_priv,Super_priv from mysql.user;
+
+-- update mysql.user set Grant_priv='Y',Super_priv='Y' where user = 'root' and host = '%';
+-- 开启root用户的Grant权限
 ---------------------查看权限script-----------------------------------------
 
-update mysql.user set Grant_priv='Y',Super_priv='Y' where user = 'root' and host = '%';
+update mysql.user set Grant_priv='Y',Super_priv='Y' where user = 'tester' and host = '%';
 --开启root用户的Grant权限
 
 flush privileges;
@@ -25,19 +28,19 @@ flush privileges;
 --》或者用【任务管理器】-> 【服务】，找到MySQL服务，鼠标右键，【重新启动】
 -------------------然后重启MySQL---------------------------------------------
 
-CREATE USER 'tester'@'loaclhost' IDENTIFIED BY 'tester';
+CREATE USER 'tester'@'%' IDENTIFIED BY 'tester';
 --创建用户'tester'，授予访问权限'loaclhost'
 
 flush privileges ;
 --刷新权限
 
-grant all privileges on `union`.* to 'tester'@'loaclhost' --identified by 'tester' with grant option;
+grant all privileges on `union`.* to 'tester'@'%';--identified by 'tester' with grant option;
 --给用户'tester'添加访问DB`union`的权限
 
 use union;
 --切换到`union`
 
-CREATE TABLE `union`.`INFOMST` (
+CREATE TABLE `union`.`INFOMST`(
   `ID` INT UNSIGNED AUTO_INCREMENT,
   `CLASS1` CHAR(3) NOT NULL COMMENT '一级分类',
   `CLASS2` CHAR(3) COMMENT '二级分类',
