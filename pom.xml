@@ -81,6 +81,22 @@
 			<artifactId>pagehelper-spring-boot-starter</artifactId>
 			<version>1.2.5</version>
 		</dependency>
+
+		<!--处理警告-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
+
+        <!-- spring boot devtools 依赖包. -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+            <scope>true</scope>
+        </dependency>
+
 		<!--<dependency>-->
 		<!--<groupId>org.springframework.boot</groupId>-->
 		<!--<artifactId>spring-boot-starter-aop</artifactId>-->

@@ -9,9 +9,8 @@ spring:
     password: tester
     driver-class-name: com.mysql.cj.jdbc.Driver
 
-#  thymeleaf:
-#      #缓冲的配置
-#      cache: false
+  thymeleaf:
+      cache: false    #缓冲的配置
 #      check-template: true
 #      check-template-location: true
 #      #开启MVC thymeleaf 视图解析
