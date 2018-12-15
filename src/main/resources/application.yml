@@ -9,6 +9,18 @@ spring:
     password: tester
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+#  thymeleaf:
+#      #缓冲的配置
+#      cache: false
+#      check-template: true
+#      check-template-location: true
+#      #开启MVC thymeleaf 视图解析
+#      enabled: true
+#      encoding: utf-8
+#      mode: HTML5
+#      prefix: classpath:/templates/
+#      suffix: .html
+
 ## 该配置节点为独立的节点，有很多同学容易将这个配置放在spring的节点下，导致配置无法被识别
 mybatis:
   mapper-locations: classpath:mapper/*.xml  #注意：一定要对应mapper映射xml文件的所在路径

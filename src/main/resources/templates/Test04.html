@@ -1,0 +1,803 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0027)http://zgh.yinchuan.gov.cn/ -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>工会Test04</title>
+
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta name="keywords" content="银川市总工会,银川市,总工会,银川总工会">
+<meta name="description" content="银川市总工会突出维护职工合法权益，指导各基层工会组织开展以职工代表大会为基本制度的民主选举、民主决策、民主管理和民主监督工作，推动工会组织建立平等协商、集体合同制度和监督保障机制。">
+<meta name="copyright" content="Copyright 2014. 银川市总工会.All Rights Reserved.">
+<link href="/css/layout.css" rel="stylesheet" media="screen" type="text/css">
+<script type="text/javascript" src="/js/jquery-1.9.1.min.js.下载"></script>
+<script type="text/javascript">
+$(function(){
+	// 幻灯片
+	var fl_lis = $('#flashpics li').hide()
+		, fl_l = fl_lis.length
+		, fl_i = fl_l - 1
+		, fl_cur_li = $(fl_lis[i])
+		, flashpics_timer
+		, fl_arr = [];
+	
+	for(var j = 1; j &lt;= fl_l; j ++){
+		fl_arr.push('&lt;i>' + j + '&lt;/i>');
+	}
+	$('#flashpics span').html(fl_arr.join(''));
+	
+	var dNums = $('#flashpics i')
+		, curNum = $(dNums[fl_i]);
+	
+	function fn_flashpics(){
+		fl_i ++;
+		if(fl_i == fl_l){
+			fl_i = 0;
+		}
+		fl_cur_li.hide();
+		fl_cur_li = $(fl_lis[fl_i]);
+		fl_cur_li.show();
+		curNum.removeClass('cur');
+		curNum = $(dNums[fl_i]);
+		curNum.addClass('cur');
+		//$('#flashpics p').html(fl_cur_li.find('img').attr('alt'));
+//$('#flashpics p').html(fl_cur_li.find('p'));
+		clearTimeout(flashpics_timer);
+		flashpics_timer = setTimeout(fn_flashpics, 3000);
+	}
+	fn_flashpics();
+	
+	$('#flashpics i').hover(function(){
+		clearTimeout(flashpics_timer);
+		fl_i = $(this).index();
+		fl_cur_li.hide();
+		fl_cur_li = $(fl_lis[fl_i]);
+		fl_cur_li.show();
+		curNum.removeClass('cur');
+		curNum = $(this);
+		curNum.addClass('cur');
+		//$('#flashpics p').html(fl_cur_li.find('img').attr('alt'));
+//$('#flashpics p').html(fl_cur_li.find('p'));
+	}, function(){
+		flashpics_timer = setTimeout(fn_flashpics, 1000);
+	});
+	
+	// 通知公告
+	var marquee_top_timer;
+	function marquee_top(){
+		var _t = $('#notice_list ul').css('top')
+			, li = $('#notice_list li').first();
+		_t = parseInt(_t, 10) - 1;
+		if(_t == - li.height()){
+			$('#notice_list ul').append(li);
+			_t = 0;
+		}
+		$('#notice_list ul').css('top', _t + 'px');
+		clearTimeout(marquee_top_timer);
+		marquee_top_timer = setTimeout(function(){
+				marquee_top();
+			}, 50);
+	}
+	$('#notice_list').hover(function(){
+		clearTimeout(marquee_top_timer);
+	}, function(){
+		marquee_top_timer = setTimeout(function(){
+				marquee_top();
+			}, 50);
+	});
+	marquee_top();
+	
+
+	// 工会风采
+	var marquee_left_timer;
+	function marquee_left(){
+		var _t = $('#slide_pics ul').css('left')
+			, li = $('#slide_pics li').first();
+		_t = parseInt(_t, 10) - 1;
+		if(_t == - 190){
+			$('#slide_pics ul').append(li);
+			_t = 0;
+		}
+		$('#slide_pics ul').css('left', _t + 'px');
+		clearTimeout(marquee_left_timer);
+		marquee_left_timer = setTimeout(function(){
+				marquee_left();
+			}, 50);
+	}
+	$('#slide_pics').hover(function(){
+		clearTimeout(marquee_left_timer);
+	}, function(){
+		marquee_left_timer = setTimeout(function(){
+				marquee_left();
+			}, 50);
+	});
+	marquee_left();
+
+	// 导航
+	$('.nav a').hover(function(){
+		$('.nav a').removeClass('active');
+		$(this).addClass('active');
+	}, function(){
+	});
+	// 二级导航
+	$('.sidebar-nav a').hover(function(){
+		$('.sidebar-nav a').removeClass('active');
+		$(this).addClass('active');
+	}, function(){
+	});
+});
+</script>
+</head>
+<body>
+	
+<!--顶部导航条开始-->
+<div class="header">
+    <div class="websize">
+        <span>欢迎进入银川市总工会网站！</span>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;<script language="JavaScript">
+		<!-- Begin
+		dayName = new Array("", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日")
+		monName = new Array("1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月")
+		now = new Date
+		//  End -->
+		</script>
+		<script language="JavaScript">
+			<!-- Begin
+			var strDay;
+			if ((now.getDate() == 1) || (now.getDate() != 11) && (now.getDate() % 10 == 1))   // Correction for 11th and 1st/21st/31st
+			 strDay = "日 ";
+			else if ((now.getDate() == 2) || (now.getDate() != 12) && (now.getDate() % 10 == 2))  // Correction for 12th and 2nd/22nd/32nd
+			 strDay = "日 ";
+			else if ((now.getDate() == 3) || (now.getDate() != 13) && (now.getDate() % 10 == 3))  // Correction for 13th and 3rd/23rd/33rd
+			 strDay = "rd ";
+			else
+			 strDay = "日 ";
+			document.write("<b>今天是：</b>"+	now.getFullYear()+"年"+monName[now.getMonth()]+now.getDate()	+strDay+"  "+dayName[now.getDay()])
+		//  End -->
+		</script><b>今天是：</b>2018年12月15日   星期六 
+		</span>
+		<span>&nbsp;&nbsp;&nbsp;&nbsp;<iframe name="weather_inc" src="./银川市总工会_files/index.html" width="120" height="26" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></span>
+
+        <a target="_self" onclick="this.style.behavior=&#39;url(#default#homepage)&#39;;this.setHomePage(&#39;http://单位网址/&#39;); return false;" href="http://xn--nqq01h92dhr9c/"><i></i>设为首页</a>
+        <a class="last" target="_self" onclick="window.external.AddFavorite(&#39;http://单位网址/&#39;, &#39;单位名称&#39;); return false;" href="http://xn--nqq01h92dhr9c/"><i class="join"></i>加入收藏</a>
+    </div>
+</div>
+<!--顶部导航条结束-->
+
+<!--菜单开始-->
+<div class="banner websize">
+
+<style type="text/css">
+.searchfo_was{
+    height: 31px;
+    width: 253px;
+    position: absolute;
+    float: right;
+    left: 733px;
+    top: 217px;}
+.txt_was{float: left;width: 200px;height: 30px;border: 1px solid #03A9F4;}
+.serch_was{right:2px;width: 50px;height: 32px;background-color: #00BCD4;;color:white;float: left;position: absolute;
+    text-decoration: none;padding-left: 4px;font-size: 14px;}
+</style>
+
+<!--搜索-->
+
+  <script type="text/javascript">
+
+function submitsearch() {
+    if ($("#textfield").val() == "请输入关键字" || $("#textfield").val() == "") {
+        alert("请输入查询关键字!");
+        return;
+    }
+    else {
+        $("#search").attr("action", $("#znjs").val() + "index.html?searchword=" + encodeURI($("#textfield").val()));
+        $("#search").submit();
+    }
+}
+</script>
+                
+                <!--搜索-->
+     <form action="http://zgh.yinchuan.gov.cn/#" method="post" target="_self" id="search" name="searchform">
+                <div class="searchfo_was">
+                    <input type="text" name="searchword" class="txt_was" id="textfield" onkeydown="if(event.keyCode==13){submitsearch();}" onfocus="this.value=&#39;&#39;" maxlength="50" placeholder="请输入关键字">
+                    <input type="hidden" id="znjs" value="./jsy/"> 
+                    <input type="button" class="serch_was" onclick="javascript:submitsearch();" value="搜索">
+                </div>
+    
+    <div class="nav">
+
+<a href="http://zgh.yinchuan.gov.cn/sy/" target="_self">首页</a>
+
+<a href="http://zgh.yinchuan.gov.cn/jgsz/" target="_self">机构设置</a>
+
+<a href="http://zgh.yinchuan.gov.cn/xwxx/" target="_self">新闻信息</a>
+
+<a href="http://zgh.yinchuan.gov.cn/ywgz/" target="_self">业务工作</a>
+
+<a href="http://zgh.yinchuan.gov.cn/zlzx/" target="_self">资料中心</a>
+
+<a href="http://zgh.yinchuan.gov.cn/dcyj/" target="_self">调查研究</a>
+
+<a href="http://zgh.yinchuan.gov.cn/zcfg/" target="_self">政策法规</a>
+
+<a href="http://zgh.yinchuan.gov.cn/sxgh/" target="_self">书香工会</a>
+
+<a href="http://zgh.yinchuan.gov.cn/fwck/" target="_self">服务窗口</a>
+
+<a href="http://zgh.yinchuan.gov.cn/xbbc/" target="_self">西部博采</a>
+
+        
+    </div>
+</form></div>
+<!--菜单结束-->
+
+
+<div class="websize pagebody-index clearfix">
+	
+	<!--幻灯片开始-->
+    <div id="flashpics" class="col1 slider">
+        <ul>
+        
+<li style="display: none;"> <a href="http://zgh.yinchuan.gov.cn/xwxx/tpxw/201812/t20181210_1200117.htm" target="_blank"><img src="/picture/W020181210340135222255.jpg"></a> <p> <a href="http://zgh.yinchuan.gov.cn/xwxx/tpxw/201812/t20181210_1200117.htm">银川市总工会开展2018年“冬送温暖”慰问 重点工程项目和企业...</a> </p></li>
+
+<li style="display: none;"> <a href="http://zgh.yinchuan.gov.cn/xwxx/tpxw/201812/t20181206_1196139.htm" target="_blank"><img src="/picture/W020181206340206805120.JPG"></a> <p> <a href="http://zgh.yinchuan.gov.cn/xwxx/tpxw/201812/t20181206_1196139.htm">银川市总工会全面启动普惠化服务活动</a> </p></li>
+
+<li style="display: none;"> <a href="http://zgh.yinchuan.gov.cn/xwxx/tpxw/201811/t20181127_1182714.htm" target="_blank"><img src="/picture/W020181127626168559366.jpg"></a> <p> <a href="http://zgh.yinchuan.gov.cn/xwxx/tpxw/201811/t20181127_1182714.htm">银川市总工会学习贯彻中国工会十七大精神培训班开班</a> </p></li>
+
+<li style="display: none;"> <a href="http://zgh.yinchuan.gov.cn/xwxx/tpxw/201811/t20181114_1165853.htm" target="_blank"><img src="/picture/W020181114378104981414.JPG"></a> <p> <a href="http://zgh.yinchuan.gov.cn/xwxx/tpxw/201811/t20181114_1165853.htm">银川市第二届职工技术创新成果展开展</a> </p></li>
+
+<li style="display: list-item;"> <a href="http://zgh.yinchuan.gov.cn/xwxx/ghyw/201810/t20181011_1124411.htm" target="_blank"><img src="/picture/W020181011342963105326.jpg"></a> <p> <a href="http://zgh.yinchuan.gov.cn/xwxx/ghyw/201810/t20181011_1124411.htm">银川市机关干部职工综合素质技能大赛开赛！</a> </p></li>
+
+        </ul>
+        <span><i class="">1</i><i class="">2</i><i class="">3</i><i class="">4</i><i class="cur">5</i></span>
+        
+    </div>
+    <!--幻灯片结束-->
+
+
+
+
+
+
+
+    
+    <!--新闻开始-->
+    <div class="col2">
+        <div class="title" id="tabss">
+            <p><i class="active"><a href="http://zgh.yinchuan.gov.cn/xwxx/ghyw/" target="_blank">工会要闻</a></i><i><a href="http://zgh.yinchuan.gov.cn/xwxx/djjj/" target="_blank">党建纪检</a></i></p>
+        </div>
+        <ul class="article-list" id="acticle_tab_1">
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/xwxx/ghyw/201812/t20181213_1208393.htm" target="_blank" title="银川市总工会在公交车和出租车行业开展优质服务标兵竞赛活动">银川市总工会在公交车和出租车行业开展优质服务标兵竞赛活动</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/xwxx/ghyw/201812/t20181211_1205085.htm" target="_blank" title="银川市总工会“职工大讲堂·百堂公益课”首期艺术类培训班结业">银川市总工会“职工大讲堂·百堂公益课”首期艺术类培训班结业</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/xwxx/ghyw/201812/t20181210_1200109.htm" target="_blank" title="银川市总工会开展2018年“冬送温暖”慰问 重点工程项目和企业一线职工活动">银川市总工会开展2018年“冬送温暖”慰问 重点工程项目和企...</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/xwxx/ghyw/201812/t20181205_1195917.htm" target="_blank" title="银川市总工会全面启动普惠化服务活动">银川市总工会全面启动普惠化服务活动</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/xwxx/ghyw/201811/t20181130_1186526.htm" target="_blank" title="银川两家职工书屋获全国工会示范点">银川两家职工书屋获全国工会示范点</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/xwxx/ghyw/201811/t20181129_1184910.htm" target="_blank" title="银川市总工会学习贯彻中国工会十七大精神培训班圆满结束">银川市总工会学习贯彻中国工会十七大精神培训班圆满结束</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/xwxx/ghyw/201811/t20181127_1182679.htm" target="_blank" title="银川市总工会学习贯彻中国工会十七大精神培训班开班">银川市总工会学习贯彻中国工会十七大精神培训班开班</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/xwxx/ghyw/201811/t20181122_1177829.htm" target="_blank" title="自治区总工会来银调研指导集体协商工作">自治区总工会来银调研指导集体协商工作</a>
+        </li>
+        
+        </ul>
+        <ul class="article-list" id="acticle_tab_2" style="display:none;">
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/xwxx/djjj/201807/t20180719_917314.htm" target="_blank" title="市总工会党员干部在银川党史馆开展主题党日活动">市总工会党员干部在银川党史馆开展主题党日活动</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/xwxx/djjj/201807/t20180719_917313.htm" target="_blank" title="市总工会党员干部观摩妇联党建品牌创建工作">市总工会党员干部观摩妇联党建品牌创建工作</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/xwxx/djjj/201806/t20180622_832360.htm" target="_blank" title="市总工会机关党务工作者到市人大机关学习交流党建工作">市总工会机关党务工作者到市人大机关学习交流党建工作</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/xwxx/djjj/201806/t20180621_826853.htm" target="_blank" title="市总工会机关广大党员走进社区开展“支部主题党日”活动">市总工会机关广大党员走进社区开展“支部主题党日”活动</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/xwxx/djjj/201805/t20180518_760241.htm" target="_blank" title="银川市总工会机关党委联合街道合力开创党建工作新局面">银川市总工会机关党委联合街道合力开创党建工作新局面</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/xwxx/djjj/201805/t20180511_752281.htm" target="_blank" title="银川市总工会机关党组织举办“转理念，转方式，转作风，推动银川高质量发展”大学习大讨论">银川市总工会机关党组织举办“转理念，转方式，转作风，推...</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/xwxx/ghyw/201802/t20180223_692801.htm" target="_blank" title="银川市总工会召开2018年度党风廉政建设工作会议">银川市总工会召开2018年度党风廉政建设工作会议</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/xwxx/djjj/201802/t20180207_687269.htm" target="_blank" title="银川市总工会学习贯彻党的会议精神紧盯“学 查 改”第三阶段工作">银川市总工会学习贯彻党的会议精神紧盯“学 查 改”第三阶...</a>
+        </li>
+        
+        </ul>
+    </div>
+    <!--新闻结束-->
+
+
+    <script type="text/javascript">
+    	var tabss = document.getElementById('tabss').getElementsByTagName('i')
+    		, cur_item = tabss[0];
+    	for(var i = 0, item; item = tabss[i]; i ++){
+    		item.onmouseover = (function(i){
+	    			return function(){
+	    					cur_item.className = '';
+	    					tabss[i].className = 'active'
+	    					cur_item = tabss[i];
+		    				document.getElementById('acticle_tab_1').style.display = 'none';
+		    				document.getElementById('acticle_tab_2').style.display = 'none';
+		    				document.getElementById('acticle_tab_' + (i+1)).style.display = '';
+		    			};
+	    		})(i);
+    	}
+    </script> 
+    
+    <!--通知公告开始-->
+    <div class="col3 notice">
+        <a class="more-notice" href="http://zgh.yinchuan.gov.cn/fwck/tzgg/" target="_blank">更多</a>
+        <div id="notice_list" class="notice-list">
+	        <ul style="top: -21px;">
+	    
+        
+        
+        
+        
+        
+        
+        
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/fwck/tzgg/201811/t20181114_1167223.htm" target="_blank" title="宁夏回族自治区基层工会经费收支管理实施细则">宁夏回族自治区基层工会经费收支管理实施细则</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/fwck/tzgg/201811/t20181113_1162939.htm" target="_blank" title="关于命名表彰银川市技能人才（劳模）创新工作室的决定">关于命名表彰银川市技能人才（劳模）创新工作室的决定</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/fwck/tzgg/201811/t20181113_1162933.htm" target="_blank" title="关于命名表彰银川市第二届职工  “十佳五小”成果奖的决定">关于命名表彰银川市第二届职工  “十佳五小”成果奖的决定</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/fwck/tzgg/201811/t20181106_1152907.htm" target="_blank" title="拟命名表彰2018年银川市技能人才（劳模） 创新工作室名单公示">拟命名表彰2018年银川市技能人才（劳模） 创新工作室名单公示</a>
+        </li>
+        
+	        <li>
+        <a href="http://zgh.yinchuan.gov.cn/fwck/tzgg/201606/t20160612_122416.htm" target="_blank" title="作风评议监督电话：5111003（办公室）、5111007">作风评议监督电话：5111003（办公室）、5111007</a>
+        </li><li>
+        <a href="http://zgh.yinchuan.gov.cn/fwck/tzgg/201812/t20181203_1188787.htm" target="_blank" title="拟命名表彰银川市公交车和出租车司机 “优质服务标兵”候选人员名单公示">拟命名表彰银川市公交车和出租车司机 “优质服务标兵”候选...</a>
+        </li><li>
+        <a href="http://zgh.yinchuan.gov.cn/fwck/tzgg/201811/t20181129_1186076.htm" target="_blank" title="自治区总工会2018年公开招聘社会化工会工作者参加面试人员公示公告">自治区总工会2018年公开招聘社会化工会工作者参加面试人员...</a>
+        </li><li>
+        <a href="http://zgh.yinchuan.gov.cn/fwck/tzgg/201811/t20181114_1167278.htm" target="_blank" title="关于印发《在职职工医疗互助保障管理办法》的通 知">关于印发《在职职工医疗互助保障管理办法》的通 知</a>
+        </li></ul>
+        </div>
+    </div>
+    <!--通知公告结束-->
+    
+    <div class="col1">
+        <div class="title" id="lijun">
+<!--
+            <h2>调查研究</h2> 
+            <a href="./dcyj/" TARGET="_blank" >更多..</a>
+-->
+<p><i class="active"><a href="http://zgh.yinchuan.gov.cn/dcyj/" target="_blank">调查研究</a></i><i><a href="http://zgh.yinchuan.gov.cn/czyjs/" target="_blank">财政预决算</a></i></p>
+        </div>
+        <ul class="article-list" id="acticle_lijun_1">
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/dcyj/201802/t20180202_685058.htm" target="_blank" title="关于银川市劳动关系状况的调研报告">关于银川市劳动关系状况的调研报告</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/dcyj/201802/t20180202_685052.htm" target="_blank" title="关于银川市低收入职工现状的调查报告">关于银川市低收入职工现状的调查报告</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/dcyj/201802/t20180202_685050.htm" target="_blank" title="浅谈新形势下乡镇（街道）工会作用的发挥">浅谈新形势下乡镇（街道）工会作用的发挥</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/dcyj/201503/t20150312_77695.htm" target="_blank" title="中学青年女教师的心理健康问题的调研与反思">中学青年女教师的心理健康问题的调研与反思</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/dcyj/201503/t20150312_77694.htm" target="_blank" title="工资集体协商提质增效应走“量化管理”之路">工资集体协商提质增效应走“量化管理”之路</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/dcyj/201503/t20150312_77693.htm" target="_blank" title="工资集体协商助推兴庆平安建设">工资集体协商助推兴庆平安建设</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/dcyj/201503/t20150312_77691.htm" target="_blank" title="关于兴庆区创建重点项目建设工地“工会工作站”情况的调研报告">关于兴庆区创建重点项目建设工地“工会工作站”情况的调研报告</a>
+        </li>
+        
+        </ul>
+
+        <ul class="article-list" id="acticle_lijun_2" style="display:none;">
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/czyjs/201809/t20180921_1071894.htm" target="_blank" title="2017年度银川市职工文化活动中心部门决算">2017年度银川市职工文化活动中心部门决算</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/czyjs/201809/t20180921_1071822.htm" target="_blank" title="2017年度银川市总工会部门决算">2017年度银川市总工会部门决算</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/fwck/tzgg/201802/t20180214_691811.htm" target="_blank" title="银川市总工会2018年部门预算">银川市总工会2018年部门预算</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/fwck/tzgg/201802/t20180214_691883.htm" target="_blank" title="银川市职工文化活动中心2018年部门预算">银川市职工文化活动中心2018年部门预算</a>
+        </li>
+        
+        </ul>
+    </div>
+    
+
+    <script type="text/javascript">
+    	var lijun = document.getElementById('lijun').getElementsByTagName('i')
+    		, cur_item = lijun[0];
+    	for(var i = 0, item; item = lijun[i]; i ++){
+    		item.onmouseover = (function(i){
+	    			return function(){
+	    					cur_item.className = '';
+	    					lijun[i].className = 'active'
+	    					cur_item = lijun[i];
+		    				document.getElementById('acticle_lijun_1').style.display = 'none';
+		    				document.getElementById('acticle_lijun_2').style.display = 'none';
+		    				document.getElementById('acticle_lijun_' + (i+1)).style.display = '';
+		    			};
+	    		})(i);
+    	}
+    </script> 
+
+    <div class="col2">
+        <div class="title">
+            <h2>基层动态</h2>
+            <a href="http://zgh.yinchuan.gov.cn/xwxx/jczs/" target="_blank">更多..</a>
+        </div>
+        <ul class="article-list">
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/xwxx/jczs/201812/t20181213_1208388.htm" target="_blank" title="贺兰县“四点半课堂”带领职工子女走进宁夏科技馆">贺兰县“四点半课堂”带领职工子女走进宁夏科技馆</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/xwxx/jczs/201812/t20181213_1208384.htm" target="_blank" title="西夏区总工会荣获2018年度西夏区 “健康单位”、“无烟单位”称号">西夏区总工会荣获2018年度西夏区 “健康单位”、“无烟单位...</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/xwxx/jczs/201812/t20181213_1208382.htm" target="_blank" title="金凤区满城北街街道工会举办《宪法》知识讲座">金凤区满城北街街道工会举办《宪法》知识讲座</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/xwxx/jczs/201812/t20181212_1207034.htm" target="_blank" title="银川城投公司工会开展职工职业化素养培训">银川城投公司工会开展职工职业化素养培训</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/xwxx/jczs/201812/t20181212_1207029.htm" target="_blank" title="贺兰县总工会以改革的精神继续推动工会事业创新发展">贺兰县总工会以改革的精神继续推动工会事业创新发展</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/xwxx/jczs/201812/t20181212_1207023.htm" target="_blank" title="银川开发区首席服务员四区排球赛圆满落幕">银川开发区首席服务员四区排球赛圆满落幕</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/xwxx/jczs/201812/t20181212_1207018.htm" target="_blank" title="习岗街道办事处工会联合会举办酒店服务技能培训班">习岗街道办事处工会联合会举办酒店服务技能培训班</a>
+        </li>
+        
+        </ul>
+    </div>
+    
+    <div class="col3 contact">
+        <ul>
+            <li class="tencent"><a href="http://42.63.14.230/yczgh" target="_blank"></a></li> 
+           <li class="sina"><a href="http://weibo.com/ycszgh" target="_blank"></a></li>
+
+            <li class="hudong"><a href="http://zmhd.yinchuan.gov.cn/" target="_blank"></a></li>
+            <li class="weiquan"></li>
+        </ul>
+    </div>
+    
+</div>
+
+<div class="websize subanner">
+<!--
+    <img src="./images/subanner.jpg" alt="" />
+-->
+<style>
+.subanner img {width: 1000px;    height: 94px;}
+</style>
+           
+           <a href="http://topic.nxnews.net/2018/zzqznq/" target="_blank"><img src="/picture/W020180806600540481622.jpg" alt="W020180802518176472935.jpg"></a>
+           
+
+
+</div>
+
+<div class="websize clearfix">
+	
+    <div class="col1">
+        <div class="title">
+            <h2>政策法规</h2>
+            <a href="http://zgh.yinchuan.gov.cn/zcfg/flfg/" target="_blank">法律法规</a><span>|</span><a href="http://zgh.yinchuan.gov.cn/zcfg/zcwj/" target="_blank">政策文件</a>
+        </div>
+        <ul class="article-list">
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/zcfg/flfg/201811/t20181114_1167283.htm" target="_blank" title="在职职工医疗互助保障管理办法">在职职工医疗互助保障管理办法</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/zcfg/flfg/201811/t20181114_1167215.htm" target="_blank" title="宁夏回族自治区基层工会经费收支管理实施细则">宁夏回族自治区基层工会经费收支管理实施细则</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/zcfg/flfg/201803/t20180316_705756.htm" target="_blank" title="宁夏回族自治区企业民主管理条例">宁夏回族自治区企业民主管理条例</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/zcfg/flfg/201609/t20160901_181257.htm" target="_blank" title="宁夏回族自治区女职工劳动保护办法">宁夏回族自治区女职工劳动保护办法</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/zcfg/flfg/201609/t20160901_181254.htm" target="_blank" title="女职工劳动保护特别规定">女职工劳动保护特别规定</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/zcfg/flfg/201609/t20160901_181248.htm" target="_blank" title="宁夏回族自治区人口与计划生育条例(2016最新版本)">宁夏回族自治区人口与计划生育条例(2016最新版本)</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/zcfg/flfg/201606/t20160614_122681.htm" target="_blank" title="中华人民共和国职业病防治法">中华人民共和国职业病防治法</a>
+        </li>
+        
+        </ul>
+    </div>
+    
+    <div class="col2">
+        <div class="title" id="tabs">
+            <p><i class="active"><a href="http://zgh.yinchuan.gov.cn/cxld/" target="_blank">创新亮点</a></i><i><a href="http://zgh.yinchuan.gov.cn/zlzx/wjhb/" target="_blank">文件汇编</a></i><i><a href="http://zgh.yinchuan.gov.cn/xbbc/" target="_blank">西部博采</a></i></p>
+        </div>
+        <ul id="acticle_list_1" class="article-list">
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/cxld/201801/t20180116_670091.htm" target="_blank" title="2017年创新工作">2017年创新工作</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/cxld/201801/t20180129_681121.htm" target="_blank" title="2017年亮点工作">2017年亮点工作</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/cxld/201703/t20170327_234676.htm" target="_blank" title="2016年亮点工作">2016年亮点工作</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/cxld/201703/t20170327_234664.htm" target="_blank" title="2016年创新工作">2016年创新工作</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/cxld/201511/t20151123_102562.htm" target="_blank" title="2015年亮点工作">2015年亮点工作</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/cxld/201511/t20151123_102561.htm" target="_blank" title="2015年亮点工作">2015年亮点工作</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/cxld/201511/t20151123_102559.htm" target="_blank" title="2015年亮点工作">2015年亮点工作</a>
+        </li>
+        
+        </ul>
+        <ul id="acticle_list_2" class="article-list" style="display:none;">
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/fwck/tzgg/201801/t20180122_673176.htm" target="_blank" title="关于印发《银川市企业人才培育培养三年规划》的通知">关于印发《银川市企业人才培育培养三年规划》的通知</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/zlzx/wjhb/201811/t20181114_1167236.htm" target="_blank" title="宁夏回族自治区基层工会经费收支管理实施细则">宁夏回族自治区基层工会经费收支管理实施细则</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/fwck/tzgg/201706/t20170614_261839.htm" target="_blank" title="在职职工医疗互助保障管理办法">在职职工医疗互助保障管理办法</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/zlzx/wjhb/201702/t20170227_222838.htm" target="_blank" title="银川市总工会岗位竞聘符合条件报名人员公示">银川市总工会岗位竞聘符合条件报名人员公示</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/zlzx/wjhb/201702/t20170227_222837.htm" target="_blank" title="关于做好2017年银川市五一劳动奖状、奖章和工人先锋号推荐评选工作的通知">关于做好2017年银川市五一劳动奖状、奖章和工人先锋号推荐...</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/fwck/tzgg/201608/t20160831_181128.htm" target="_blank" title="关于发放2016年第一批银川市“凤城工匠”  助推奖励资金的决定">关于发放2016年第一批银川市“凤城工匠”  助推奖励资金的决定</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/fwck/tzgg/201608/t20160831_181123.htm" target="_blank" title="关于开展首届“凤城工匠”评选活动的通知">关于开展首届“凤城工匠”评选活动的通知</a>
+        </li>
+        
+        </ul>
+        <ul id="acticle_list_3" class="article-list" style="display:none;">
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/fwck/tzgg/201710/t20171031_547881.htm" target="_blank" title="命名表彰银川市技能人才（劳模）创新工作室名单公示">命名表彰银川市技能人才（劳模）创新工作室名单公示</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/fwck/tzgg/201709/t20170920_487509.htm" target="_blank" title="银川市首届职工“十佳五小”优秀成果获奖名单公示">银川市首届职工“十佳五小”优秀成果获奖名单公示</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/zlzx/grb/201604/t20160429_118489.htm" target="_blank" title="宁夏共享集团股份有限公司荣获2016年全国五一劳动奖状">宁夏共享集团股份有限公司荣获2016年全国五一劳动奖状</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/zlzx/grb/201604/t20160429_118477.htm" target="_blank" title="银川市行政审批服务局荣获2016年全国五一劳动奖状">银川市行政审批服务局荣获2016年全国五一劳动奖状</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/xbbc/201508/t20150819_94299.htm" target="_blank" title="我国青年技工世界技能大赛夺4金6银3铜">我国青年技工世界技能大赛夺4金6银3铜</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/xbbc/201406/t20140613_56996.htm" target="_blank" title="青海省总工会、台湾台中总工会（直）签订两会交流协议">青海省总工会、台湾台中总工会（直）签订两会交流协议</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/xbbc/201406/t20140605_56532.htm" target="_blank" title="重庆市总探索激发“细胞”活力“良方”">重庆市总探索激发“细胞”活力“良方”</a>
+        </li>
+        
+        </ul>
+    </div>
+    <script type="text/javascript">
+    	var tabs = document.getElementById('tabs').getElementsByTagName('i')
+    		, cur_item = tabs[0];
+    	for(var i = 0, item; item = tabs[i]; i ++){
+    		item.onmouseover = (function(i){
+	    			return function(){
+	    					cur_item.className = '';
+	    					tabs[i].className = 'active'
+	    					cur_item = tabs[i];
+		    				document.getElementById('acticle_list_1').style.display = 'none';
+		    				document.getElementById('acticle_list_2').style.display = 'none';
+		    				document.getElementById('acticle_list_3').style.display = 'none';
+		    				document.getElementById('acticle_list_' + (i+1)).style.display = '';
+		    			};
+	    		})(i);
+    	}
+    </script>
+    
+    <div class="col3 guanrong">
+        <div class="title">
+            <h2>光荣榜</h2>
+            <a href="http://zgh.yinchuan.gov.cn/zlzx/grb/" target="_blank">更多</a>
+        </div>
+        <ul class="article-list">
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/zlzx/grb/201804/t20180427_745004.htm" target="_blank" title="2018年银川市劳动模范（先进工作者）光荣榜">2018年银川市劳动模范（先进工作者）光荣榜</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/xwxx/ghyw/201803/t20180309_701148.htm" target="_blank" title="银川市四家单位六名个人荣获全区五一巾帼标兵岗（标兵）殊荣">银川市四家单位六名个人荣获全区五一巾帼标兵岗（标兵）殊荣</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/fwck/tzgg/201710/t20171031_547881.htm" target="_blank" title="命名表彰银川市技能人才（劳模）创新工作室名单公示">命名表彰银川市技能人才（劳模）创新工作室名单公示</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/fwck/tzgg/201709/t20170920_487509.htm" target="_blank" title="银川市首届职工“十佳五小”优秀成果获奖名单公示">银川市首届职工“十佳五小”优秀成果获奖名单公示</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/zlzx/grb/201605/t20160511_119717.htm" target="_blank" title="2016年自治区工人先锋号获得者风采">2016年自治区工人先锋号获得者风采</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/zlzx/grb/201605/t20160511_119716.htm" target="_blank" title="2016年全国、自治区劳动奖章获得者风采">2016年全国、自治区劳动奖章获得者风采</a>
+        </li>
+        
+        <li>
+        <a href="http://zgh.yinchuan.gov.cn/zlzx/grb/201604/t20160429_118489.htm" target="_blank" title="宁夏共享集团股份有限公司荣获2016年全国五一劳动奖状">宁夏共享集团股份有限公司荣获2016年全国五一劳动奖状</a>
+        </li>
+        
+        </ul>
+    </div>
+    
+</div>    
+
+<div id="slide_pics" class="websize slide-pic">
+    <span></span>
+    <div class="slide-pic-con">
+	    <ul class="clearfix" style="left: -55px;">
+        
+
+
+<li><a href="http://zgh.yinchuan.gov.cn/xwxx/ghyw/201807/t20180709_894034.htm" target="_blank"><img src="/picture/W020180709554156452306_182.jpg" width="182" height="136"></a><p><a href="http://zgh.yinchuan.gov.cn/xwxx/ghyw/201807/t20180709_894034.htm">银川市第四届职工运动会胜利闭幕</a></p></li>
+
+<li><a href="http://zgh.yinchuan.gov.cn/xwxx/ghyw/201807/t20180706_873350.htm" target="_blank"><img src="/picture/W020180706365347358863_182.jpg" width="182" height="136"></a><p><a href="http://zgh.yinchuan.gov.cn/xwxx/ghyw/201807/t20180706_873350.htm">银川市第四届职工运动会开幕</a></p></li>
+
+<li><a href="http://zgh.yinchuan.gov.cn/xwxx/ghyw/201805/t20180518_760239.htm" target="_blank"><img src="/picture/W020180518345810887714_182.jpg" width="182" height="136"></a><p><a href="http://zgh.yinchuan.gov.cn/xwxx/ghyw/201805/t20180518_760239.htm">银川市劳模事迹进机关、进企...</a></p></li>
+
+<li><a href="http://zgh.yinchuan.gov.cn/xwxx/ghyw/201805/t20180516_758786.htm" target="_blank"><img src="/picture/W020180516630602212564_182.jpg" width="182" height="136"></a><p><a href="http://zgh.yinchuan.gov.cn/xwxx/ghyw/201805/t20180516_758786.htm">银川市举行货运司机等八大群...</a></p></li>
+
+<li><a href="http://zgh.yinchuan.gov.cn/xwxx/ghyw/201805/t20180510_751555.htm" target="_blank"><img src="/picture/W020180510525961363159_182.jpg" width="182" height="136"></a><p><a href="http://zgh.yinchuan.gov.cn/xwxx/ghyw/201805/t20180510_751555.htm">弘扬宪法精神 维护宪法权威--...</a></p></li>
+
+	    <li><a href="http://zgh.yinchuan.gov.cn/xwxx/ghyw/201807/t20180720_918711.htm" target="_blank"><img src="/picture/W020180720620947084822_182.jpg" width="182" height="136"></a><p><a href="http://zgh.yinchuan.gov.cn/xwxx/ghyw/201807/t20180720_918711.htm">银川市总工会推进普惠化服务...</a></p></li></ul>
+    </div>
+</div>
+
+<div class="websize gonghui">
+	<div class="slide-pic2">
+	    <ul class="clearfix">
+                 
+                 <li><a href="http://www.acftu.org/" target="_blank"><img src="/picture/W020140422584303936484.gif" alt="link_pic.gif" width="188" height="53"></a></li>
+                 
+                 <li><a href="http://www.nx.gov.cn/" target="_blank"><img src="/picture/W020171016388646704480.jpg" alt="W020140422583499615419.jpg" width="188" height="53"></a></li>
+                 
+                 <li><a href="http://www.nxzgh.org.cn/html/zlxz/index.html" target="_blank"><img src="/picture/W020140422583835490615.gif" alt="link_pic1.gif" width="188" height="53"></a></li>
+                 
+                 <li><a href="http://www.yinchuan.gov.cn/" target="_blank"><img src="/picture/W020171016389175037894.jpg" alt="213.jpg" width="188" height="53"></a></li>
+                 
+                 <li><a href="http://42.63.14.230/yczgh/a/login" target="_blank"><img src="/picture/W020171016390069721575.jpg" alt="423.jpg" width="188" height="53"></a></li>
+                 
+	    </ul>
+	</div>
+</div>
+
+<!--页面底部开始-->
+<div class="footer websize">
+	<div class="foot">
+	    <p>主办单位：银川市总工会</p>
+	    <p>Copyright(C) 2008-2014 银川市总工会版权所有　地址：银川市凤凰北街172号</p>
+    </div>
+<style>
+.footercopy2{ position:relative;margin:-80px 0 0 200px;float:left;}
+</style>
+<div class="footercopy2">
+<script type="text/javascript">document.write(unescape("%3Cspan id='_ideConac' %3E%3C/span%3E%3Cscript src='http://dcs.conac.cn/js/30/419/0000/60438617/CA304190000604386170000.js' type='text/javascript'%3E%3C/script%3E"));</script><span id="_ideConac"><a href="http://bszs.conac.cn/sitename?method=show&amp;id=08041520CD377C95E053022819AC0B18" target="_blank"><img id="imgConac" vspace="0" hspace="0" border="0" src="/picture/red.png" data-bd-imgshare-binded="1"></a></span><script src="/js/CA304190000604386170000.js.下载" type="text/javascript"></script><span id="_ideConac"></span>
+</div>
+
+</div>
+<!--页面底部结束-->
+<script type="text/javascript">
+$(document).ready(function()
+{
+  //$("img").removeAttr("alt");
+});
+</script>
+<div class="gotop"><a href="javascript:scroll(0,0)" target="_self">返回顶部</a> </div><!--返回顶部代码-->
+
+
+</body></html>
