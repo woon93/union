@@ -34,7 +34,8 @@ CREATE USER 'tester'@'%' IDENTIFIED BY 'tester';
 flush privileges ;
 --刷新权限
 
-grant all privileges on `union`.* to 'tester'@'%';--identified by 'tester' with grant option;
+grant all privileges on `union`.* to 'tester'@'%';
+--identified by 'tester' with grant option;
 --给用户'tester'添加访问DB`union`的权限
 
 use union;
