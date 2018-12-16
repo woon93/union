@@ -41,6 +41,7 @@ grant all privileges on `union`.* to 'tester'@'%';
 use union;
 --切换到`union`
 
+---------------------------TEST TABLE--------------------------------------------------------
 CREATE TABLE `union`.`INFOMST`(
   `ID` INT UNSIGNED AUTO_INCREMENT,
   `CLASS1` CHAR(3) NOT NULL COMMENT '一级分类',
@@ -52,6 +53,7 @@ CREATE TABLE `union`.`INFOMST`(
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT '信息表';
 
 INSERT INTO `union`.`infomst` (`ID`, `CLASS1`, `CLASS2`, `CLASS3`, `INDX`, `FLDNM`) VALUES ('999', '999', '999', '999', '999', '999');
+---------------------------TEST TABLE--------------------------------------------------------
 
 CREATE TABLE `union`.`iUSERINFO` (
   `USER_ID` VARCHAR(6) NOT NULL  COMMENT '成员ID',
@@ -71,6 +73,8 @@ CREATE TABLE `union`.`iUSERINFO` (
   `UPDATE_CNT` INT(2) NOT NULL DEFAULT 0 COMMENT '更新回数',
   PRIMARY KEY (`USER_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT '用户信息';
+
+INSERT INTO `union`.`iuserinfo` (`USER_ID`, `USER_PASSWORD`, `USER_NAME`, `USER_SEX`, `USER_IDENTITY`, `USER_HOMETOWN`, `POLITICAL_STASTUS`, `USER_MAILADDRESS`, `USER_TEL`, `USER_ADDRESS`, `USER_STASTUS`, `USER_MESSAGE`, `INSERT_TIME`, `UPDATE_TIME`, `UPDATE_CNT`) VALUES ('admin', 'admin', '大王', '男', '99', '陕西西安', '9', 'dawang@163.com', '13312341234', '雁塔区天谷八路', '在职', '我怎么那么好看', '2018/12/16', '2018/12/16', '0');
 
 CREATE TABLE POSTINFO (
   `POST_ID` VARCHAR(6) NOT NULL DEFAULT '000000' COMMENT '贴子ID',
