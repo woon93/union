@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.union.dao.UserDtoMapper" >
+  <resultMap id="BaseResultMap" type="com.union.model.UserDto" >
+    <id column="USER_ID" property="userId" jdbcType="VARCHAR" />
+    <result column="USER_PASSWORD" property="userPassword" jdbcType="CHAR" />
+    <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
+    <result column="USER_SEX" property="userSex" jdbcType="CHAR" />
+    <result column="USER_IDENTITY" property="userIdentity" jdbcType="CHAR" />
+    <result column="USER_HOMETOWN" property="userHometown" jdbcType="VARCHAR" />
+    <result column="POLITICAL_STASTUS" property="politicalStastus" jdbcType="CHAR" />
+    <result column="USER_MAILADDRESS" property="userMailaddress" jdbcType="VARCHAR" />
+    <result column="USER_TEL" property="userTel" jdbcType="VARCHAR" />
+    <result column="USER_ADDRESS" property="userAddress" jdbcType="VARCHAR" />
+    <result column="USER_STASTUS" property="userStastus" jdbcType="VARCHAR" />
+    <result column="USER_MESSAGE" property="userMessage" jdbcType="VARCHAR" />
+    <result column="INSERT_TIME" property="insertTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_CNT" property="updateCnt" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    USER_ID, USER_PASSWORD, USER_NAME, USER_SEX, USER_IDENTITY, USER_HOMETOWN, POLITICAL_STASTUS, 
+    USER_MAILADDRESS, USER_TEL, USER_ADDRESS, USER_STASTUS, USER_MESSAGE, INSERT_TIME, 
+    UPDATE_TIME, UPDATE_CNT
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.union.model.UserDtoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from iuserinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from iuserinfo
+    where USER_ID = #{userId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from iuserinfo
+    where USER_ID = #{userId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.union.model.UserDtoExample" >
+    delete from iuserinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.union.model.UserDto" >
+    insert into iuserinfo (USER_ID, USER_PASSWORD, USER_NAME, 
+      USER_SEX, USER_IDENTITY, USER_HOMETOWN, 
+      POLITICAL_STASTUS, USER_MAILADDRESS, USER_TEL, 
+      USER_ADDRESS, USER_STASTUS, USER_MESSAGE, 
+      INSERT_TIME, UPDATE_TIME, UPDATE_CNT
+      )
+    values (#{userId,jdbcType=VARCHAR}, #{userPassword,jdbcType=CHAR}, #{userName,jdbcType=VARCHAR}, 
+      #{userSex,jdbcType=CHAR}, #{userIdentity,jdbcType=CHAR}, #{userHometown,jdbcType=VARCHAR}, 
+      #{politicalStastus,jdbcType=CHAR}, #{userMailaddress,jdbcType=VARCHAR}, #{userTel,jdbcType=VARCHAR}, 
+      #{userAddress,jdbcType=VARCHAR}, #{userStastus,jdbcType=VARCHAR}, #{userMessage,jdbcType=VARCHAR}, 
+      #{insertTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{updateCnt,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.union.model.UserDto" >
+    insert into iuserinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="userPassword != null" >
+        USER_PASSWORD,
+      </if>
+      <if test="userName != null" >
+        USER_NAME,
+      </if>
+      <if test="userSex != null" >
+        USER_SEX,
+      </if>
+      <if test="userIdentity != null" >
+        USER_IDENTITY,
+      </if>
+      <if test="userHometown != null" >
+        USER_HOMETOWN,
+      </if>
+      <if test="politicalStastus != null" >
+        POLITICAL_STASTUS,
+      </if>
+      <if test="userMailaddress != null" >
+        USER_MAILADDRESS,
+      </if>
+      <if test="userTel != null" >
+        USER_TEL,
+      </if>
+      <if test="userAddress != null" >
+        USER_ADDRESS,
+      </if>
+      <if test="userStastus != null" >
+        USER_STASTUS,
+      </if>
+      <if test="userMessage != null" >
+        USER_MESSAGE,
+      </if>
+      <if test="insertTime != null" >
+        INSERT_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="updateCnt != null" >
+        UPDATE_CNT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userPassword != null" >
+        #{userPassword,jdbcType=CHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null" >
+        #{userSex,jdbcType=CHAR},
+      </if>
+      <if test="userIdentity != null" >
+        #{userIdentity,jdbcType=CHAR},
+      </if>
+      <if test="userHometown != null" >
+        #{userHometown,jdbcType=VARCHAR},
+      </if>
+      <if test="politicalStastus != null" >
+        #{politicalStastus,jdbcType=CHAR},
+      </if>
+      <if test="userMailaddress != null" >
+        #{userMailaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="userTel != null" >
+        #{userTel,jdbcType=VARCHAR},
+      </if>
+      <if test="userAddress != null" >
+        #{userAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="userStastus != null" >
+        #{userStastus,jdbcType=VARCHAR},
+      </if>
+      <if test="userMessage != null" >
+        #{userMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTime != null" >
+        #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateCnt != null" >
+        #{updateCnt,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.union.model.UserDtoExample" resultType="java.lang.Integer" >
+    select count(*) from iuserinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update iuserinfo
+    <set >
+      <if test="record.userId != null" >
+        USER_ID = #{record.userId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userPassword != null" >
+        USER_PASSWORD = #{record.userPassword,jdbcType=CHAR},
+      </if>
+      <if test="record.userName != null" >
+        USER_NAME = #{record.userName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userSex != null" >
+        USER_SEX = #{record.userSex,jdbcType=CHAR},
+      </if>
+      <if test="record.userIdentity != null" >
+        USER_IDENTITY = #{record.userIdentity,jdbcType=CHAR},
+      </if>
+      <if test="record.userHometown != null" >
+        USER_HOMETOWN = #{record.userHometown,jdbcType=VARCHAR},
+      </if>
+      <if test="record.politicalStastus != null" >
+        POLITICAL_STASTUS = #{record.politicalStastus,jdbcType=CHAR},
+      </if>
+      <if test="record.userMailaddress != null" >
+        USER_MAILADDRESS = #{record.userMailaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userTel != null" >
+        USER_TEL = #{record.userTel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userAddress != null" >
+        USER_ADDRESS = #{record.userAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userStastus != null" >
+        USER_STASTUS = #{record.userStastus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userMessage != null" >
+        USER_MESSAGE = #{record.userMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.insertTime != null" >
+        INSERT_TIME = #{record.insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateCnt != null" >
+        UPDATE_CNT = #{record.updateCnt,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update iuserinfo
+    set USER_ID = #{record.userId,jdbcType=VARCHAR},
+      USER_PASSWORD = #{record.userPassword,jdbcType=CHAR},
+      USER_NAME = #{record.userName,jdbcType=VARCHAR},
+      USER_SEX = #{record.userSex,jdbcType=CHAR},
+      USER_IDENTITY = #{record.userIdentity,jdbcType=CHAR},
+      USER_HOMETOWN = #{record.userHometown,jdbcType=VARCHAR},
+      POLITICAL_STASTUS = #{record.politicalStastus,jdbcType=CHAR},
+      USER_MAILADDRESS = #{record.userMailaddress,jdbcType=VARCHAR},
+      USER_TEL = #{record.userTel,jdbcType=VARCHAR},
+      USER_ADDRESS = #{record.userAddress,jdbcType=VARCHAR},
+      USER_STASTUS = #{record.userStastus,jdbcType=VARCHAR},
+      USER_MESSAGE = #{record.userMessage,jdbcType=VARCHAR},
+      INSERT_TIME = #{record.insertTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      UPDATE_CNT = #{record.updateCnt,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.union.model.UserDto" >
+    update iuserinfo
+    <set >
+      <if test="userPassword != null" >
+        USER_PASSWORD = #{userPassword,jdbcType=CHAR},
+      </if>
+      <if test="userName != null" >
+        USER_NAME = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null" >
+        USER_SEX = #{userSex,jdbcType=CHAR},
+      </if>
+      <if test="userIdentity != null" >
+        USER_IDENTITY = #{userIdentity,jdbcType=CHAR},
+      </if>
+      <if test="userHometown != null" >
+        USER_HOMETOWN = #{userHometown,jdbcType=VARCHAR},
+      </if>
+      <if test="politicalStastus != null" >
+        POLITICAL_STASTUS = #{politicalStastus,jdbcType=CHAR},
+      </if>
+      <if test="userMailaddress != null" >
+        USER_MAILADDRESS = #{userMailaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="userTel != null" >
+        USER_TEL = #{userTel,jdbcType=VARCHAR},
+      </if>
+      <if test="userAddress != null" >
+        USER_ADDRESS = #{userAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="userStastus != null" >
+        USER_STASTUS = #{userStastus,jdbcType=VARCHAR},
+      </if>
+      <if test="userMessage != null" >
+        USER_MESSAGE = #{userMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTime != null" >
+        INSERT_TIME = #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateCnt != null" >
+        UPDATE_CNT = #{updateCnt,jdbcType=INTEGER},
+      </if>
+    </set>
+    where USER_ID = #{userId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.union.model.UserDto" >
+    update iuserinfo
+    set USER_PASSWORD = #{userPassword,jdbcType=CHAR},
+      USER_NAME = #{userName,jdbcType=VARCHAR},
+      USER_SEX = #{userSex,jdbcType=CHAR},
+      USER_IDENTITY = #{userIdentity,jdbcType=CHAR},
+      USER_HOMETOWN = #{userHometown,jdbcType=VARCHAR},
+      POLITICAL_STASTUS = #{politicalStastus,jdbcType=CHAR},
+      USER_MAILADDRESS = #{userMailaddress,jdbcType=VARCHAR},
+      USER_TEL = #{userTel,jdbcType=VARCHAR},
+      USER_ADDRESS = #{userAddress,jdbcType=VARCHAR},
+      USER_STASTUS = #{userStastus,jdbcType=VARCHAR},
+      USER_MESSAGE = #{userMessage,jdbcType=VARCHAR},
+      INSERT_TIME = #{insertTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      UPDATE_CNT = #{updateCnt,jdbcType=INTEGER}
+    where USER_ID = #{userId,jdbcType=VARCHAR}
+  </update>
+</mapper>
