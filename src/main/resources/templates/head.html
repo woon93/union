@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HEAD</title>
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <link href="/css/head.css" rel="stylesheet" media="screen" type="text/css">
+    <script type="text/javascript" src="/js/jquery-1.9.1.min.js.下载"></script>
+</head>
+<body>
+
+<!--顶部导航条开始-->
+<div class="header">
+    <span class="left">欢迎进入！</span>
+    <span class="left">&nbsp;&nbsp;&nbsp;&nbsp;
+        <script language="JavaScript">
+        dayName = new Array("星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六")
+        monName = new Array("1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月")
+        now = new Date();
+        document.write("今天是："+	now.getFullYear()+"年"+monName[now.getMonth()]+now.getDate()+"日 "+"  "+dayName[now.getDay()])
+        </script>
+    </span>
+    <span class="right"><a style="" href="">登录</a>&nbsp;/&nbsp;<a style="" href="">注册</a></span>
+</div>
+<!--顶部导航条结束-->
+</body>
+</html>
