@@ -1,0 +1,8 @@
+1、问题描述：IDEA使用时，提示"8080端口被占用"
+　　Description: The Tomcat connector configured to listen on port 8080 failed to start. The port may already be in use or the connector may be misconfigured.
+　　2、解决方法：
+　　① 开始---->运行---->cmd(window+R组合键)，调出命令窗口
+　　② 输入命令: netstat -aon|findstr 8080，可以看出占用端口的是PID为7324的进程
+　　③ 输入命令： taskkill /f /t /im 7324
+
+
