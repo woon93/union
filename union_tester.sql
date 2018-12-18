@@ -41,6 +41,7 @@ grant all privileges on `union`.* to 'tester'@'%';
 use union;
 --切换到`union`
 
+---------------------------------------------------------------------------------------------
 ---------------------------TEST TABLE--------------------------------------------------------
 CREATE TABLE `union`.`INFOMST`(
   `ID` INT UNSIGNED AUTO_INCREMENT,
@@ -54,7 +55,10 @@ CREATE TABLE `union`.`INFOMST`(
 
 INSERT INTO `union`.`infomst` (`ID`, `CLASS1`, `CLASS2`, `CLASS3`, `INDX`, `FLDNM`) VALUES ('999', '999', '999', '999', '999', '999');
 ---------------------------TEST TABLE--------------------------------------------------------
+---------------------------------------------------------------------------------------------
 
+
+drop table iUSERINFO if exists `union`.`iUSERINFO`;
 CREATE TABLE `union`.`iUSERINFO` (
   `USER_ID` VARCHAR(6) NOT NULL  COMMENT '成员ID',
   `USER_PASSWORD` CHAR(8) NOT NULL COMMENT '密码',
@@ -65,7 +69,7 @@ CREATE TABLE `union`.`iUSERINFO` (
   `POLITICAL_STASTUS` CHAR(1) NOT NULL COMMENT '政治面貌',
   `USER_MAILADDRESS` VARCHAR(30) NOT NULL COMMENT '邮箱地址',
   `USER_TEL` VARCHAR(11) NOT NULL COMMENT '联系电话',
-  `USER_ADDRESS` VARCHAR(30) DEFAULT '' COMMENT '住址',
+  `USER_ADDRESS` VARCHAR2(30) DEFAULT '' COMMENT '住址',
   `USER_STASTUS` VARCHAR(10) DEFAULT '' COMMENT '状态',
   `USER_MESSAGE` VARCHAR(140) DEFAULT '' COMMENT '用户签名',
   `INSERT_TIME` DATETIME NOT NULL COMMENT '插入时间',
@@ -76,6 +80,7 @@ CREATE TABLE `union`.`iUSERINFO` (
 
 INSERT INTO `union`.`iuserinfo` (`USER_ID`, `USER_PASSWORD`, `USER_NAME`, `USER_SEX`, `USER_IDENTITY`, `USER_HOMETOWN`, `POLITICAL_STASTUS`, `USER_MAILADDRESS`, `USER_TEL`, `USER_ADDRESS`, `USER_STASTUS`, `USER_MESSAGE`, `INSERT_TIME`, `UPDATE_TIME`, `UPDATE_CNT`) VALUES ('admin', 'admin', '大王', '男', '99', '陕西西安', '9', 'dawang@163.com', '13312341234', '雁塔区天谷八路', '在职', '我怎么那么好看', '2018/12/16', '2018/12/16', '0');
 
+drop table POSTINFO if exists `union`.`POSTINFO`;
 CREATE TABLE POSTINFO (
   `POST_ID` VARCHAR(6) NOT NULL DEFAULT '000000' COMMENT '贴子ID',
   `POST_SEQ` INT NOT NULL DEFAULT 1 COMMENT '楼层',
@@ -90,6 +95,7 @@ CREATE TABLE POSTINFO (
   PRIMARY KEY (`POST_ID`,`POST_SEQ`,`POST_COMMENT_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT '贴子信息';
 
+drop table COMMENTINFO if exists `union`.`COMMENTINFO`;
 CREATE TABLE COMMENTINFO (
   `COMMENT_ID` VARCHAR(8) NOT NULL COMMENT '评论ID',
   `COMMENT_SEQ` INT NOT NULL DEFAULT 0 COMMENT '评论编号',
@@ -102,6 +108,7 @@ CREATE TABLE COMMENTINFO (
   PRIMARY KEY (`COMMENT_ID`,`COMMENT_SEQ`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT '评论信息';
 
+drop table PICTUREINFO if exists `union`.`PICTUREINFO`;
 CREATE TABLE PICTUREINFO (
   `PICTURE_ID` VARCHAR(8) NOT NULL COMMENT '图片ID',
   `PICTURE_CONTENT` CHAR(8) NOT NULL COMMENT '内容',
@@ -112,6 +119,7 @@ CREATE TABLE PICTUREINFO (
   PRIMARY KEY (`PICTURE_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT '图片';
 
+drop table ARTICLEINFO if exists `union`.`ARTICLEINFO`;
 CREATE TABLE ARTICLEINFO (
   `ARTICLE_ID` VARCHAR(8) NOT NULL COMMENT '文章ID',
   `ARTICLE_CONTENT` CHAR(8) NOT NULL COMMENT '内容',
@@ -123,6 +131,18 @@ CREATE TABLE ARTICLEINFO (
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT '文章';
 
 
+-----------------------------------------------------------------------------------------------------------
+--------------------------------TEST DATE------------------------------------------------------------------
+
+INSERT INTO `union`.`postinfo` (`POST_ID`, `POST_SEQ`, `POST_USER_ID`, `POST_COMMENT_ID`, `POST_TITLE`, `POST_CONTENT`, `POST_STATUS`, `INSERT_TIME`, `UPDATE_TIME`, `UPDATE_CNT`) VALUES ('post01', '0', 'post01', '0', 'Your Website', 'Many of us work in an endless stream of tasks, browser tasks, social media, emails, meetings, rushing from one thing to another, never pausing and never ending. ', '1', '2018/12/18', '2018/12/18', '1');
+
+
+
+
+
+
+--------------------------------TEST DATE------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------
 --CREATE TABLE NEWSMST (
 --  `ID` INT UNSIGNED AUTO_INCREMENT,
 --  `AREA` CHAR(2) NOT NULL COMMENT '板块',
