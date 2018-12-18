@@ -69,7 +69,7 @@ CREATE TABLE `union`.`iUSERINFO` (
   `POLITICAL_STASTUS` CHAR(1) NOT NULL COMMENT '政治面貌',
   `USER_MAILADDRESS` VARCHAR(30) NOT NULL COMMENT '邮箱地址',
   `USER_TEL` VARCHAR(11) NOT NULL COMMENT '联系电话',
-  `USER_ADDRESS` VARCHAR2(30) DEFAULT '' COMMENT '住址',
+  `USER_ADDRESS` VARCHAR(30) DEFAULT '' COMMENT '住址',
   `USER_STASTUS` VARCHAR(10) DEFAULT '' COMMENT '状态',
   `USER_MESSAGE` VARCHAR(140) DEFAULT '' COMMENT '用户签名',
   `INSERT_TIME` DATETIME NOT NULL COMMENT '插入时间',
@@ -136,6 +136,7 @@ CREATE TABLE ARTICLEINFO (
 
 INSERT INTO `union`.`postinfo` (`POST_ID`, `POST_SEQ`, `POST_USER_ID`, `POST_COMMENT_ID`, `POST_TITLE`, `POST_CONTENT`, `POST_STATUS`, `INSERT_TIME`, `UPDATE_TIME`, `UPDATE_CNT`) VALUES ('post01', '0', 'post01', '0', 'Your Website', 'Many of us work in an endless stream of tasks, browser tasks, social media, emails, meetings, rushing from one thing to another, never pausing and never ending. ', '1', '2018/12/18', '2018/12/18', '1');
 
+INSERT INTO `union`.`postinfo` (`POST_ID`, `POST_SEQ`, `POST_USER_ID`, `POST_COMMENT_ID`, `POST_TITLE`, `POST_CONTENT`, `POST_STATUS`, `INSERT_TIME`, `UPDATE_TIME`, `UPDATE_CNT`) VALUES ('100001', '1', '100001', '10000001', '20181218', '这又是什么鬼评论啊。。。', '1', '20181218', '20181218', '1');
 
 
 
