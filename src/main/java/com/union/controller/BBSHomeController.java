@@ -40,6 +40,12 @@ public class BBSHomeController {
         model.addAttribute("user", getUser);
         // 最近发表的帖子
         List<PostDto> userPostList = postService.getPostList(getUser); //TODO:
+
+//        // 只取前三条
+//        for(int i = 0; i < userPostList.size(); i++){
+//
+//        }
+//        userPostList= userPostList.subList(0, 2);
         model.addAttribute("userPostList", userPostList);
         // 最近发表的评论
         List<CommentDto> userCommentList = commentService.getCommentList(getUser); //TODO:

@@ -289,11 +289,12 @@ function submitsearch() {
 
 
 
-                    <section class="widget"><h3 class="title">最近发帖</h3>
-                        <ul>
-                            <li><a href="#" title="Lorem ipsum dolor sit amet,">Advanced Techniques</a> </li>
-                            <li><a href="#" title="Lorem ipsum dolor sit amet,">Designing in WordPress</a></li>
-                            <li><a href="#" title="Lorem ipsum dolor sit amet,">Server &amp; Database</a></li>
+                    <section class="widget" >
+                        <h3 class="title">最近发帖</h3>
+                        <ul th:each="post,postStat : ${userPostList}">
+                            <a href="#" title="Lorem ipsum dolor sit amet,">
+                                <li th:text="${post.postContent}">/li>
+                            </a>
                         </ul>
                     </section>
 

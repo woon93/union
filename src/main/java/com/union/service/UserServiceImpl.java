@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
     public UserDto getUserInfo(@NonNull UserDto thisUser) {
         String oldPwd = thisUser.getUserPassword();
         List<UserDto> userDtoList = this.selectUserDto(thisUser);
-        if(userDtoList == null || userDtoList.isEmpty()){
+        if(userDtoList.isEmpty()){
             return null;
         }
         String newPwd = userDtoList.get(0).getUserPassword();
@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
         UserDtoExample userDtoExample = new UserDtoExample();
         UserDtoExample.Criteria criteria = userDtoExample.createCriteria();
         // 【KEY】
-        criteria.andUserIdEqualTo("admin");
+        criteria.andUserIdEqualTo(users.getUserId());
         // 【SORT】
         StringBuilder sortKey = new StringBuilder();
         sortKey.append("USER_ID");
