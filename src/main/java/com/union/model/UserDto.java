@@ -1,7 +1,12 @@
 package com.union.model;
 
+import lombok.Data;
+import lombok.ToString;
+
 import java.util.Date;
 
+@Data
+@ToString()
 public class UserDto {
     private String userId;
 

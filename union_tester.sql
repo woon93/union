@@ -137,6 +137,11 @@ CREATE TABLE ARTICLEINFO (
 INSERT INTO `union`.`postinfo` (`POST_ID`, `POST_SEQ`, `POST_USER_ID`, `POST_COMMENT_ID`, `POST_TITLE`, `POST_CONTENT`, `POST_STATUS`, `INSERT_TIME`, `UPDATE_TIME`, `UPDATE_CNT`) VALUES ('post01', '0', 'post01', '0', 'Your Website', 'Many of us work in an endless stream of tasks, browser tasks, social media, emails, meetings, rushing from one thing to another, never pausing and never ending. ', '1', '2018/12/18', '2018/12/18', '1');
 
 INSERT INTO `union`.`postinfo` (`POST_ID`, `POST_SEQ`, `POST_USER_ID`, `POST_COMMENT_ID`, `POST_TITLE`, `POST_CONTENT`, `POST_STATUS`, `INSERT_TIME`, `UPDATE_TIME`, `UPDATE_CNT`) VALUES ('100001', '1', '100001', '10000001', '20181218', '这又是什么鬼评论啊。。。', '1', '20181218', '20181218', '1');
+UPDATE `union`.`postinfo` SET `POST_CONTENT` = '这又是什么鬼帖子' WHERE (`POST_ID` = '100001') and (`POST_SEQ` = '1') and (`POST_COMMENT_ID` = '10000001');
+
+INSERT INTO `union`.`iuserinfo` (`USER_ID`, `USER_PASSWORD`, `USER_NAME`, `USER_SEX`, `USER_IDENTITY`, `USER_HOMETOWN`, `POLITICAL_STASTUS`, `USER_MAILADDRESS`, `USER_TEL`, `USER_ADDRESS`, `USER_STASTUS`, `USER_MESSAGE`, `INSERT_TIME`, `UPDATE_TIME`, `UPDATE_CNT`) VALUES ('100001', '100001', '大王', '男', '99', '陕西西安', '9', 'dawang@163.com', '13312341234', '雁塔区天谷八路', '在职', '我怎么那么好看', '2018-12-16 00:00:00', '2018-12-16 00:00:00', '0');
+
+INSERT INTO `union`.`commentinfo` (`COMMENT_ID`, `COMMENT_SEQ`, `COMMENT_USER_ID`, `COMMENT_CONTENT`, `COMMENT_STATUS`, `INSERT_TIME`, `UPDATE_TIME`, `UPDATE_CNT`) VALUES ('10000001', '1', '100001', '是假评论', '1', '20181218', '20181218', '20181218');
 
 
 

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.util.StringUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service(value = "userService")
@@ -19,6 +20,9 @@ public class UserServiceImpl implements UserService {
     public UserDto getUserInfo(@NonNull UserDto thisUser) {
         String oldPwd = thisUser.getUserPassword();
         List<UserDto> userDtoList = this.selectUserDto(thisUser);
+        if(userDtoList == null || userDtoList.isEmpty()){
+            return null;
+        }
         String newPwd = userDtoList.get(0).getUserPassword();
         if(StringUtils.equals(oldPwd, newPwd)){
             return userDtoList.get(0);
@@ -38,6 +42,9 @@ public class UserServiceImpl implements UserService {
         userDtoExample.setOrderByClause(sortKey.toString());
         //  excute Mapper
         List<UserDto> UserDtoList = userDtoMapper.selectByExample(userDtoExample);
+        if(UserDtoList == null){
+            UserDtoList = new ArrayList<>();
+        }
         return UserDtoList;
     }
 }

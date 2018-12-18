@@ -259,9 +259,9 @@ function submitsearch() {
                 <aside class="span4 page-sidebar">
                     <br><br><br>
                     <section class="widget">
-                        <div class="support-widget">
-                            <h3 class="title">个人信息<span th:text="${name}"></h3>
-                            <p class="intro">Need more support? If you did not found an answer, contact us for further help.</p>
+                        <div class="support-widget" th:object="${user}">
+                            <h3 class="title"><span th:text="*{userName}"/></h3>
+                            <p class="intro"><span th:text="*{userMessage}"/></p>
                         </div>
                     </section>
 
