@@ -1,12 +1,7 @@
 package com.union.model;
 
-import lombok.Data;
-import lombok.ToString;
-
 import java.util.Date;
 
-@Data
-@ToString()
 public class PostDto extends PostDtoKey {
     private String postUserId;
 
@@ -21,6 +16,8 @@ public class PostDto extends PostDtoKey {
     private Date updateTime;
 
     private Integer updateCnt;
+
+    private String postTag;
 
     public String getPostUserId() {
         return postUserId;
@@ -76,5 +73,13 @@ public class PostDto extends PostDtoKey {
 
     public void setUpdateCnt(Integer updateCnt) {
         this.updateCnt = updateCnt;
+    }
+
+    public String getPostTag() {
+        return postTag;
+    }
+
+    public void setPostTag(String postTag) {
+        this.postTag = postTag == null ? null : postTag.trim();
     }
 }

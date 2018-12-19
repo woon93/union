@@ -1,0 +1,5 @@
+https://www.cnblogs.com/zj0208/p/5981126.html
+
+每次更新DB表结构后，要记得重新genarate代码：
+    先把原来的DAO,MODEL,MAP都删干净(直接删除这几个文件就好了。删除时不要勾上不要用Idea的安全删除那个选项)
+    然后再用mybatis的genetrator

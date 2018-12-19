@@ -1,10 +1,5 @@
 package com.union.model;
 
-import lombok.Data;
-import lombok.ToString;
-
-@Data
-@ToString()
 public class CommentDtoKey {
     private String commentId;
 

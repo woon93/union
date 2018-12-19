@@ -12,6 +12,7 @@
     <result column="INSERT_TIME" property="insertTime" jdbcType="TIMESTAMP" />
     <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
     <result column="UPDATE_CNT" property="updateCnt" jdbcType="INTEGER" />
+    <result column="POST_TAG" property="postTag" jdbcType="CHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -73,7 +74,7 @@
   </sql>
   <sql id="Base_Column_List" >
     POST_ID, POST_SEQ, POST_COMMENT_ID, POST_USER_ID, POST_TITLE, POST_CONTENT, POST_STATUS, 
-    INSERT_TIME, UPDATE_TIME, UPDATE_CNT
+    INSERT_TIME, UPDATE_TIME, UPDATE_CNT, POST_TAG
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.union.model.PostDtoExample" >
     select
@@ -113,11 +114,11 @@
     insert into postinfo (POST_ID, POST_SEQ, POST_COMMENT_ID, 
       POST_USER_ID, POST_TITLE, POST_CONTENT, 
       POST_STATUS, INSERT_TIME, UPDATE_TIME, 
-      UPDATE_CNT)
+      UPDATE_CNT, POST_TAG)
     values (#{postId,jdbcType=VARCHAR}, #{postSeq,jdbcType=INTEGER}, #{postCommentId,jdbcType=VARCHAR}, 
       #{postUserId,jdbcType=VARCHAR}, #{postTitle,jdbcType=VARCHAR}, #{postContent,jdbcType=CHAR}, 
       #{postStatus,jdbcType=CHAR}, #{insertTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{updateCnt,jdbcType=INTEGER})
+      #{updateCnt,jdbcType=INTEGER}, #{postTag,jdbcType=CHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.union.model.PostDto" >
     insert into postinfo
@@ -152,6 +153,9 @@
       <if test="updateCnt != null" >
         UPDATE_CNT,
       </if>
+      <if test="postTag != null" >
+        POST_TAG,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="postId != null" >
@@ -183,6 +187,9 @@
       </if>
       <if test="updateCnt != null" >
         #{updateCnt,jdbcType=INTEGER},
+      </if>
+      <if test="postTag != null" >
+        #{postTag,jdbcType=CHAR},
       </if>
     </trim>
   </insert>
@@ -225,6 +232,9 @@
       <if test="record.updateCnt != null" >
         UPDATE_CNT = #{record.updateCnt,jdbcType=INTEGER},
       </if>
+      <if test="record.postTag != null" >
+        POST_TAG = #{record.postTag,jdbcType=CHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -241,7 +251,8 @@
       POST_STATUS = #{record.postStatus,jdbcType=CHAR},
       INSERT_TIME = #{record.insertTime,jdbcType=TIMESTAMP},
       UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
-      UPDATE_CNT = #{record.updateCnt,jdbcType=INTEGER}
+      UPDATE_CNT = #{record.updateCnt,jdbcType=INTEGER},
+      POST_TAG = #{record.postTag,jdbcType=CHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -270,6 +281,9 @@
       <if test="updateCnt != null" >
         UPDATE_CNT = #{updateCnt,jdbcType=INTEGER},
       </if>
+      <if test="postTag != null" >
+        POST_TAG = #{postTag,jdbcType=CHAR},
+      </if>
     </set>
     where POST_ID = #{postId,jdbcType=VARCHAR}
       and POST_SEQ = #{postSeq,jdbcType=INTEGER}
@@ -283,7 +297,8 @@
       POST_STATUS = #{postStatus,jdbcType=CHAR},
       INSERT_TIME = #{insertTime,jdbcType=TIMESTAMP},
       UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
-      UPDATE_CNT = #{updateCnt,jdbcType=INTEGER}
+      UPDATE_CNT = #{updateCnt,jdbcType=INTEGER},
+      POST_TAG = #{postTag,jdbcType=CHAR}
     where POST_ID = #{postId,jdbcType=VARCHAR}
       and POST_SEQ = #{postSeq,jdbcType=INTEGER}
       and POST_COMMENT_ID = #{postCommentId,jdbcType=VARCHAR}

@@ -1,14 +1,9 @@
 package com.union.model;
 
-import lombok.Data;
-import lombok.ToString;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Data
-@ToString()
 public class PostDtoExample {
     protected String orderByClause;
 
@@ -767,6 +762,76 @@ public class PostDtoExample {
 
         public Criteria andUpdateCntNotBetween(Integer value1, Integer value2) {
             addCriterion("UPDATE_CNT not between", value1, value2, "updateCnt");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostTagIsNull() {
+            addCriterion("POST_TAG is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostTagIsNotNull() {
+            addCriterion("POST_TAG is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostTagEqualTo(String value) {
+            addCriterion("POST_TAG =", value, "postTag");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostTagNotEqualTo(String value) {
+            addCriterion("POST_TAG <>", value, "postTag");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostTagGreaterThan(String value) {
+            addCriterion("POST_TAG >", value, "postTag");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostTagGreaterThanOrEqualTo(String value) {
+            addCriterion("POST_TAG >=", value, "postTag");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostTagLessThan(String value) {
+            addCriterion("POST_TAG <", value, "postTag");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostTagLessThanOrEqualTo(String value) {
+            addCriterion("POST_TAG <=", value, "postTag");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostTagLike(String value) {
+            addCriterion("POST_TAG like", value, "postTag");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostTagNotLike(String value) {
+            addCriterion("POST_TAG not like", value, "postTag");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostTagIn(List<String> values) {
+            addCriterion("POST_TAG in", values, "postTag");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostTagNotIn(List<String> values) {
+            addCriterion("POST_TAG not in", values, "postTag");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostTagBetween(String value1, String value2) {
+            addCriterion("POST_TAG between", value1, value2, "postTag");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostTagNotBetween(String value1, String value2) {
+            addCriterion("POST_TAG not between", value1, value2, "postTag");
             return (Criteria) this;
         }
     }

@@ -10,6 +10,9 @@
     <result column="INSERT_TIME" property="insertTime" jdbcType="TIMESTAMP" />
     <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
     <result column="UPDATE_CNT" property="updateCnt" jdbcType="INTEGER" />
+    <result column="POST_ID" property="postId" jdbcType="CHAR" />
+    <result column="POST_NAME" property="postName" jdbcType="VARCHAR" />
+    <result column="COMMENT_USER_NAME" property="commentUserName" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -71,7 +74,7 @@
   </sql>
   <sql id="Base_Column_List" >
     COMMENT_ID, COMMENT_SEQ, COMMENT_USER_ID, COMMENT_CONTENT, COMMENT_STATUS, INSERT_TIME, 
-    UPDATE_TIME, UPDATE_CNT
+    UPDATE_TIME, UPDATE_CNT, POST_ID, POST_NAME, COMMENT_USER_NAME
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.union.model.CommentDtoExample" >
     select
@@ -108,10 +111,12 @@
   <insert id="insert" parameterType="com.union.model.CommentDto" >
     insert into commentinfo (COMMENT_ID, COMMENT_SEQ, COMMENT_USER_ID, 
       COMMENT_CONTENT, COMMENT_STATUS, INSERT_TIME, 
-      UPDATE_TIME, UPDATE_CNT)
+      UPDATE_TIME, UPDATE_CNT, POST_ID, 
+      POST_NAME, COMMENT_USER_NAME)
     values (#{commentId,jdbcType=VARCHAR}, #{commentSeq,jdbcType=INTEGER}, #{commentUserId,jdbcType=VARCHAR}, 
       #{commentContent,jdbcType=CHAR}, #{commentStatus,jdbcType=CHAR}, #{insertTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP}, #{updateCnt,jdbcType=INTEGER})
+      #{updateTime,jdbcType=TIMESTAMP}, #{updateCnt,jdbcType=INTEGER}, #{postId,jdbcType=CHAR}, 
+      #{postName,jdbcType=VARCHAR}, #{commentUserName,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.union.model.CommentDto" >
     insert into commentinfo
@@ -140,6 +145,15 @@
       <if test="updateCnt != null" >
         UPDATE_CNT,
       </if>
+      <if test="postId != null" >
+        POST_ID,
+      </if>
+      <if test="postName != null" >
+        POST_NAME,
+      </if>
+      <if test="commentUserName != null" >
+        COMMENT_USER_NAME,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="commentId != null" >
@@ -165,6 +179,15 @@
       </if>
       <if test="updateCnt != null" >
         #{updateCnt,jdbcType=INTEGER},
+      </if>
+      <if test="postId != null" >
+        #{postId,jdbcType=CHAR},
+      </if>
+      <if test="postName != null" >
+        #{postName,jdbcType=VARCHAR},
+      </if>
+      <if test="commentUserName != null" >
+        #{commentUserName,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -201,6 +224,15 @@
       <if test="record.updateCnt != null" >
         UPDATE_CNT = #{record.updateCnt,jdbcType=INTEGER},
       </if>
+      <if test="record.postId != null" >
+        POST_ID = #{record.postId,jdbcType=CHAR},
+      </if>
+      <if test="record.postName != null" >
+        POST_NAME = #{record.postName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.commentUserName != null" >
+        COMMENT_USER_NAME = #{record.commentUserName,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -215,7 +247,10 @@
       COMMENT_STATUS = #{record.commentStatus,jdbcType=CHAR},
       INSERT_TIME = #{record.insertTime,jdbcType=TIMESTAMP},
       UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
-      UPDATE_CNT = #{record.updateCnt,jdbcType=INTEGER}
+      UPDATE_CNT = #{record.updateCnt,jdbcType=INTEGER},
+      POST_ID = #{record.postId,jdbcType=CHAR},
+      POST_NAME = #{record.postName,jdbcType=VARCHAR},
+      COMMENT_USER_NAME = #{record.commentUserName,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -241,6 +276,15 @@
       <if test="updateCnt != null" >
         UPDATE_CNT = #{updateCnt,jdbcType=INTEGER},
       </if>
+      <if test="postId != null" >
+        POST_ID = #{postId,jdbcType=CHAR},
+      </if>
+      <if test="postName != null" >
+        POST_NAME = #{postName,jdbcType=VARCHAR},
+      </if>
+      <if test="commentUserName != null" >
+        COMMENT_USER_NAME = #{commentUserName,jdbcType=VARCHAR},
+      </if>
     </set>
     where COMMENT_ID = #{commentId,jdbcType=VARCHAR}
       and COMMENT_SEQ = #{commentSeq,jdbcType=INTEGER}
@@ -252,7 +296,10 @@
       COMMENT_STATUS = #{commentStatus,jdbcType=CHAR},
       INSERT_TIME = #{insertTime,jdbcType=TIMESTAMP},
       UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
-      UPDATE_CNT = #{updateCnt,jdbcType=INTEGER}
+      UPDATE_CNT = #{updateCnt,jdbcType=INTEGER},
+      POST_ID = #{postId,jdbcType=CHAR},
+      POST_NAME = #{postName,jdbcType=VARCHAR},
+      COMMENT_USER_NAME = #{commentUserName,jdbcType=VARCHAR}
     where COMMENT_ID = #{commentId,jdbcType=VARCHAR}
       and COMMENT_SEQ = #{commentSeq,jdbcType=INTEGER}
   </update>

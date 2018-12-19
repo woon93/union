@@ -1,14 +1,9 @@
 package com.union.model;
 
-import lombok.Data;
-import lombok.ToString;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Data
-@ToString()
 public class CommentDtoExample {
     protected String orderByClause;
 
@@ -627,6 +622,216 @@ public class CommentDtoExample {
 
         public Criteria andUpdateCntNotBetween(Integer value1, Integer value2) {
             addCriterion("UPDATE_CNT not between", value1, value2, "updateCnt");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostIdIsNull() {
+            addCriterion("POST_ID is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostIdIsNotNull() {
+            addCriterion("POST_ID is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostIdEqualTo(String value) {
+            addCriterion("POST_ID =", value, "postId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostIdNotEqualTo(String value) {
+            addCriterion("POST_ID <>", value, "postId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostIdGreaterThan(String value) {
+            addCriterion("POST_ID >", value, "postId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostIdGreaterThanOrEqualTo(String value) {
+            addCriterion("POST_ID >=", value, "postId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostIdLessThan(String value) {
+            addCriterion("POST_ID <", value, "postId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostIdLessThanOrEqualTo(String value) {
+            addCriterion("POST_ID <=", value, "postId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostIdLike(String value) {
+            addCriterion("POST_ID like", value, "postId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostIdNotLike(String value) {
+            addCriterion("POST_ID not like", value, "postId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostIdIn(List<String> values) {
+            addCriterion("POST_ID in", values, "postId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostIdNotIn(List<String> values) {
+            addCriterion("POST_ID not in", values, "postId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostIdBetween(String value1, String value2) {
+            addCriterion("POST_ID between", value1, value2, "postId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostIdNotBetween(String value1, String value2) {
+            addCriterion("POST_ID not between", value1, value2, "postId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostNameIsNull() {
+            addCriterion("POST_NAME is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostNameIsNotNull() {
+            addCriterion("POST_NAME is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostNameEqualTo(String value) {
+            addCriterion("POST_NAME =", value, "postName");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostNameNotEqualTo(String value) {
+            addCriterion("POST_NAME <>", value, "postName");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostNameGreaterThan(String value) {
+            addCriterion("POST_NAME >", value, "postName");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostNameGreaterThanOrEqualTo(String value) {
+            addCriterion("POST_NAME >=", value, "postName");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostNameLessThan(String value) {
+            addCriterion("POST_NAME <", value, "postName");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostNameLessThanOrEqualTo(String value) {
+            addCriterion("POST_NAME <=", value, "postName");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostNameLike(String value) {
+            addCriterion("POST_NAME like", value, "postName");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostNameNotLike(String value) {
+            addCriterion("POST_NAME not like", value, "postName");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostNameIn(List<String> values) {
+            addCriterion("POST_NAME in", values, "postName");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostNameNotIn(List<String> values) {
+            addCriterion("POST_NAME not in", values, "postName");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostNameBetween(String value1, String value2) {
+            addCriterion("POST_NAME between", value1, value2, "postName");
+            return (Criteria) this;
+        }
+
+        public Criteria andPostNameNotBetween(String value1, String value2) {
+            addCriterion("POST_NAME not between", value1, value2, "postName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserNameIsNull() {
+            addCriterion("COMMENT_USER_NAME is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserNameIsNotNull() {
+            addCriterion("COMMENT_USER_NAME is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserNameEqualTo(String value) {
+            addCriterion("COMMENT_USER_NAME =", value, "commentUserName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserNameNotEqualTo(String value) {
+            addCriterion("COMMENT_USER_NAME <>", value, "commentUserName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserNameGreaterThan(String value) {
+            addCriterion("COMMENT_USER_NAME >", value, "commentUserName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserNameGreaterThanOrEqualTo(String value) {
+            addCriterion("COMMENT_USER_NAME >=", value, "commentUserName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserNameLessThan(String value) {
+            addCriterion("COMMENT_USER_NAME <", value, "commentUserName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserNameLessThanOrEqualTo(String value) {
+            addCriterion("COMMENT_USER_NAME <=", value, "commentUserName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserNameLike(String value) {
+            addCriterion("COMMENT_USER_NAME like", value, "commentUserName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserNameNotLike(String value) {
+            addCriterion("COMMENT_USER_NAME not like", value, "commentUserName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserNameIn(List<String> values) {
+            addCriterion("COMMENT_USER_NAME in", values, "commentUserName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserNameNotIn(List<String> values) {
+            addCriterion("COMMENT_USER_NAME not in", values, "commentUserName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserNameBetween(String value1, String value2) {
+            addCriterion("COMMENT_USER_NAME between", value1, value2, "commentUserName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentUserNameNotBetween(String value1, String value2) {
+            addCriterion("COMMENT_USER_NAME not between", value1, value2, "commentUserName");
             return (Criteria) this;
         }
     }

@@ -300,10 +300,12 @@ function submitsearch() {
 
                     <section class="widget">
                         <h3 class="title">最近评论</h3>
-                        <ul id="recentcomments">
-                            <li class="recentcomments"><a href="#" rel="external nofollow" class="url">John Doe</a> on <a href="#">Integrating WordPress with Your Website</a></li>
-                            <li class="recentcomments">saqib sarwar on <a href="#">Integrating WordPress with Your Website</a></li>
-                            <li class="recentcomments"><a href="#" rel="external nofollow" class="url">John Doe</a> on <a href="#">Integrating WordPress with Your Website</a></li>
+                        <ul th:each="user,userStat : ${userCommentList}">
+                            <li class="recentcomments">
+                                <a href="#" rel="external nofollow" class="url"><span th:text="*{user.commentContent}"/></a>
+                                on
+                                <a href="#"><span th:text="*{user.postName}"/></a>
+                            </li>
                         </ul>
                     </section>
 
