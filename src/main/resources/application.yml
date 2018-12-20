@@ -10,6 +10,8 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   thymeleaf:
+      prefix: classpath:/templates/
+      suffix: .html
       cache: false    #缓冲的配置
 #      check-template: true
 #      check-template-location: true
