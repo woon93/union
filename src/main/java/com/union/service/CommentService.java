@@ -16,7 +16,8 @@ public interface CommentService {
     public List<CommentDto> getCommentList(@NonNull UserDto users);
 
     /*
-     * 按postId和
+     * 按postId和postSeq生成commentId，并插入一条评论,并实现自增commentSeq
      */
+    public int insertComment(@NonNull CommentDto commentDto);
 
 }
