@@ -270,7 +270,7 @@ function submitsearch() {
                         <h3 class="title">我收藏的</h3>
                         <ul class="articles">
                             <li class="article-entry standard">
-                                <h4><a th:href="@{/posts}">Integrating WordPress with Your Website</a></h4>
+                                <h4><a th:href="@{/posts(userId=${user.userId})}">Integrating WordPress with Your Website</a></h4>
                                 <span class="article-meta">25 Feb, 2013 in <a href="#" title="View all posts in Server &amp; Database">Server &amp; Database</a></span>
                                 <span class="like-count">66</span>
                             </li>

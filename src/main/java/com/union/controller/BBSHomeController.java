@@ -26,32 +26,30 @@ public class BBSHomeController {
     private CommentService commentService;
 
     @GetMapping(value = "/bbs01")
-    public String hello(Model model) {
+    public String getBBSInfo(Model model) {
+        // 假装接收到了用户ID和密码
         UserDto thisUser = new UserDto();
         thisUser.setUserId("100001");
         thisUser.setUserPassword("100001");
+        // 进行用户校验
         UserDto getUser = userService.getUserInfo(thisUser);
         if(getUser == null){
             // 用户和密码不匹配 TODO:
             model.addAttribute("name", "用户和密码不匹配!!!");
             return "Test01";
         }
-        // 用户信息
+        // 往页面添加用户信息
         model.addAttribute("user", getUser);
-        // 最近发表的帖子
-        List<PostDto> userPostList = postService.getPostList(getUser); //TODO:
 
-//        // 只取前三条
-//        for(int i = 0; i < userPostList.size(); i++){
-//
-//        }
-//        userPostList= userPostList.subList(0, 2);
+        // 往页面添加该用户最近发表的帖子
+        List<PostDto> userPostList = postService.getPostList(getUser);
         model.addAttribute("userPostList", userPostList);
-        // 最近发表的评论
-        List<CommentDto> userCommentList = commentService.getCommentList(getUser); //TODO:
+
+        // 往页面添加该用户最近发表的评论
+        List<CommentDto> userCommentList = commentService.getCommentList(getUser);
         model.addAttribute("userCommentList", userCommentList);
 
-        // 最新的帖子列表
+        // 在页面展示所有的最新的帖子列表
         List<PostDto> userPostsList = postService.getPostsList(); //TODO:
         model.addAttribute("userPostsList", userPostsList);
 

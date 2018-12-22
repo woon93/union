@@ -6,4 +6,7 @@ import lombok.NonNull;
 
 public interface UserService {
     public UserDto getUserInfo(@NonNull UserDto users);
+
+    public UserDto getUserInfoById(@NonNull String userId);
+
 }
