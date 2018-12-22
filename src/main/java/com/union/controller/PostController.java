@@ -28,7 +28,7 @@ public class PostController {
     private CommentService commentService;
 
     @RequestMapping(value = "/posts", method = RequestMethod.GET)
-    public String Hello(Model model, HttpServletRequest request) {
+    public String getPostInfo(Model model, HttpServletRequest request) {
 
         UserDto paramUser = new UserDto();
         // 用页面上传过来的userId进行不确认密码的查询

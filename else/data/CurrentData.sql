@@ -50,7 +50,7 @@ DROP TABLE IF EXISTS `union`.`commentinfo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `union`.`commentinfo` (
-  `COMMENT_ID` varchar(8) NOT NULL COMMENT '评论ID',
+  `COMMENT_ID` varchar(12) NOT NULL COMMENT '评论ID',
   `COMMENT_SEQ` int(11) NOT NULL DEFAULT '0' COMMENT '评论编号',
   `COMMENT_USER_ID` varchar(6) NOT NULL COMMENT '评论者',
   `COMMENT_CONTENT` char(8) NOT NULL COMMENT '内容',
@@ -212,9 +212,9 @@ DROP TABLE IF EXISTS `union`.`postinfo`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `union`.`postinfo` (
   `POST_ID` varchar(6) NOT NULL DEFAULT '000000' COMMENT '贴子ID',
-  `POST_SEQ` int(11) NOT NULL DEFAULT '1' COMMENT '楼层',
+  `POST_SEQ` int(6) NOT NULL DEFAULT '1' COMMENT '楼层',
   `POST_USER_ID` varchar(6) NOT NULL COMMENT '跟贴者',
-  `POST_COMMENT_ID` varchar(8) NOT NULL DEFAULT '00000000' COMMENT '评论ID',
+  `POST_COMMENT_ID` varchar(12) NOT NULL DEFAULT '00000000' COMMENT '评论ID',
   `POST_TITLE` varchar(30) NOT NULL COMMENT '标题',
   `POST_CONTENT` char(200) NOT NULL COMMENT '内容',
   `POST_STATUS` char(1) DEFAULT '' COMMENT '状态',

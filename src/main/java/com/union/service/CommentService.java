@@ -15,5 +15,8 @@ public interface CommentService {
      */
     public List<CommentDto> getCommentList(@NonNull UserDto users);
 
+    /*
+     * 按postId和
+     */
 
 }
