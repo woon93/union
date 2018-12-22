@@ -1,4 +1,4 @@
-package com.union.controller;
+package com.union.controller.Test;
 
 import com.union.service.InfoMstService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,15 +8,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 //@RestController
-public class Test04 {
+public class Test03 {
     @Autowired
     private InfoMstService infoMstService;
 
-    @GetMapping(value = "/test04")
+    @GetMapping(value = "/test03")
     public String hello(Model model) {
         String name = "大王";
         model.addAttribute("name", name);
-        return "Test04";
+        return "Test03";
     }
 
 

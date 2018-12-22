@@ -1,4 +1,4 @@
-package com.union.controller;
+package com.union.controller.Test;
 
 import com.union.model.Info;
 import com.union.service.InfoMstService;
