@@ -31,14 +31,11 @@ public class CommentServiceImpl implements CommentService {
         commentDtoExample.setOrderByClause(sortKey.toString());
         //  excute Mapper
         List<CommentDto> commentDtoList = commentDtoMapper.selectByExample(commentDtoExample);
-        {
-            if (commentDtoList == null) {
-                commentDtoList = new ArrayList<>();
-            }
+        if (commentDtoList == null) {
+            commentDtoList = new ArrayList<>();
         }
         return commentDtoList;
     }
-
 
 
 }
