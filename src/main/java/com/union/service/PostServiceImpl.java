@@ -120,7 +120,6 @@ public class PostServiceImpl implements PostService{
     public int deletePostByTime(@NonNull UserDto controllerUser, @NonNull Date fromTime, @NonNull Date toTime) {
         // 验证controllerUser的权限 TODO
         if(StringUtils.equals("管理员的ID是多少？", controllerUser.getUserIdentity())){
-            // 先检索这个用户有发过哪些帖子
             PostDtoExample deletePost = new PostDtoExample();
             PostDtoExample.Criteria criteria = deletePost.createCriteria();
             // 用mybatis封装的【and*TimeBetween】方法进行批量删除
