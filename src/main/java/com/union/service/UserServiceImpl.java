@@ -18,6 +18,7 @@ public class UserServiceImpl implements UserService {
     private UserDtoMapper userDtoMapper;
 
     @Override
+    // 根据UserId查询用户信息（要做密码验证）
     public UserDto getUserInfo(@NonNull UserDto thisUser) {
         // 页面传过来的密码
         String oldPwd = thisUser.getUserPassword();
@@ -38,8 +39,24 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    // 根据UserId查询用户信息（不做密码验证）
     public UserDto getUserInfoById(@NonNull String userId) {
         return this.selectUserById(userId);
+    }
+
+    @Override
+    // 增加一个新用户
+    public int insertUserInfo(@NonNull UserDto users) {
+        return userDtoMapper.insertSelective(users);
+    }
+
+    @Override
+    public int deleteUserInfo(@NonNull UserDto targetUser, @NonNull UserDto controllerUser) {
+        // 验证controllerUser的权限 TODO
+        if(StringUtils.equals("管理员的ID是多少？", controllerUser.getUserIdentity())){
+            return userDtoMapper.deleteByPrimaryKey(targetUser.getUserId());
+        }
+        return 0;
     }
 
     // Mybatis 的 SQL
@@ -61,6 +78,7 @@ public class UserServiceImpl implements UserService {
         return UserDtoList;
     }
 
+    // Mybatis 的 SQL
     private UserDto selectUserById(@NonNull String userId){
         //  Mybatis Example Initial
         UserDtoExample userDtoExample = new UserDtoExample();
