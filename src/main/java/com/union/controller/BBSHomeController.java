@@ -50,7 +50,7 @@ public class BBSHomeController {
         model.addAttribute("userCommentList", userCommentList);
 
         // 在页面展示所有的最新的帖子列表
-        List<PostDto> userPostsList = postService.getPostsList(); //TODO:
+        List<PostDto> userPostsList = postService.getCurrentPostList(); //TODO:
         model.addAttribute("userPostsList", userPostsList);
 
         return "BBSHome";
