@@ -1,8 +1,11 @@
 package com.union.service;
 
+import com.union.dao.CommentDtoMapper;
 import com.union.dao.PostDtoMapper;
 import com.union.model.PostDto;
 import com.union.model.PostDtoExample;
+import com.union.model.CommentDto;
+import com.union.model.CommentDtoExample;
 import com.union.model.UserDto;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,18 +16,121 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.text.SimpleDateFormat;
 
 @Service(value = "postService")
 public class PostServiceImpl implements PostService{
+
     @Autowired
     private PostDtoMapper postDtoMapper;
-
+    @Autowired
+    private CommentDtoMapper commentDtoMapper;
     @Override
     /*
      * 新增帖子
+     * 发帖时，新帖内容记录在贴表(跟帖的场合写在另一个方法
      */
-    public int creatPost(@NonNull PostDto newPostDto) {
-        return postDtoMapper.insertSelective(newPostDto);
+    public int creatPost(UserDto userDto, String title, String content) throws Exception{
+        //  插入用Example
+        PostDtoExample postDtoExample = new PostDtoExample();
+        PostDtoExample.Criteria criteria = postDtoExample.createCriteria();
+        PostDto postDto = new PostDto();
+        // 贴子ID
+        String postId = this.getUptoDateId();
+        postDto.setPostId(postId);
+        // 楼层
+        postDto.setPostSeq(0);
+        // 发表者
+        postDto.setPostUserId(userDto.getUserId());
+        // 评论ID
+        postDto.setPostCommentId(null);
+        // 标题
+        postDto.setPostTitle(title);
+        // 内容
+        postDto.setPostContent(content);
+        // 状态
+        postDto.setPostStatus("0");
+        // 创建时间
+        postDto.setInsertTime(new SimpleDateFormat("yyyyMMdd HH:mm:ss").parse("20181231 20:10:50"));
+        // 更新时间
+        postDto.setUpdateTime(new SimpleDateFormat("yyyyMMdd HH:mm:ss").parse("20181231 20:10:50"));
+        // 更新回数
+        postDto.setUpdateCnt(0);
+        // 帖子标签
+        postDto.setPostTag(null);
+
+        return postDtoMapper.insertSelective(postDto);
+    }
+
+    /*
+     * 新增回复（作为新的楼层
+     */
+    public int addReplytoPost(UserDto userDto, String postId, String content) throws Exception{
+        //  插入用Example
+        PostDtoExample postDtoExample = new PostDtoExample();
+        PostDtoExample.Criteria criteria = postDtoExample.createCriteria();
+        PostDto postDto = new PostDto();
+        // 贴子ID
+        postDto.setPostId(postId);
+        // 楼层
+        int currentSeq = this.getPostSeq(postId);
+        postDto.setPostSeq(currentSeq);
+        // 发表者
+        postDto.setPostUserId(userDto.getUserId());
+        // 评论ID
+        postDto.setPostCommentId(postId + leftPaddingZero(String.valueOf(currentSeq), 4));
+        // 标题
+        postDto.setPostTitle(null);
+        // 内容
+        postDto.setPostContent(content);
+        // 状态
+        postDto.setPostStatus("0");
+        // 创建时间
+        postDto.setInsertTime(new SimpleDateFormat("yyyyMMdd HH:mm:ss").parse("20181230 20:10:50"));
+        // 更新时间
+        postDto.setUpdateTime(new SimpleDateFormat("yyyyMMdd HH:mm:ss").parse("20181230 20:10:50"));
+        // 更新回数
+        postDto.setUpdateCnt(0);
+        // 帖子标签
+        postDto.setPostTag(null);
+
+        return postDtoMapper.insertSelective(postDto);
+    }
+
+    /*
+     * 新增回复（作为新的楼层
+     */
+    public int addReplytoComment(UserDto userDto, String postCommentId, String content) throws Exception{
+        //  插入用Example
+        CommentDtoExample commentDtoExample = new CommentDtoExample();
+        CommentDtoExample.Criteria criteria = commentDtoExample.createCriteria();
+        CommentDto commentDto = new CommentDto();
+        // 评论ID
+        commentDto.setCommentId(postCommentId);
+        // 评论编号
+        int currentSeq = this.getCommentSeq(postCommentId);
+        commentDto.setCommentSeq(currentSeq);
+        // 评论者
+        commentDto.setCommentUserId(userDto.getUserId());
+        // 内容
+        commentDto.setCommentContent(content);
+        // 状态
+        commentDto.setCommentStatus("0");
+        // 创建时间
+        commentDto.setInsertTime(new SimpleDateFormat("yyyyMMdd HH:mm:ss").parse("20181230 20:10:50"));
+        // 更新时间
+        commentDto.setUpdateTime(new SimpleDateFormat("yyyyMMdd HH:mm:ss").parse("20181230 20:10:50"));
+        // 更新回数
+        commentDto.setUpdateCnt(0);
+        // 帖子ID
+        commentDto.setPostId(postCommentId.substring(0,5));
+        // 我觉得这两个可以不要
+        // 帖子标题
+        commentDto.setPostName(null);
+        // 评论者名
+        commentDto.setPostName(null);
+
+        return commentDtoMapper.insertSelective(commentDto);
     }
 
     /*
@@ -50,7 +156,6 @@ public class PostServiceImpl implements PostService{
             PostDtoList = new ArrayList<>();
         }
         return PostDtoList;
-
     }
 
     /*
@@ -128,6 +233,102 @@ public class PostServiceImpl implements PostService{
         }
         return 0;
     }
+
+    /*
+     * 最新postId获取
+     */
+    private String getUptoDateId(){
+        // id初始化
+        int newPostId = 0;
+        // 查询用参数
+        PostDtoExample postExample = new PostDtoExample();
+        PostDtoExample.Criteria criteria = postExample.createCriteria();
+        // 排序
+        StringBuilder sortKey = new StringBuilder();
+        sortKey.append("POST_ID DESC");
+        postExample.setOrderByClause(sortKey.toString());
+        // 查询执行
+        List<PostDto> PostDtoList = postDtoMapper.selectByExample(postExample);
+        if(PostDtoList != null && PostDtoList.size() != 0){
+            newPostId = Integer.parseInt(PostDtoList.get(0).getPostId()) + 1;
+        } else{
+            newPostId = 1;
+        }
+        // 返回6位的postID
+        return leftPaddingZero(String.valueOf(newPostId), 6);
+    }
+
+    /*
+     * 最新postSeq获取
+     */
+    private int getPostSeq(String postId){
+        //
+        int seq = 0;
+        // 查询用参数
+        PostDtoExample postExample = new PostDtoExample();
+        PostDtoExample.Criteria criteria = postExample.createCriteria();
+        // 贴ID
+        criteria.andPostIdEqualTo(postId);
+        // 排序
+        StringBuilder sortKey = new StringBuilder();
+        sortKey.append("POST_SEQ DESC");
+        postExample.setOrderByClause(sortKey.toString());
+        // 查询执行
+        List<PostDto> PostDtoList = postDtoMapper.selectByExample(postExample);
+        if(PostDtoList != null && PostDtoList.size() != 0){
+            seq = (PostDtoList.get(0).getPostSeq()) + 1;
+        } else{
+            seq = 1;
+        }
+        return seq;
+    }
+
+    /*
+     * 最新commentSeq获取
+     */
+    private int getCommentSeq(String commentId){
+        //
+        int seq = 0;
+        // 查询用参数
+        CommentDtoExample commentExample = new CommentDtoExample();
+        CommentDtoExample.Criteria criteria = commentExample.createCriteria();
+        // 贴ID
+        criteria.andCommentIdEqualTo(commentId);
+        // 排序
+        StringBuilder sortKey = new StringBuilder();
+        sortKey.append("COMMENT_SEQ DESC");
+        commentExample.setOrderByClause(sortKey.toString());
+        // 查询执行
+        List<CommentDto> cmmentDtoList = commentDtoMapper.selectByExample(commentExample);
+        if(cmmentDtoList != null && cmmentDtoList.size() != 0){
+            seq = (cmmentDtoList.get(0).getCommentSeq()) + 1;
+        } else{
+            seq = 1;
+        }
+        return seq;
+    }
+
+    /*
+     * 左侧补零
+     * @param str 对象字符串
+     * @param strLength 目标长度
+     */
+    private String leftPaddingZero(String str,int strLength) {
+        int strLen =str.length();
+        if (strLen <strLength) {
+            while (strLen< strLength) {
+                StringBuffer sb = new StringBuffer();
+                sb.append("0").append(str); // 左补0
+//              sb.append(str).append("0"); // 右补0
+                str= sb.toString();
+                strLen= str.length();
+            }
+        }
+        return str;
+    }
+
+
+
 
 
 

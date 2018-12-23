@@ -11,8 +11,19 @@ import java.util.List;
 public interface PostService {
     /*
      * 新增帖子
+     * 发帖时，新帖内容记录在贴表
      */
-    public int creatPost(@NonNull PostDto newPostDto);
+    public int creatPost(UserDto userDto, String title, String content) throws Exception;
+
+    /*
+     * 新增回复（作为新的楼层
+     */
+    public int addReplytoPost(UserDto userDto, String postId, String content) throws Exception;
+
+    /*
+     * 新增回复（作为新的楼层
+     */
+    public int addReplytoComment(UserDto userDto, String postCommentId, String content) throws Exception;
 
     /*
      *
