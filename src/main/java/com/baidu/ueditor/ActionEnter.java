@@ -1,4 +1,4 @@
-package com.union.ueditor;
+package com.baidu.ueditor;
 
 import java.util.Map;
 
@@ -24,6 +24,7 @@ public class ActionEnter {
 	
 	private ConfigManager configManager = null;
 
+	/** action统一入口 **/
 	public ActionEnter ( HttpServletRequest request, String rootPath ) {
 		
 		this.request = request;

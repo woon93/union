@@ -7,6 +7,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class Test01 {
 
     @RequestMapping(value = {"/"})
+    private String showPage(){
+        return "Test01";
+    }
+
     @ResponseBody
     public String hello(){
         return "Hello World !!!";

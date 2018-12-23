@@ -1,4 +1,4 @@
-package com.union.ueditor;
+package com.baidu.ueditor;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -219,7 +219,11 @@ public final class ConfigManager {
 				break;
 				
 		}
-		
+		try {
+			conf.put( "basePath", this.jsonConfig.getString("basePath") );
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
 		conf.put( "savePath", savePath );
 		conf.put( "rootPath", this.rootPath );
 		
@@ -250,6 +254,7 @@ public final class ConfigManager {
 	
 	private String getConfigPath () {
 //		return this.parentPath + File.separator + ConfigManager.configFileName;
+		/*=========手动修改部分=========*/
 		try {
 			//获取classpath下的config.json路径
 			return this.getClass().getClassLoader().getResource("config.json").toURI().getPath();

@@ -1,4 +1,4 @@
-package com.union.ueditor.define;
+package com.baidu.ueditor.define;
 
 import java.util.ArrayList;
 import java.util.HashMap;

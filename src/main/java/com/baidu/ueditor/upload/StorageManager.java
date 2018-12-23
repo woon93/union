@@ -1,4 +1,4 @@
-package com.union.ueditor.upload;
+package com.baidu.ueditor.upload;
 
 import com.baidu.ueditor.define.AppInfo;
 import com.baidu.ueditor.define.BaseState;
