@@ -2,35 +2,32 @@ package com.union.service;
 
 import com.union.dao.CommentDtoMapper;
 import com.union.dao.PostDtoMapper;
-import com.union.model.PostDto;
-import com.union.model.PostDtoExample;
-import com.union.model.CommentDto;
-import com.union.model.CommentDtoExample;
-import com.union.model.UserDto;
+import com.union.model.*;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.util.StringUtils;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.text.SimpleDateFormat;
 
 @Service(value = "postService")
-public class PostServiceImpl implements PostService{
+public class PostServiceImpl implements PostService {
 
     @Autowired
     private PostDtoMapper postDtoMapper;
     @Autowired
     private CommentDtoMapper commentDtoMapper;
+
     @Override
     /*
      * 新增帖子
      * 发帖时，新帖内容记录在贴表(跟帖的场合写在另一个方法
      */
-    public int creatPost(UserDto userDto, String title, String content) throws Exception{
+    public int creatPost(UserDto userDto, String title, String content) throws Exception {
         //  插入用Example
         PostDtoExample postDtoExample = new PostDtoExample();
         PostDtoExample.Criteria criteria = postDtoExample.createCriteria();
@@ -65,7 +62,7 @@ public class PostServiceImpl implements PostService{
     /*
      * 新增回复（作为新的楼层
      */
-    public int addReplytoPost(UserDto userDto, String postId, String content) throws Exception{
+    public int addReplytoPost(UserDto userDto, String postId, String content) throws Exception {
         //  插入用Example
         PostDtoExample postDtoExample = new PostDtoExample();
         PostDtoExample.Criteria criteria = postDtoExample.createCriteria();
@@ -78,7 +75,7 @@ public class PostServiceImpl implements PostService{
         // 发表者
         postDto.setPostUserId(userDto.getUserId());
         // 评论ID
-        postDto.setPostCommentId(postId + leftPaddingZero(String.valueOf(currentSeq), 4));
+        postDto.setPostCommentId(postId + Utils.leftPadding(String.valueOf(currentSeq), 4, "0"));
         // 标题
         postDto.setPostTitle(null);
         // 内容
@@ -100,7 +97,7 @@ public class PostServiceImpl implements PostService{
     /*
      * 新增回复（作为新的楼层
      */
-    public int addReplytoComment(UserDto userDto, String postCommentId, String content) throws Exception{
+    public int addReplytoComment(UserDto userDto, String postCommentId, String content) throws Exception {
         //  插入用Example
         CommentDtoExample commentDtoExample = new CommentDtoExample();
         CommentDtoExample.Criteria criteria = commentDtoExample.createCriteria();
@@ -123,7 +120,7 @@ public class PostServiceImpl implements PostService{
         // 更新回数
         commentDto.setUpdateCnt(0);
         // 帖子ID
-        commentDto.setPostId(postCommentId.substring(0,5));
+        commentDto.setPostId(postCommentId.substring(0, 5));
         // 我觉得这两个可以不要
         // 帖子标题
         commentDto.setPostName(null);
@@ -139,7 +136,7 @@ public class PostServiceImpl implements PostService{
      *  按【逆序】取帖子。
      *  要过滤，只要楼层等于【1】的。（楼层大于【1】的都属于跟帖）
      */
-    public List<PostDto> getPostList(@NonNull UserDto userDto){
+    public List<PostDto> getPostList(@NonNull UserDto userDto) {
         //  Mybatis Example Initial
         PostDtoExample postDtoExample = new PostDtoExample();
         PostDtoExample.Criteria criteria = postDtoExample.createCriteria();
@@ -152,7 +149,7 @@ public class PostServiceImpl implements PostService{
         postDtoExample.setOrderByClause(sortKey.toString());
         //  excute Mapper
         List<PostDto> PostDtoList = postDtoMapper.selectByExample(postDtoExample);
-        if(PostDtoList == null){
+        if (PostDtoList == null) {
             PostDtoList = new ArrayList<>();
         }
         return PostDtoList;
@@ -162,7 +159,7 @@ public class PostServiceImpl implements PostService{
      * 按时间【逆序】取帖子。
      * 要过滤，只要楼层等于【1】的。（楼层大于【1】的都属于跟帖）
      */
-    public List<PostDto> getCurrentPostList(){
+    public List<PostDto> getCurrentPostList() {
         //  Mybatis Example Initial
         PostDtoExample postDtoExample = new PostDtoExample();
         PostDtoExample.Criteria criteria = postDtoExample.createCriteria();
@@ -174,7 +171,7 @@ public class PostServiceImpl implements PostService{
         postDtoExample.setOrderByClause(sortKey.toString());
         //  excute Mapper
         List<PostDto> PostDtoList = postDtoMapper.selectByExample(postDtoExample);
-        if(PostDtoList == null){
+        if (PostDtoList == null) {
             PostDtoList = new ArrayList<>();
         }
         return PostDtoList;
@@ -186,7 +183,7 @@ public class PostServiceImpl implements PostService{
     @Override
     public int deletePostByPostId(@NonNull PostDto targetPostDto, @NonNull UserDto controllerUser) {
         // 验证controllerUser的权限 TODO
-        if(StringUtils.equals("管理员的ID是多少？", controllerUser.getUserIdentity())){
+        if (StringUtils.equals("管理员的ID是多少？", controllerUser.getUserIdentity())) {
             PostDtoExample deletePost = new PostDtoExample();
             PostDtoExample.Criteria criteria = deletePost.createCriteria();
             // 用postId作为检索条件
@@ -202,7 +199,7 @@ public class PostServiceImpl implements PostService{
     @Override
     public int deletePostByUserId(@NonNull PostDto targetPostDto, @NonNull UserDto controllerUser) {
         // 验证controllerUser的权限 TODO
-        if(StringUtils.equals("管理员的ID是多少？", controllerUser.getUserIdentity())){
+        if (StringUtils.equals("管理员的ID是多少？", controllerUser.getUserIdentity())) {
             // 先检索这个用户有发过哪些帖子
             UserDto paramDto = new UserDto();
             paramDto.setUserId(targetPostDto.getPostUserId());
@@ -224,7 +221,7 @@ public class PostServiceImpl implements PostService{
     @Override
     public int deletePostByTime(@NonNull UserDto controllerUser, @NonNull Date fromTime, @NonNull Date toTime) {
         // 验证controllerUser的权限 TODO
-        if(StringUtils.equals("管理员的ID是多少？", controllerUser.getUserIdentity())){
+        if (StringUtils.equals("管理员的ID是多少？", controllerUser.getUserIdentity())) {
             PostDtoExample deletePost = new PostDtoExample();
             PostDtoExample.Criteria criteria = deletePost.createCriteria();
             // 用mybatis封装的【and*TimeBetween】方法进行批量删除
@@ -237,7 +234,7 @@ public class PostServiceImpl implements PostService{
     /*
      * 最新postId获取
      */
-    private String getUptoDateId(){
+    private String getUptoDateId() {
         // id初始化
         int newPostId = 0;
         // 查询用参数
@@ -249,19 +246,19 @@ public class PostServiceImpl implements PostService{
         postExample.setOrderByClause(sortKey.toString());
         // 查询执行
         List<PostDto> PostDtoList = postDtoMapper.selectByExample(postExample);
-        if(PostDtoList != null && PostDtoList.size() != 0){
+        if (PostDtoList != null && PostDtoList.size() != 0) {
             newPostId = Integer.parseInt(PostDtoList.get(0).getPostId()) + 1;
-        } else{
+        } else {
             newPostId = 1;
         }
         // 返回6位的postID
-        return leftPaddingZero(String.valueOf(newPostId), 6);
+        return Utils.leftPadding(String.valueOf(newPostId), 6, "0");
     }
 
     /*
      * 最新postSeq获取
      */
-    private int getPostSeq(String postId){
+    private int getPostSeq(String postId) {
         //
         int seq = 0;
         // 查询用参数
@@ -275,9 +272,9 @@ public class PostServiceImpl implements PostService{
         postExample.setOrderByClause(sortKey.toString());
         // 查询执行
         List<PostDto> PostDtoList = postDtoMapper.selectByExample(postExample);
-        if(PostDtoList != null && PostDtoList.size() != 0){
+        if (PostDtoList != null && PostDtoList.size() != 0) {
             seq = (PostDtoList.get(0).getPostSeq()) + 1;
-        } else{
+        } else {
             seq = 1;
         }
         return seq;
@@ -286,7 +283,7 @@ public class PostServiceImpl implements PostService{
     /*
      * 最新commentSeq获取
      */
-    private int getCommentSeq(String commentId){
+    private int getCommentSeq(String commentId) {
         //
         int seq = 0;
         // 查询用参数
@@ -300,9 +297,9 @@ public class PostServiceImpl implements PostService{
         commentExample.setOrderByClause(sortKey.toString());
         // 查询执行
         List<CommentDto> cmmentDtoList = commentDtoMapper.selectByExample(commentExample);
-        if(cmmentDtoList != null && cmmentDtoList.size() != 0){
+        if (cmmentDtoList != null && cmmentDtoList.size() != 0) {
             seq = (cmmentDtoList.get(0).getCommentSeq()) + 1;
-        } else{
+        } else {
             seq = 1;
         }
         return seq;
@@ -313,23 +310,19 @@ public class PostServiceImpl implements PostService{
      * @param str 对象字符串
      * @param strLength 目标长度
      */
-    private String leftPaddingZero(String str,int strLength) {
-        int strLen =str.length();
-        if (strLen <strLength) {
-            while (strLen< strLength) {
-                StringBuffer sb = new StringBuffer();
-                sb.append("0").append(str); // 左补0
-//              sb.append(str).append("0"); // 右补0
-                str= sb.toString();
-                strLen= str.length();
-            }
-        }
-        return str;
-    }
-
-
-
-
+//    private String leftPaddingZero(String str,int strLength) {
+//        int strLen =str.length();
+//        if (strLen <strLength) {
+//            while (strLen< strLength) {
+//                StringBuffer sb = new StringBuffer();
+//                sb.append("0").append(str); // 左补0
+////              sb.append(str).append("0"); // 右补0
+//                str= sb.toString();
+//                strLen= str.length();
+//            }
+//        }
+//        return str;
+//    }
 
 
 }
