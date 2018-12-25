@@ -28,7 +28,7 @@
 
 
 <body>
-	
+
 <!--顶部导航条开始-->
 <div class="header">
     <div class="websize">
@@ -53,7 +53,7 @@
 			 strDay = "日 ";
 			document.write("<b>今天是：</b>"+	now.getFullYear()+"年"+monName[now.getMonth()]+now.getDate()	+strDay+"  "+dayName[now.getDay()])
 		//  End -->
-		</script><b>今天是：</b>2018年12月15日   星期六 
+		</script><b>今天是：</b>2018年12月15日   星期六
 		</span>
 		<span>&nbsp;&nbsp;&nbsp;&nbsp;<iframe name="weather_inc" src="./银川市总工会_files/index.html" width="120" height="26" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></span>
 
@@ -92,15 +92,15 @@
         }
     }
 </script>
-                
+
                 <!--搜索-->
      <form action="http://zgh.yinchuan.gov.cn/#" method="post" target="_self" id="search" name="searchform">
                 <div class="searchfo_was">
                     <input type="text" name="searchword" class="txt_was" id="textfield" onkeydown="if(event.keyCode==13){submitsearch();}" onfocus="this.value=&#39;&#39;" maxlength="50" placeholder="请输入关键字">
-                    <input type="hidden" id="znjs" value="./jsy/"> 
+                    <input type="hidden" id="znjs" value="./jsy/">
                     <input type="button" class="serch_was" onclick="javascript:submitsearch();" value="搜索">
                 </div>
-    
+
     <div class="nav">
 
 <a href="http://zgh.yinchuan.gov.cn/sy/" target="_self">首页</a>
@@ -123,7 +123,7 @@
 
 <a href="http://zgh.yinchuan.gov.cn/xbbc/" target="_self">西部博采</a>
 
-        
+
     </div>
 </form></div>
 <!--菜单结束-->
@@ -165,6 +165,10 @@
         <button onclick="clearLocalData()" >清空草稿箱</button>
     </div>
 
+    <div>
+        <button onclick="pushTest()" >提交帖子测试按钮</button>
+    </div>
+
 </div>
 <div>
     <button onclick="createEditor()">
@@ -174,6 +178,21 @@
 </div>
 
 <script type="text/javascript">
+    //测试JS////////////////////////////////////////////////
+    function pushTest() {
+        <!--var arr = [];-->
+        <!--arr.push("使用editor.getContent()方法可以获得编辑器的内容");-->
+        <!--arr.push("内容为：");-->
+        <!--arr.push(UE.getEditor('editor').getContent());-->
+        <!--alert(arr.join("\n"));-->
+       <!--alert(UE.getEditor('editor').getContent());-->
+        $("#ssss").append(UE.getEditor('editor').getContent());
+    }
+
+
+
+
+    /////////////////////////////////////////////////
 
     //实例化编辑器
     //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例

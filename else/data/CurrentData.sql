@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `union` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `union`;
 -- MySQL dump 10.13  Distrib 8.0.12, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: union
@@ -19,12 +21,12 @@
 -- Table structure for table `articleinfo`
 --
 
-DROP TABLE IF EXISTS `union`.`articleinfo`;
+DROP TABLE IF EXISTS `articleinfo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `union`.`articleinfo` (
+CREATE TABLE `articleinfo` (
   `ARTICLE_ID` varchar(8) NOT NULL COMMENT '文章ID',
-  `ARTICLE_CONTENT` char(8) NOT NULL COMMENT '内容',
+  `ARTICLE_CONTENT` text COMMENT '内容',
   `ARTICLE_STATUS` char(2) DEFAULT '' COMMENT '状态',
   `INSERT_TIME` datetime NOT NULL COMMENT '创建时间',
   `UPDATE_TIME` datetime NOT NULL COMMENT '更新时间',
@@ -37,7 +39,7 @@ CREATE TABLE `union`.`articleinfo` (
 -- Dumping data for table `articleinfo`
 --
 
-LOCK TABLES `union`.`articleinfo` WRITE;
+LOCK TABLES `articleinfo` WRITE;
 /*!40000 ALTER TABLE `articleinfo` DISABLE KEYS */;
 /*!40000 ALTER TABLE `articleinfo` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -46,10 +48,10 @@ UNLOCK TABLES;
 -- Table structure for table `commentinfo`
 --
 
-DROP TABLE IF EXISTS `union`.`commentinfo`;
+DROP TABLE IF EXISTS `commentinfo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `union`.`commentinfo` (
+CREATE TABLE `commentinfo` (
   `COMMENT_ID` varchar(12) NOT NULL COMMENT '评论ID',
   `COMMENT_SEQ` int(11) NOT NULL DEFAULT '0' COMMENT '评论编号',
   `COMMENT_USER_ID` varchar(6) NOT NULL COMMENT '评论者',
@@ -69,9 +71,9 @@ CREATE TABLE `union`.`commentinfo` (
 -- Dumping data for table `commentinfo`
 --
 
-LOCK TABLES `union`.`commentinfo` WRITE;
+LOCK TABLES `commentinfo` WRITE;
 /*!40000 ALTER TABLE `commentinfo` DISABLE KEYS */;
-INSERT INTO `union`.`commentinfo` VALUES ('10000001',1,'100001','是假评论x1','1','2018-12-18 00:00:00','2018-12-18 00:00:00',20181218,'100003','这又是什么鬼帖子x3','大王'),('10000002',1,'100001','是假评论x2','1','2018-12-18 00:00:00','2018-12-18 00:00:00',20181218,'100002','这又是什么鬼帖子x2','大王'),('10000003',1,'100001','是假评论x3','1','2018-12-18 00:00:00','2018-12-18 00:00:00',20181218,'100001','这又是什么鬼帖子x1','大王');
+INSERT INTO `commentinfo` VALUES ('100001000001',1,'100001','是假评论x3','1','2018-12-18 00:00:00','2018-12-18 00:00:00',20181218,'100001','这又是什么鬼帖子x1','大王'),('100001000002',1,'100001','是假评论x2','1','2018-12-18 00:00:00','2018-12-18 00:00:00',20181218,'100002','这又是什么鬼帖子x2','大王'),('100001000003',1,'100001','是假评论x1','1','2018-12-18 00:00:00','2018-12-18 00:00:00',20181218,'100003','这又是什么鬼帖子x3','大王');
 /*!40000 ALTER TABLE `commentinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -79,10 +81,10 @@ UNLOCK TABLES;
 -- Table structure for table `infomst`
 --
 
-DROP TABLE IF EXISTS `union`.`infomst`;
+DROP TABLE IF EXISTS `infomst`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `union`.`infomst` (
+CREATE TABLE `infomst` (
   `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `CLASS1` char(3) NOT NULL COMMENT '一级分类',
   `CLASS2` char(3) DEFAULT NULL COMMENT '二级分类',
@@ -97,9 +99,9 @@ CREATE TABLE `union`.`infomst` (
 -- Dumping data for table `infomst`
 --
 
-LOCK TABLES `union`.`infomst` WRITE;
+LOCK TABLES `infomst` WRITE;
 /*!40000 ALTER TABLE `infomst` DISABLE KEYS */;
-INSERT INTO `union`.`infomst` VALUES (0,'0','0','0','0','0'),(999,'999','999','999','999','999');
+INSERT INTO `infomst` VALUES (0,'0','0','0','0','0'),(999,'999','999','999','999','999');
 /*!40000 ALTER TABLE `infomst` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -107,10 +109,10 @@ UNLOCK TABLES;
 -- Table structure for table `iuserinfo`
 --
 
-DROP TABLE IF EXISTS `union`.`iuserinfo`;
+DROP TABLE IF EXISTS `iuserinfo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `union`.`iuserinfo` (
+CREATE TABLE `iuserinfo` (
   `USER_ID` varchar(6) NOT NULL COMMENT '成员ID',
   `USER_PASSWORD` char(8) NOT NULL COMMENT '密码',
   `USER_NAME` varchar(10) NOT NULL COMMENT '用户名',
@@ -134,9 +136,9 @@ CREATE TABLE `union`.`iuserinfo` (
 -- Dumping data for table `iuserinfo`
 --
 
-LOCK TABLES `union`.`iuserinfo` WRITE;
+LOCK TABLES `iuserinfo` WRITE;
 /*!40000 ALTER TABLE `iuserinfo` DISABLE KEYS */;
-INSERT INTO `union`.`iuserinfo` VALUES ('100001','100001','大王','男','99','陕西西安','9','dawang@163.com','13312341234','雁塔区天谷八路','在职','我怎么那么好看','2018-12-16 00:00:00','2018-12-16 00:00:00',0),('admin','admin','admin','男','99','陕西西安','9','dawang@163.com','13312341234','雁塔区天谷八路','在职','我怎么那么好看','2018-12-16 00:00:00','2018-12-16 00:00:00',0);
+INSERT INTO `iuserinfo` VALUES ('100001','100001','大王','男','99','陕西西安','9','dawang@163.com','13312341234','雁塔区天谷八路','在职','我怎么那么好看','2018-12-16 00:00:00','2018-12-16 00:00:00',0),('admin','admin','admin','男','99','陕西西安','9','dawang@163.com','13312341234','雁塔区天谷八路','在职','我怎么那么好看','2018-12-16 00:00:00','2018-12-16 00:00:00',0);
 /*!40000 ALTER TABLE `iuserinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -144,10 +146,10 @@ UNLOCK TABLES;
 -- Table structure for table `newsmst`
 --
 
-DROP TABLE IF EXISTS `union`.`newsmst`;
+DROP TABLE IF EXISTS `newsmst`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `union`.`newsmst` (
+CREATE TABLE `newsmst` (
   `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `AREA` char(2) NOT NULL COMMENT '板块',
   `CLASS` char(2) NOT NULL COMMENT '分类',
@@ -171,7 +173,7 @@ CREATE TABLE `union`.`newsmst` (
 -- Dumping data for table `newsmst`
 --
 
-LOCK TABLES `union`.`newsmst` WRITE;
+LOCK TABLES `newsmst` WRITE;
 /*!40000 ALTER TABLE `newsmst` DISABLE KEYS */;
 /*!40000 ALTER TABLE `newsmst` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -180,12 +182,12 @@ UNLOCK TABLES;
 -- Table structure for table `pictureinfo`
 --
 
-DROP TABLE IF EXISTS `union`.`pictureinfo`;
+DROP TABLE IF EXISTS `pictureinfo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `pictureinfo` (
   `PICTURE_ID` varchar(8) NOT NULL COMMENT '图片ID',
-  `PICTURE_CONTENT` char(8) NOT NULL COMMENT '内容',
+  `PICTURE_URL` tinytext NOT NULL COMMENT '内容',
   `PICTURE_STATUS` char(2) DEFAULT '' COMMENT '状态',
   `INSERT_TIME` datetime NOT NULL COMMENT '创建时间',
   `UPDATE_TIME` datetime NOT NULL COMMENT '更新时间',
@@ -198,7 +200,7 @@ CREATE TABLE `pictureinfo` (
 -- Dumping data for table `pictureinfo`
 --
 
-LOCK TABLES `union`.`pictureinfo` WRITE;
+LOCK TABLES `pictureinfo` WRITE;
 /*!40000 ALTER TABLE `pictureinfo` DISABLE KEYS */;
 /*!40000 ALTER TABLE `pictureinfo` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -207,12 +209,12 @@ UNLOCK TABLES;
 -- Table structure for table `postinfo`
 --
 
-DROP TABLE IF EXISTS `union`.`postinfo`;
+DROP TABLE IF EXISTS `postinfo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `union`.`postinfo` (
+CREATE TABLE `postinfo` (
   `POST_ID` varchar(6) NOT NULL DEFAULT '000000' COMMENT '贴子ID',
-  `POST_SEQ` int(6) NOT NULL DEFAULT '1' COMMENT '楼层',
+  `POST_SEQ` int(11) NOT NULL DEFAULT '1' COMMENT '楼层',
   `POST_USER_ID` varchar(6) NOT NULL COMMENT '跟贴者',
   `POST_COMMENT_ID` varchar(12) NOT NULL DEFAULT '00000000' COMMENT '评论ID',
   `POST_TITLE` varchar(30) NOT NULL COMMENT '标题',
@@ -230,11 +232,19 @@ CREATE TABLE `union`.`postinfo` (
 -- Dumping data for table `postinfo`
 --
 
-LOCK TABLES `union`.`postinfo` WRITE;
+LOCK TABLES `postinfo` WRITE;
 /*!40000 ALTER TABLE `postinfo` DISABLE KEYS */;
-INSERT INTO `union`.`postinfo` VALUES ('100001',1,'100001','10000001','20181218','这又是什么鬼帖子','1','2018-12-18 00:00:00','2018-12-18 00:00:00',1,NULL),('100002',1,'100001','10000001','20181218','这又是什么鬼帖子x2','1','2018-12-18 00:00:00','2018-12-18 00:00:00',1,NULL),('100003',1,'100001','10000001','20181218','这又是什么鬼帖子x3','1','2018-12-18 00:00:00','2018-12-18 00:00:00',1,NULL);
+INSERT INTO `postinfo` VALUES ('100001',1,'100001','100001000001','20181218','这又是什么鬼帖子','1','2018-12-18 00:00:00','2018-12-18 00:00:00',1,NULL),('100002',1,'100001','100001000002','20181218','这又是什么鬼帖子x2','1','2018-12-18 00:00:00','2018-12-18 00:00:00',1,NULL),('100003',1,'100001','100001000003','20181218','这又是什么鬼帖子x3','1','2018-12-18 00:00:00','2018-12-18 00:00:00',1,NULL);
 /*!40000 ALTER TABLE `postinfo` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping events for database 'union'
+--
+
+--
+-- Dumping routines for database 'union'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -245,4 +255,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-12-19 23:58:19
+-- Dump completed on 2018-12-25 23:54:35

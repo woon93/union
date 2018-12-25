@@ -1,12 +1,12 @@
 package com.union.service;
 
 import com.union.dao.CommentDtoMapper;
-import com.union.dao.PostDtoMapper;
-import com.union.model.*;
+import com.union.model.CommentDto;
+import com.union.model.CommentDtoExample;
+import com.union.model.UserDto;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ public class CommentServiceImpl implements CommentService {
         CommentDtoExample.Criteria criteria = commentDtoExample.createCriteria();
         // 【KEY】
         criteria.andCommentUserIdEqualTo(userDto.getUserId());
-        criteria.andCommentSeqEqualTo(1);
+//        criteria.andCommentSeqGreaterThanOrEqualTo(1);
         // 【SORT】
         StringBuilder sortKey = new StringBuilder();
         sortKey.append("INSERT_TIME DESC");
@@ -39,16 +39,18 @@ public class CommentServiceImpl implements CommentService {
         return commentDtoList;
     }
 
-    @Override
+
     /*
      * 按postId和postSeq生成commentId，并插入一条评论,并实现自增commentSeq
      */
+    @Override
     public int insertComment(@NonNull CommentDto commentDto) {
         int maxIndex = this.getCommentSeq(commentDto);
         // 在原有基础上，评论数+1
         commentDto.setCommentSeq(maxIndex+1);
         // 生成评论ID(帖子ID和楼层数拼接)
-        commentDto.setCommentId(commentDto.getPostId() + commentDto.getCommentSeq());
+        commentDto.setCommentId(commentDto.getPostId()
+                + Utils.leftPadding(commentDto.getCommentSeq().toString(), 6,"0"));
         return commentDtoMapper.insertSelective(commentDto);
     }
 
