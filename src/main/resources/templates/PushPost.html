@@ -80,19 +80,17 @@
 </style>
 
 <!--搜索-->
-
-  <script type="text/javascript">
-
-function submitsearch() {
-    if ($("#textfield").val() == "请输入关键字" || $("#textfield").val() == "") {
-        alert("请输入查询关键字!");
-        return;
+<script type="text/javascript">
+    function submitsearch() {
+        if ($("#textfield").val() == "请输入关键字" || $("#textfield").val() == "") {
+            alert("请输入查询关键字!");
+            return;
+        }
+        else {
+            $("#search").attr("action", $("#znjs").val() + "index.html?searchword=" + encodeURI($("#textfield").val()));
+            $("#search").submit();
+        }
     }
-    else {
-        $("#search").attr("action", $("#znjs").val() + "index.html?searchword=" + encodeURI($("#textfield").val()));
-        $("#search").submit();
-    }
-}
 </script>
                 
                 <!--搜索-->
@@ -135,6 +133,8 @@ function submitsearch() {
     <div>
         <h1>完整demo</h1>
         <script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>
+</div>
+<div id="ssss">
 </div>
 <div id="btns">
     <div>
@@ -200,11 +200,14 @@ function submitsearch() {
         alert(UE.getEditor('editor').getAllHtml())
     }
     function getContent() {
-        var arr = [];
-        arr.push("使用editor.getContent()方法可以获得编辑器的内容");
-        arr.push("内容为：");
-        arr.push(UE.getEditor('editor').getContent());
-        alert(arr.join("\n"));
+        <!--var arr = [];-->
+        <!--arr.push("使用editor.getContent()方法可以获得编辑器的内容");-->
+        <!--arr.push("内容为：");-->
+        <!--arr.push(UE.getEditor('editor').getContent());-->
+        <!--alert(arr.join("\n"));-->
+       <!--alert(UE.getEditor('editor').getContent());-->
+        $("#ssss").append(UE.getEditor('editor').getContent());
+
     }
     function getPlainTxt() {
         var arr = [];

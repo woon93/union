@@ -5,6 +5,7 @@ public class Utils {
      * 左侧补字符
      * @param str 对象字符串
      * @param strLength 目标长度
+     * @param sign 要填充的字符
      */
     public static String leftPadding(String str,int strLength,String sign) {
         int strLen =str.length();
@@ -24,6 +25,7 @@ public class Utils {
      * 右侧补字符
      * @param str 对象字符串
      * @param strLength 目标长度
+     * @param sign 要填充的字符
      */
     public static String rightPadding(String str,int strLength,String sign) {
         int strLen =str.length();
