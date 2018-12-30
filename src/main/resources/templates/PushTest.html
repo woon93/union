@@ -165,7 +165,9 @@
         <button onclick="clearLocalData()" >清空草稿箱</button>
     </div>
 
-
+    <div>
+        <button onclick="pushTest()" >提交帖子测试按钮</button>
+    </div>
 
 </div>
 <div>
@@ -175,11 +177,6 @@
     删除编辑器</button>
 </div>
 
-
-
-   <div>
-        <button onclick="createFormAndSubmit()" >提交帖子测试按钮</button>
-    </div>
 <script type="text/javascript">
     //测试JS////////////////////////////////////////////////
     function pushTest() {
@@ -192,46 +189,9 @@
         $("#ssss").append(UE.getEditor('editor').getContent());
     }
 
-//helper function to create the form
-function getNewSubmitForm(){
-var submitForm = document.createElement("FORM");
-document.body.appendChild(submitForm);
-submitForm.method = "POST";
-return submitForm;
-}
 
-//helper function to add elements to the form
-function createNewFormElement(inputForm, elementName, elementValue){
-var newElement = document.createElement("input");
-newElement.type = "hidden";
-newElement.name = elementName;
-newElement.value = elementValue;
-inputForm.appendChild(newElement);
-newElement.value = elementValue;
-return newElement;
-}
 
-//function that creates the form, adds some elements
-//and then submits it
-function createFormAndSubmit(){
-var submitForm = getNewSubmitForm();
-createNewFormElement(submitForm, "userId", "dawang");
-createNewFormElement(submitForm, "article", UE.getEditor('editor').getContent());
-submitForm.action= "/pushTest";
-submitForm.submit();
-}
-/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-            var generateHideElement = function (name, value) {
-                var tempInput = document.createElement("input");
-                tempInput.type = "hidden";
-                tempInput.name = name;
-                tempInput.value = value;
-                return tempInput;
-            }
-
-            var form = document.createElement("form");
-            document.body.appendChild(form);
     /////////////////////////////////////////////////
 
     //实例化编辑器
