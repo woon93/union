@@ -112,9 +112,7 @@ function submitsearch() {
     }
 }
 
-function appendPost(){
-                    $("#thisPost").append(${content});
-                }
+
 </script>
                 
                 <!--搜索-->
@@ -160,17 +158,24 @@ function appendPost(){
             <div class="row">
 
                 <!-- start of post content -->
-                <div id="thisPost" th:text="${content}>
+                <div id="thisPost" >
 
 
                 </div>
+                <script th:inline="javascript">
+                    function appendPost(){
+                        var contents = [[${content}]];
+                        alert(contents);
+                        $("#thisPost").append(contents);
+                    }
+                </script>
 
                 <!-- end of post content -->
 
 
                 <!-- start of sidebar -->
-                <aside class="span4 page-sidebar">
-                    <br><br><br>
+
+                <!--<aside class="span4 page-sidebar">-->
                     <!--<section class="widget">-->
                         <!--<div class="support-widget" th:object="${user}">-->
                             <!--<h3 class="title"><span th:text="*{userName}"/></h3>-->
@@ -222,7 +227,7 @@ function appendPost(){
                         <!--</ul>-->
                     <!--</section>-->
 
-                </aside>
+                <!--</aside>-->
                 <!-- end of sidebar -->
             </div>
         </div>
