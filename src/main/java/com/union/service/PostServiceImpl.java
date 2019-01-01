@@ -21,16 +21,16 @@ public class PostServiceImpl implements PostService {
     private PostDtoMapper postDtoMapper;
     @Autowired
     private CommentDtoMapper commentDtoMapper;
+    @Autowired
+    private ArticleService articleService;
 
     @Override
     /*
      * 新增帖子
      * 发帖时，新帖内容记录在贴表(跟帖的场合写在另一个方法
      */
-    public int creatPost(UserDto userDto, String title, String content) throws Exception {
+    public int creatPost(String userId, String title, String content) throws Exception {
         //  插入用Example
-        PostDtoExample postDtoExample = new PostDtoExample();
-        PostDtoExample.Criteria criteria = postDtoExample.createCriteria();
         PostDto postDto = new PostDto();
         // 贴子ID
         String postId = this.getUptoDateId();
@@ -38,13 +38,13 @@ public class PostServiceImpl implements PostService {
         // 楼层
         postDto.setPostSeq(0);
         // 发表者
-        postDto.setPostUserId(userDto.getUserId());
+        postDto.setPostUserId(userId);
         // 评论ID
         postDto.setPostCommentId(null);
         // 标题
         postDto.setPostTitle(title);
-        // 内容
-        postDto.setPostContent(content);
+        // 内容预览
+        postDto.setPostContent(Utils.subString(content, 100, "left"));
         // 状态
         postDto.setPostStatus("0");
         // 创建时间
@@ -56,7 +56,25 @@ public class PostServiceImpl implements PostService {
         // 帖子标签
         postDto.setPostTag(null);
 
-        return postDtoMapper.insertSelective(postDto);
+        // 往文章表里插入数据
+        ArticleDto newArticle = new ArticleDto();
+        // 文章ID
+        newArticle.setArticleId(postId);
+        // 文章内容
+        newArticle.setArticleContent(content);
+        // 创建时间
+        newArticle.setInsertTime(new SimpleDateFormat("yyyyMMdd HH:mm:ss").parse("20181231 20:10:50"));
+        // 更新回数
+        newArticle.setUpdateCnt(0);
+        // 更新时间
+        newArticle.setUpdateTime(new SimpleDateFormat("yyyyMMdd HH:mm:ss").parse("20181231 20:10:50"));
+        int number = articleService.createArticle(newArticle);
+
+        // 文章表插入成功后再插入帖子表
+        if(number > 0){
+            return postDtoMapper.insertSelective(postDto);
+        }
+        return 0;
     }
 
     /*

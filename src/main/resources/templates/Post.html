@@ -15,6 +15,9 @@
     <link rel='stylesheet' id='main-css-css'  href='/css/main5152.css?ver=1.0' type='text/css' media='all' />
     <link rel='stylesheet' id='custom-css-css'  href='/css/custom5152.html?ver=1.0' type='text/css' media='all' />
 <script type="text/javascript" src="/js/jquery-1.9.1.min.js.下载"></script>
+    <script type="text/javascript" charset="utf-8" src="/js/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/js/ueditor/ueditor.all.min.js"></script>
+    <script type="text/javascript" src="/js/ueditor/zh-cn.js"></script>　
 
 <style type="text/css">
 .page-container > .container {
@@ -42,7 +45,7 @@
 </head>
 
 
-<body>
+<body  onload="appendPost();">
 	
 <!--顶部导航条开始-->
 <div class="header">
@@ -108,6 +111,10 @@ function submitsearch() {
         $("#search").submit();
     }
 }
+
+function appendPost(){
+                    $("#thisPost").append(${content});
+                }
 </script>
                 
                 <!--搜索-->
@@ -153,8 +160,10 @@ function submitsearch() {
             <div class="row">
 
                 <!-- start of post content -->
-                    这就是帖子了哦
+                <div id="thisPost" th:text="${content}>
 
+
+                </div>
 
                 <!-- end of post content -->
 
@@ -162,56 +171,56 @@ function submitsearch() {
                 <!-- start of sidebar -->
                 <aside class="span4 page-sidebar">
                     <br><br><br>
-                    <section class="widget">
-                        <div class="support-widget" th:object="${user}">
-                            <h3 class="title"><span th:text="*{userName}"/></h3>
-                            <p class="intro"><span th:text="*{userMessage}"/></p>
-                        </div>
-                    </section>
+                    <!--<section class="widget">-->
+                        <!--<div class="support-widget" th:object="${user}">-->
+                            <!--<h3 class="title"><span th:text="*{userName}"/></h3>-->
+                            <!--<p class="intro"><span th:text="*{userMessage}"/></p>-->
+                        <!--</div>-->
+                    <!--</section>-->
 
 
-                    <section class="widget">
-                        <h3 class="title">我收藏的</h3>
-                        <ul class="articles">
-                            <li class="article-entry standard">
-                                <h4><a href="single.html">Integrating WordPress with Your Website</a></h4>
-                                <span class="article-meta">25 Feb, 2013 in <a href="#" title="View all posts in Server &amp; Database">Server &amp; Database</a></span>
-                                <span class="like-count">66</span>
-                            </li>
-                            <li class="article-entry standard">
-                                <h4><a href="single.html">WordPress Site Maintenance</a></h4>
-                                <span class="article-meta">24 Feb, 2013 in <a href="#" title="View all posts in Website Dev">Website Dev</a></span>
-                                <span class="like-count">15</span>
-                            </li>
-                            <li class="article-entry image">
-                                <h4><a href="single.html">WordPress in Your Language</a></h4>
-                                <span class="article-meta">22 Feb, 2013 in <a href="#" title="View all posts in Advanced Techniques">Advanced Techniques</a></span>
-                                <span class="like-count">6</span>
-                            </li>
-                        </ul>
-                    </section>
+                    <!--<section class="widget">-->
+                        <!--<h3 class="title">我收藏的</h3>-->
+                        <!--<ul class="articles">-->
+                            <!--<li class="article-entry standard">-->
+                                <!--<h4><a href="single.html">Integrating WordPress with Your Website</a></h4>-->
+                                <!--<span class="article-meta">25 Feb, 2013 in <a href="#" title="View all posts in Server &amp; Database">Server &amp; Database</a></span>-->
+                                <!--<span class="like-count">66</span>-->
+                            <!--</li>-->
+                            <!--<li class="article-entry standard">-->
+                                <!--<h4><a href="single.html">WordPress Site Maintenance</a></h4>-->
+                                <!--<span class="article-meta">24 Feb, 2013 in <a href="#" title="View all posts in Website Dev">Website Dev</a></span>-->
+                                <!--<span class="like-count">15</span>-->
+                            <!--</li>-->
+                            <!--<li class="article-entry image">-->
+                                <!--<h4><a href="single.html">WordPress in Your Language</a></h4>-->
+                                <!--<span class="article-meta">22 Feb, 2013 in <a href="#" title="View all posts in Advanced Techniques">Advanced Techniques</a></span>-->
+                                <!--<span class="like-count">6</span>-->
+                            <!--</li>-->
+                        <!--</ul>-->
+                    <!--</section>-->
 
 
 
-                    <section class="widget" >
-                        <h3 class="title">最近发帖</h3>
-                        <ul th:each="post,postStat : ${userPostList}">
-                            <a href="#" title="Lorem ipsum dolor sit amet,">
-                                <li th:text="${post.postContent}">/li>
-                            </a>
-                        </ul>
-                    </section>
+                    <!--<section class="widget" >-->
+                        <!--<h3 class="title">最近发帖</h3>-->
+                        <!--<ul th:each="post,postStat : ${userPostList}">-->
+                            <!--<a href="#" title="Lorem ipsum dolor sit amet,">-->
+                                <!--<li th:text="${post.postContent}">/li>-->
+                            <!--</a>-->
+                        <!--</ul>-->
+                    <!--</section>-->
 
-                    <section class="widget">
-                        <h3 class="title">最近评论</h3>
-                        <ul th:each="user,userStat : ${userCommentList}">
-                            <li class="recentcomments">
-                                <a href="#" rel="external nofollow" class="url"><span th:text="*{user.commentContent}"/></a>
-                                on
-                                <a href="#"><span th:text="*{user.postName}"/></a>
-                            </li>
-                        </ul>
-                    </section>
+                    <!--<section class="widget">-->
+                        <!--<h3 class="title">最近评论</h3>-->
+                        <!--<ul th:each="user,userStat : ${userCommentList}">-->
+                            <!--<li class="recentcomments">-->
+                                <!--<a href="#" rel="external nofollow" class="url"><span th:text="*{user.commentContent}"/></a>-->
+                                <!--on-->
+                                <!--<a href="#"><span th:text="*{user.postName}"/></a>-->
+                            <!--</li>-->
+                        <!--</ul>-->
+                    <!--</section>-->
 
                 </aside>
                 <!-- end of sidebar -->

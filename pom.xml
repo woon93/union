@@ -82,6 +82,13 @@
 			<version>1.2.5</version>
 		</dependency>
 
+		<!--引入fastjson依赖库-->
+		<!--<dependency>-->
+			<!--<groupId>com.alibaba</groupId>-->
+			<!--<artifactId>fastjson</artifactId>-->
+			<!--<version>1.2.46</version>-->
+		<!--</dependency>-->
+
 		<!--处理警告-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -110,6 +117,9 @@
 		<dependency>
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>
+			<version>1.1.2</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/java/repository/json.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>commons-fileupload</groupId>

@@ -40,4 +40,21 @@ public class Utils {
         }
         return str;
     }
+
+    /*
+    截取字符
+     */
+    public static String subString(String targer, int num, String side){
+        // 从左开始截取
+        if("left".equals(side)){
+            if(targer == null || targer.isEmpty()){
+                return "";
+            }
+            num = (num > targer.length()-1) ? num=targer.length()-1 : num;
+            return targer.substring(0,num);
+
+        }
+
+        return "";
+    }
 }
