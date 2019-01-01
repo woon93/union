@@ -29,7 +29,7 @@ public class PostServiceImpl implements PostService {
      * 新增帖子
      * 发帖时，新帖内容记录在贴表(跟帖的场合写在另一个方法
      */
-    public int creatPost(String userId, String title, String content) throws Exception {
+    public int creatPost(String userId, String title, String preview, String content) throws Exception {
         //  插入用Example
         PostDto postDto = new PostDto();
         // 贴子ID
@@ -44,7 +44,7 @@ public class PostServiceImpl implements PostService {
         // 标题
         postDto.setPostTitle(title);
         // 内容预览
-        postDto.setPostContent(Utils.subString(content, 100, "left"));
+        postDto.setPostContent(Utils.subString(preview, 200, "left"));
         // 状态
         postDto.setPostStatus("0");
         // 创建时间

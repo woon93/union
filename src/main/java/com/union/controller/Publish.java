@@ -26,8 +26,9 @@ public class Publish {
     private CommentService commentService;
 
     @RequestMapping(value = "/pushArticle", method = RequestMethod.POST)
-    public String getArticle(Model model,@RequestParam String userId,@RequestParam String title,@RequestParam String article) throws Exception {
-        postService.creatPost(userId, title, article);
+    public String getArticle(Model model,@RequestParam String userId,@RequestParam String title
+            ,@RequestParam String preview,@RequestParam String article) throws Exception {
+        postService.creatPost(userId, title, preview, article);
         model.addAttribute("content",article);
         return "Post";
     }

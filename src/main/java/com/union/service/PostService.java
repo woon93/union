@@ -13,7 +13,7 @@ public interface PostService {
      * 新增帖子
      * 发帖时，新帖内容记录在贴表
      */
-    public int creatPost(String userId, String title, String content) throws Exception;
+    public int creatPost(String userId, String title, String preview, String content) throws Exception;
 
     /*
      * 新增回复（作为新的楼层
