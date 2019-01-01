@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.thymeleaf.util.StringUtils;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -48,9 +49,9 @@ public class PostServiceImpl implements PostService {
         // 状态
         postDto.setPostStatus("0");
         // 创建时间
-        postDto.setInsertTime(new SimpleDateFormat("yyyyMMdd HH:mm:ss").parse("20181231 20:10:50"));
+        postDto.setInsertTime(Utils.getSystemDate());
         // 更新时间
-        postDto.setUpdateTime(new SimpleDateFormat("yyyyMMdd HH:mm:ss").parse("20181231 20:10:50"));
+        postDto.setUpdateTime(Utils.getSystemDate());
         // 更新回数
         postDto.setUpdateCnt(0);
         // 帖子标签
@@ -63,11 +64,11 @@ public class PostServiceImpl implements PostService {
         // 文章内容
         newArticle.setArticleContent(content);
         // 创建时间
-        newArticle.setInsertTime(new SimpleDateFormat("yyyyMMdd HH:mm:ss").parse("20181231 20:10:50"));
+        newArticle.setInsertTime(Utils.getSystemDate());
         // 更新回数
         newArticle.setUpdateCnt(0);
         // 更新时间
-        newArticle.setUpdateTime(new SimpleDateFormat("yyyyMMdd HH:mm:ss").parse("20181231 20:10:50"));
+        newArticle.setUpdateTime(Utils.getSystemDate());
         int number = articleService.createArticle(newArticle);
 
         // 文章表插入成功后再插入帖子表

@@ -1,5 +1,12 @@
 package com.union.service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
 public class Utils {
     /*
      * 左侧补字符
@@ -42,7 +49,7 @@ public class Utils {
     }
 
     /*
-    截取字符
+     *截取字符
      */
     public static String subString(String targer, int num, String side){
         // 从左开始截取
@@ -56,5 +63,20 @@ public class Utils {
         }
 
         return "";
+    }
+
+    /*
+     *获得系统时间
+     */
+    public static Date getSystemDate(){
+        //字符串格式转为LocalDate格式
+        LocalDateTime parse = LocalDateTime.now();
+        //获取时间地区ID
+        ZoneId zoneId = ZoneId.systemDefault();
+        //转换为当地时间
+        ZonedDateTime zonedDateTime = parse.atZone(zoneId);
+        //转为Date类型
+        Date crruentDate = Date.from(zonedDateTime.toInstant());
+        return crruentDate;
     }
 }
