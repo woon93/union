@@ -1,0 +1,8 @@
+$(function(){
+$("a").mouseover(function() {
+$(this).css('color','#0F0')
+});
+$("a").mouseout(function() {
+$(this).css('color','#FFF')
+});
+});
