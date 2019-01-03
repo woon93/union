@@ -1,4 +1,4 @@
-package com.union.controller;
+package com.union.controller.demo;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HeadTest {
 
-@GetMapping(value = "/head")
+@GetMapping(value = "demo/head")
     public String Hello(){
 
 
-        return "head";
+        return "demo/head";
     }
 
 

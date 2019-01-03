@@ -1,4 +1,4 @@
-package com.union.controller;
+package com.union.controller.demo;
 
 import com.union.model.CommentDto;
 import com.union.model.PostDto;
@@ -25,7 +25,7 @@ public class PushTest {
     @Autowired
     private CommentService commentService;
 
-    @GetMapping(value = "/push")
+    @GetMapping(value = "demo/push")
     public String getBBSInfo(Model model) {
         // 假装接收到了用户ID和密码
         UserDto thisUser = new UserDto();
@@ -53,7 +53,7 @@ public class PushTest {
         List<PostDto> userPostsList = postService.getCurrentPostList(); //TODO:
         model.addAttribute("userPostsList", userPostsList);
 
-        return "PushPost";
+        return "demo/PushPost";
     }
 
 
