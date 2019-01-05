@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.util.StringUtils;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -82,9 +80,6 @@ public class PostServiceImpl implements PostService {
      * 新增回复（作为新的楼层
      */
     public int addReplytoPost(UserDto userDto, String postId, String content) throws Exception {
-        //  插入用Example
-        PostDtoExample postDtoExample = new PostDtoExample();
-        PostDtoExample.Criteria criteria = postDtoExample.createCriteria();
         PostDto postDto = new PostDto();
         // 贴子ID
         postDto.setPostId(postId);
@@ -102,9 +97,9 @@ public class PostServiceImpl implements PostService {
         // 状态
         postDto.setPostStatus("0");
         // 创建时间
-        postDto.setInsertTime(new SimpleDateFormat("yyyyMMdd HH:mm:ss").parse("20181230 20:10:50"));
+        postDto.setInsertTime(Utils.getSystemDate());
         // 更新时间
-        postDto.setUpdateTime(new SimpleDateFormat("yyyyMMdd HH:mm:ss").parse("20181230 20:10:50"));
+        postDto.setUpdateTime(Utils.getSystemDate());
         // 更新回数
         postDto.setUpdateCnt(0);
         // 帖子标签
@@ -118,8 +113,6 @@ public class PostServiceImpl implements PostService {
      */
     public int addReplytoComment(UserDto userDto, String postCommentId, String content) throws Exception {
         //  插入用Example
-        CommentDtoExample commentDtoExample = new CommentDtoExample();
-        CommentDtoExample.Criteria criteria = commentDtoExample.createCriteria();
         CommentDto commentDto = new CommentDto();
         // 评论ID
         commentDto.setCommentId(postCommentId);
@@ -133,9 +126,9 @@ public class PostServiceImpl implements PostService {
         // 状态
         commentDto.setCommentStatus("0");
         // 创建时间
-        commentDto.setInsertTime(new SimpleDateFormat("yyyyMMdd HH:mm:ss").parse("20181230 20:10:50"));
+        commentDto.setInsertTime(Utils.getSystemDate());
         // 更新时间
-        commentDto.setUpdateTime(new SimpleDateFormat("yyyyMMdd HH:mm:ss").parse("20181230 20:10:50"));
+        commentDto.setUpdateTime(Utils.getSystemDate());
         // 更新回数
         commentDto.setUpdateCnt(0);
         // 帖子ID
@@ -323,25 +316,5 @@ public class PostServiceImpl implements PostService {
         }
         return seq;
     }
-
-    /*
-     * 左侧补零
-     * @param str 对象字符串
-     * @param strLength 目标长度
-     */
-//    private String leftPaddingZero(String str,int strLength) {
-//        int strLen =str.length();
-//        if (strLen <strLength) {
-//            while (strLen< strLength) {
-//                StringBuffer sb = new StringBuffer();
-//                sb.append("0").append(str); // 左补0
-////              sb.append(str).append("0"); // 右补0
-//                str= sb.toString();
-//                strLen= str.length();
-//            }
-//        }
-//        return str;
-//    }
-
 
 }

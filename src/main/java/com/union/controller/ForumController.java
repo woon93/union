@@ -10,12 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
 @Controller
-//@RestController
-public class BBSHomeController {
+public class ForumController {
     @Autowired
     private UserService userService;
 
@@ -25,7 +25,7 @@ public class BBSHomeController {
     @Autowired
     private CommentService commentService;
 
-    @GetMapping(value = "/bbs01")
+    @GetMapping(value = "forum")
     public String getBBSInfo(Model model) {
         // 假装接收到了用户ID和密码
         UserDto thisUser = new UserDto();
@@ -36,7 +36,7 @@ public class BBSHomeController {
         if(getUser == null){
             // 用户和密码不匹配 TODO:
             model.addAttribute("name", "用户和密码不匹配!!!");
-            return "Test01";
+            return "demo/Test01";
         }
         // 往页面添加用户信息
         model.addAttribute("user", getUser);
@@ -53,9 +53,13 @@ public class BBSHomeController {
         List<PostDto> userPostsList = postService.getCurrentPostList(); //TODO:
         model.addAttribute("userPostsList", userPostsList);
 
-        return "BBSHome";
+        return "Forum";
     }
 
+    @RequestMapping("/login")
+    public String login(){
+        return "login";
+    }
 
 
 }
