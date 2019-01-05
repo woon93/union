@@ -8,7 +8,7 @@ public class Test01 {
 
     @RequestMapping(value = {"/"})
     private String showPage(){
-        return "Test01";
+        return "demo/Test01";
     }
 
     @ResponseBody
@@ -18,6 +18,7 @@ public class Test01 {
 
     @RequestMapping(value = {"/test01"})
     public String test01(){
-        return "Test01.html";
+        return "login.html";
     }
+
 }
