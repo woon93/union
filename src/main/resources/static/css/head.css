@@ -1,54 +1,120 @@
 /*全体样式*/
 body {
-    margin: 0;
-    font-size: 13px;
-    line-height: 22px;
-    background: url(../picture/back_ground.jpg)
+  margin: 0;
+  font-size: 13px;
+  line-height: 22px;
+  background: url(../picture/back_ground.jpg)
 }
 
 .right {
-    float:right;
-    padding-right:10px;
+  float:right;
+  padding-right:10px;
 }
 
 .left {
-    float:left;
-    padding-left:10px;
+  float:left;
+  padding-left:10px;
 }
 
 a {
-    color: #FFF;
+  color: #FFF;
 }
 /*顶部导航条*/
 .header {
-    width: 100%;
-    font-size: 17px;
-    height: 30px;
-    color: #FFF;
-    background:url(../picture/head.png) repeat-x;
+  width: 100%;
+  font-size: 17px;
+  height: 30px;
+  color: #FFF;
+  background:url(../picture/head.png) repeat-x;
 }
 
 .header span {
-    position: relative; /*脱离文档流*/
-    top: 10%; /*偏移*/
+  position: relative; /*脱离文档流*/
+  top: 10%; /*偏移*/
 }
+
+.head_picture{
+  float:right;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #FFF;
+}
+
 /*页面菜单栏*/
 .menu {
-    width: 1200px;
-    height: 50px;
-    margin:0 auto;
-    color: #FFF;
-    background:url(../picture/head.png) repeat-x;
-    transform:translateY(50%);
-    font-size: 16px;
+  width: 1200px;
+  height: 50px;
+  margin:0 auto;
+  color: #FFF;
+  background:url(../picture/head.png) repeat-x;
+  transform:translateY(50%);
+  font-size: 16px;
 }
 
 /*主页面*/
 .main {
-    width: 1200px;
-    height: 600px;
-    margin:0 auto;
-    transform:translateY(7%);
-    background-color: #FFF;
-    font-size: 40px;
+  z-index:10;
+  width: 1200px;
+  height: 600px;
+  margin:0 auto;
+  transform:translateY(4%);
+  background-color: #FFF;
+  font-size: 40px;
+}
+/* =======================================mune测试================================================== */
+/* 消除默认样式 */
+*{
+  list-style-type: none;
+  padding:0;
+  margin:0;
+}
+/* 父容器加上text-align，使子元素居中显示，比较美观 */
+#item {
+  text-align: center;
+  margin-top: 10px;
+}
+/* 对第一层ul进行控制 */
+#item > ul {
+  display: inline-block; /* 将display属性变为行内块级元素，使得其能够居中显示，否则默认会充满整个屏幕 */
+  width: auto;
+}
+
+/* 将子列表隐藏，并加上absolute，方便其子li进行相对定位 */
+#item > ul ul {
+  position: absolute;
+  display: none;
+}
+
+/* 设置第一层列表横排显示 */
+#item > ul > li {
+  float: left;
+  margin-right:1px;
+}
+
+/* 对li样式进行通用设置，使得更美观 */
+ul li {
+  z-index:100;
+  width: 120px;
+  background:url(../picture/head.png) repeat-x;
+  color:#FFF;
+  position: relative;
+  line-height: 35px;
+  cursor: pointer;
+  margin-top: 1px;
+}
+
+/* 对第三层子列表位置进行控制，使得在父列表右边显示 */
+#item>ul>li>ul>li>ul{
+  left:116px;
+  top:-1px;
+}
+
+/* 设置hover显示子列表 */
+#item ul li:hover>ul{
+  display: block;
 }
