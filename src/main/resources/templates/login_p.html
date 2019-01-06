@@ -5,7 +5,14 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<h1>登陆页面</h1>
+<h1>登陆页面 login_p</h1>
+<p>你的当前用户名是：</p>
+<p th:text="${username}" style="margin-top: 25px; color: crimson">wxb</p>
+<p>你的权限是：</p>
+<p th:text="${authorities}" style="margin-top: 25px; color: crimson">authorities</p>
+<form th:action="@{/logout}" method="post">
+    <button class="btn btn-danger" style="margin-top: 20px">退出登录</button>
+</form>
 <div style="text-align: center;margin:0 auto;width: 1000px; ">
     <form th:action="@{/login}" method="post">
         <!-- 1.自定义参数名：myusername和mypassword-->
@@ -25,10 +32,12 @@
             <input type="submit" value="登陆"/>
         </div>
     </form>
+
     <a href="/index">主页</a>
     <a href="/user">用户页面</a>
+    <a href="/depart1">部门1页面</a>
+    <a href="/depart2">部门2页面</a>
     <a href="/admin">管理员页面</a>
     <a href="/login">登录页面</a>
 </div>
-</body>
 </html>

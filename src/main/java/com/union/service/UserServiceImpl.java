@@ -45,6 +45,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    // 根据UserName查询用户信息（不做密码验证）
+    public UserDto getUserInfoByName(@NonNull String userName) {
+        return this.selectUserByName(userName);
+    }
+
+    @Override
     // 增加一个新用户
     public int insertUserInfo(@NonNull UserDto users) {
         return userDtoMapper.insertSelective(users);
@@ -88,6 +94,25 @@ public class UserServiceImpl implements UserService {
         // 【SORT】
         StringBuilder sortKey = new StringBuilder();
         sortKey.append("USER_ID");
+        userDtoExample.setOrderByClause(sortKey.toString());
+        //  excute Mapper
+        List<UserDto> UserDtoList = userDtoMapper.selectByExample(userDtoExample);
+        if(UserDtoList == null || UserDtoList.isEmpty()){
+            return null;
+        }
+        return UserDtoList.get(0);
+    }
+
+    // Mybatis 的 SQL
+    private UserDto selectUserByName(@NonNull String userName){
+        //  Mybatis Example Initial
+        UserDtoExample userDtoExample = new UserDtoExample();
+        UserDtoExample.Criteria criteria = userDtoExample.createCriteria();
+        // 【KEY】
+        criteria.andUserNameEqualTo(userName);
+        // 【SORT】
+        StringBuilder sortKey = new StringBuilder();
+        sortKey.append("USER_NAME");
         userDtoExample.setOrderByClause(sortKey.toString());
         //  excute Mapper
         List<UserDto> UserDtoList = userDtoMapper.selectByExample(userDtoExample);
