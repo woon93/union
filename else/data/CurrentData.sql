@@ -112,7 +112,7 @@ DROP TABLE IF EXISTS `iuserinfo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `iuserinfo` (
-  `USER_ID` varchar(6) NOT NULL COMMENT '成员ID',
+  `USER_ID` varchar(15) NOT NULL COMMENT '成员ID',
   `USER_PASSWORD` char(100) NOT NULL COMMENT '密码',
   `USER_NAME` varchar(10) NOT NULL COMMENT '用户名',
   `USER_SEX` char(1) NOT NULL COMMENT '性别',
@@ -137,7 +137,7 @@ CREATE TABLE `iuserinfo` (
 
 LOCK TABLES `iuserinfo` WRITE;
 /*!40000 ALTER TABLE `iuserinfo` DISABLE KEYS */;
-INSERT INTO `iuserinfo` VALUES ('100001','100001','tester01','男','99','陕西西安','9','dawang@163.com','13312341234','雁塔区天谷八路','在职','我怎么那么好看','2018-12-16 00:00:00','2018-12-16 00:00:00',0),('dawang','$2a$10$j54KbMlIbrLkngsqHvBwfOZzLLQu0CpNm/2FJJxbJ14iHY.5piii2','大王','男','ROLE_ADMIN','陕西西安','9','dawang@163.com','13312341234','雁塔区天谷八路','在职','我怎么那么好看','2018-12-16 00:00:00','2018-12-16 00:00:00',0);
+INSERT INTO `iuserinfo` VALUES ('100001','100001','tester01','男','99','陕西西安','9','dawang@163.com','13312341234','雁塔区天谷八路','在职','我怎么那么好看','2018-12-16 00:00:00','2018-12-16 00:00:00',0),('dashuai','$2a$10$E/mDElUPx53JmOCdfCGSx.gWELvbeOqLRD8iVceiH3ox0mKy4TtlG','大帅','男','ROLE_ADMIN','陕西西安','9','dawang@163.com','13312341234','雁塔区天谷八路','在职','我怎么那么好看','2018-12-16 00:00:00','2018-12-16 00:00:00',0),('dawang','$2a$10$j54KbMlIbrLkngsqHvBwfOZzLLQu0CpNm/2FJJxbJ14iHY.5piii2','大王','男','ROLE_ADMIN','陕西西安','9','dawang@163.com','13312341234','雁塔区天谷八路','在职','我怎么那么好看','2018-12-16 00:00:00','2018-12-16 00:00:00',0);
 /*!40000 ALTER TABLE `iuserinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -279,4 +279,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-01-06 18:57:48
+-- Dump completed on 2019-01-06 19:13:44
