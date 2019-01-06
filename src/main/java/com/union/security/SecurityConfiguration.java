@@ -53,7 +53,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers(  "/static/**", "/news/**","/error","/login_p", "/favicon.ico");
+        web.ignoring().antMatchers(  "/css/**", "/js/**","/images/**", "/news/**","/error","/login_p", "/favicon.ico");
     }
 
     /**
@@ -78,6 +78,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .antMatchers("/","/news","/error").permitAll()
 //                .antMatchers("/user/**","/demo/**").hasRole("USER")
 //                .antMatchers("/**").hasRole("ADMIN")
+//                 //所有用户均可访问的资源
+//                .antMatchers("/css/**", "/js/**","/images/**", "/webjars/**", "**/favicon.ico", "/index").permitAll()
                 .and()
                 .formLogin().loginPage("/login_p").loginProcessingUrl("/login").permitAll()
                 //1.自定义参数名称，与login.html中的参数对应
