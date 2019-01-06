@@ -60,27 +60,5 @@ public class ForumController {
         return "Forum";
     }
 
-    @RequestMapping("/login")
-    public String login(Model model) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null) {
-            Collection<GrantedAuthority> authorityCollection = (Collection<GrantedAuthority>) auth.getAuthorities();
-            model.addAttribute("authorities", authorityCollection.toString());
-            model.addAttribute("username", SecurityContextHolder.getContext().getAuthentication().getName());
-        }
-        return "login";
-    }
-
-    @RequestMapping("/login_p")
-    public String login_p(Model model) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null) {
-            Collection<GrantedAuthority> authorityCollection = (Collection<GrantedAuthority>) auth.getAuthorities();
-            model.addAttribute("authorities", authorityCollection.toString());
-            model.addAttribute("username", SecurityContextHolder.getContext().getAuthentication().getName());
-        }
-        return "login_p";
-    }
-
 
 }
