@@ -9,12 +9,20 @@ body {
 .right {
   float:right;
   padding-right:10px;
+  padding-top: 5px
 }
 
 .left {
   float:left;
   padding-left:10px;
+  padding-top: 5px
 }
+.middle {
+  float:left;
+  float:middle;
+  padding-left:10px;
+}
+
 
 a {
   color: #FFF;
@@ -22,21 +30,22 @@ a {
 /*顶部导航条*/
 .header {
   width: 100%;
-  font-size: 17px;
-  height: 30px;
+  font-size: 18px;
+  height: 40px;
   color: #FFF;
   background:url(../picture/head.png) repeat-x;
+  
 }
 
 .header span {
   position: relative; /*脱离文档流*/
-  top: 10%; /*偏移*/
+  top: 12%; /*偏移*/
 }
 
 .head_picture{
   float:right;
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   display: flex;
   border-radius: 50%;
   align-items: center;
@@ -76,7 +85,7 @@ a {
 /* 父容器加上text-align，使子元素居中显示，比较美观 */
 #item {
   text-align: center;
-  margin-top: 10px;
+  /*margin-top: 10px;*/
 }
 /* 对第一层ul进行控制 */
 #item > ul {
@@ -103,11 +112,14 @@ ul li {
   background:url(../picture/head.png) repeat-x;
   color:#FFF;
   position: relative;
-  line-height: 35px;
+  line-height: 40px;
   cursor: pointer;
-  margin-top: 1px;
+
 }
 
+.li-2{
+    margin-top: 2px;
+}
 /* 对第三层子列表位置进行控制，使得在父列表右边显示 */
 #item>ul>li>ul>li>ul{
   left:116px;

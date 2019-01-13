@@ -1,19 +1,76 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>index</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="UTF-8">
+    <title>HEAD</title>
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <script type="text/javascript" src="/js/jquery-1.9.1.min.js.下载"></script>
+    <script src="/js/head.js"></script>
+    <link href="/css/head.css" rel="stylesheet" media="screen" type="text/css">
 </head>
 <body>
-<h1>登陆页面 login_p</h1>
-<p>你的当前用户名是：</p>
-<p th:text="${username}" style="margin-top: 25px; color: crimson">wxb</p>
-<p>你的权限是：</p>
-<p th:text="${authorities}" style="margin-top: 25px; color: crimson">authorities</p>
-<form th:action="@{/logout}" method="post">
-    <button class="btn btn-danger" style="margin-top: 20px">退出登录</button>
-</form>
-<div style="text-align: center;margin:0 auto;width: 1000px; ">
+
+<!--顶部导航条开始-->
+<div class="header">
+    <span class="left">欢迎进入！</span>
+    <span class="left">&nbsp;&nbsp;&nbsp;&nbsp;
+        <script language="JavaScript">
+        dayName = new Array("星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六")
+        monName = new Array("1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月")
+        now = new Date();
+        document.write("今天是："+	now.getFullYear()+"年"+monName[now.getMonth()]+now.getDate()+"日 "+"  "+dayName[now.getDay()])
+        </script>
+    </span>
+    <span class="middle" style="padding-left:120px;margin-right: 5px;">
+        <div id="item" style="margin-top:-5px">
+            <ul class="">
+                <li>
+                    新闻公告
+                    <ul class="second">
+                        <li class="li-2">最新动态</li>
+                        <li class="li-2">公告公示</li>
+                    </ul>
+                </li>
+                <li>
+                    业务工作
+                    <ul class="second">
+                        <li class="li-2">宣传教育</li>
+                        <li class="li-2">权益保障</li>
+                        <li class="li-2">女职工工作</li>
+                    </ul>
+                </li>
+                <li>
+                    信息中心
+                    <ul class="second">
+                        <li class="li-2">政策法规</li>
+                        <li class="li-2">调查研究</li>
+                        <li class="li-2">职工风采</li>
+                    </ul>
+                </li>
+                <li>
+                    帮助指南
+                    <ul class="second"></ul>
+                </li>
+            </ul>
+        </div>
+    </span>
+    <img  class="head_picture" src=""  alt="">
+    <span class="right"><a style="" href="">登录</a>&nbsp;/&nbsp;<a style="" href="">注册</a></span>
+</div>
+<!--<div class="menu">-->
+<!--</div>-->
+<div id="item">
+
+<!--</div>-->
+<!--<div class="main">-->
+    <h1>登陆页面 login_p</h1>
+    <p>你的当前用户名是：</p>
+    <p th:text="${username}" style="margin-top: 25px; color: crimson">wxb</p>
+    <p>你的权限是：</p>
+    <p th:text="${authorities}" style="margin-top: 25px; color: crimson">authorities</p>
+    <form th:action="@{/logout}" method="post">
+        <button class="btn btn-danger" style="margin-top: 20px">退出登录</button>
+    </form>
     <form th:action="@{/login}" method="post">
         <!-- 1.自定义参数名：myusername和mypassword-->
         <div>
@@ -39,5 +96,8 @@
     <a href="/depart2">部门2页面</a>
     <a href="/admin">管理员页面</a>
     <a href="/login">登录页面</a>
+
 </div>
+<!--顶部导航条结束-->
+</body>
 </html>
