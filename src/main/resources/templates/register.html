@@ -7,6 +7,15 @@
     <script type="text/javascript" src="/js/jquery-1.9.1.min.js.下载"></script>
     <script src="/js/head.js"></script>
     <link href="/css/head.css" rel="stylesheet" media="screen" type="text/css">
+
+    <style type="text/css">
+    .infoInput{
+        width: 300px;
+        height:20px;
+        margin-bottom: 10px;
+    }
+   </style>
+
 </head>
 <body>
 
@@ -59,43 +68,87 @@
 </div>
 <!--<div class="menu">-->
 <!--</div>-->
-<div id="item">
 
-<!--</div>-->
-<!--<div class="main">-->
-    <h1>登陆页面 login_p</h1>
-    <p>你的当前用户名是：</p>
-    <p th:text="${username}" style="margin-top: 25px; color: crimson">wxb</p>
-    <p>你的权限是：</p>
-    <p th:text="${authorities}" style="margin-top: 25px; color: crimson">authorities</p>
-    <form th:action="@{/logout}" method="post">
-        <button class="btn btn-danger" style="margin-top: 20px">退出登录</button>
-    </form>
-    <form th:action="@{/login}" method="post">
-        <!-- 1.自定义参数名：myusername和mypassword-->
-        <div>
-            用户名： <input type="text" name="myusername"/>
-        </div>
-        <div>
-            密码： <input type="password" name="mypassword"/>
-        </div>
-        <div th:if="${param.error}">
-            <p style="text-align: center" class="text-danger">登录失败，账号或密码错误!</p>
-        </div>
-        <div th:if="${result}">
-            <p style="text-align: center" class="text-success" th:text="${result}"></p>
-        </div>
-        <div>
-            <input type="submit" value="登陆"/>
-        </div>
-    </form>
+<!--业务部分-->
+<div id="work" style="color: #FFF;font-size: 18px;align-items: center;text-align: left;">
+	<div style="float: left;width: 30%;">
+		&nbsp
+	</div>
 
-    <a href="/index">主页</a>
-    <a href="/user">用户页面</a>
-    <a href="/depart1">部门1页面</a>
-    <a href="/depart2">部门2页面</a>
-    <a href="/admin">管理员页面</a>
-    <a href="/login">登录页面</a>
+	<div style="float: left;width: 45%;border-left: 2px;border-color: white">
+		<form style="">
+		<div style="float: left;">
+    		<br>
+    		<br>
+    		<span>姓名:</span>
+    		<br>
+    		<input type="text" class="infoInput" name="">
+    		<br>
+    		<span>性别:</span>
+    		<br>
+    		<input type="text" class="infoInput" name="">
+    		<br>
+    		<span>民族:</span>
+    		<br>
+    		<input type="text" class="infoInput" name="">
+    		<br>
+            <span>政治面貌:</span>
+            <br>
+            <input type="text" class="infoInput" name="">
+            <br>
+            <span>联系地址:</span>
+            <br>
+            <input type="text" class="infoInput" name="">
+            <br>
+            <span>手机号码:</span>
+            <br>
+            <input type="text" class="infoInput" name="">
+            <br>
+            <span>联系地址:</span>
+            <br>
+            <input type="text" class="infoInput" name="">
+            <br>
+            <span>籍贯:</span>
+            <br>
+            <input type="text" class="infoInput" name="">
+
+
+		</div>
+		<div style="float: left;">
+			<br>
+			<br>
+			<span>个性签名:</span>
+            <br>
+            <input type="text" class="infoInput" name="">
+            <br>
+            <span>头像:</span>
+            <br>
+            <input type="text" class="infoInput" name="">
+            <br>
+            <span>密码:</span>
+            <br>
+            <input type="text" class="infoInput" name="">
+            <br>
+            <span>确认密码:</span>
+            <br>
+            <input type="text" class="infoInput" name="">
+            <br>
+            <br>
+            <button type="submit" value="注册" style="width:150px; height: 24px">注册</button>
+            <button value="重置" style="width:150px; height: 24px">重置</button>
+		</div>
+        <div style="float: left;">
+        	
+        </div>
+            
+		</form>
+	</div>
+
+
+
+
+
+
 
 </div>
 <!--顶部导航条结束-->
