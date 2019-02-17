@@ -54,7 +54,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers(  "/css/**", "/js/**", "/picture/**", "/pictures/**","/image/**"
-                ,"/images/**", "/news/**","/error","/login_p", "/favicon.ico");
+                ,"/images/**", "/news/**","/error","/login_p", "/favicon.ico",
+                "/test",
+                "/**/*.js", "/lang/*.json", "/**/*.css", "/**/*.js", "/**/*.map", "/**/*.png");
     }
 
     /**
@@ -91,4 +93,5 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .exceptionHandling().accessDeniedHandler(myAccessDeniedHandler);
     }
+
 }
