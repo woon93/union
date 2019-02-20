@@ -106,7 +106,7 @@ a {
 }
 
 /* 对li样式进行通用设置，使得更美观 */
-ul li {
+.header ul li {
   z-index:100;
   width: 120px;
   background:url(../picture/head.png) repeat-x;
@@ -117,7 +117,7 @@ ul li {
 
 }
 
-.li-2{
+.header .li-2{
     margin-top: 2px;
 }
 /* 对第三层子列表位置进行控制，使得在父列表右边显示 */

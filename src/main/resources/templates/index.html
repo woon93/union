@@ -16,7 +16,7 @@
         width: 300px;
         height:20px;
         margin-bottom: 10px;
-    }
+    }item
    </style>
 
 </head>
@@ -89,7 +89,7 @@
 		.js textarea{ height:500px;  width:98%; padding:5px; padding-top: 15px; border:1px solid #ccc; border-top:2px solid #aaa;  border-left:2px solid #aaa;  }
 
 		/* 本例子css */
-		.picFocus{ margin:0 auto;  width:1200px; border:1px solid #ccc; padding:5px;  position:relative;  overflow:hidden;  zoom:1;   }
+		.picFocus{ margin:0 auto;  width:500px; border:1px solid #ccc; padding:5px;  position:relative;  overflow:hidden;  zoom:1;   }
 		.picFocus .hd{ width:100%; padding-top:5px;  overflow:hidden; }
 		.picFocus .hd ul{ margin-right:-5px;  overflow:hidden; zoom:1; }
 		.picFocus .hd ul li{ padding-top:5px; float:left;  text-align:center;  }
@@ -97,28 +97,25 @@
 		.picFocus .hd ul li.on{ background:url("images/icoUp.gif") no-repeat center 0; }
 		.picFocus .hd ul li.on img{ border-color:#f60;  }
 		.picFocus .bd li{ vertical-align:middle; }
-		.picFocus .bd img{ width:800px; height:600px; display:block;  }
+		.picFocus .bd img{height:600px; display:block;  }
 
 		</style>
 
-    <div class="picFocus">
+    <div style="float:left;width: 15%">&nbsp</div>
+    <div class="picFocus" style="float:left">
         <div class="bd">
             <ul>
-                <li style="width: 1000px">
-                	<div style="width: 600px;float: left;"><a target="_blank" href="www.SuperSlide2.com"><img src="image/001.jpeg" /></a></div>
-                	<div  style="width: 300px;float: right;"><img src="image/006.jpeg" /></div>
+                <li style="width: 480px">
+                	<a target="_blank" href="www.SuperSlide2.com"><img src="image/001.jpeg" /></a>
                 </li>
-                <li style="width: 600px">
-                	<div style="width: 600px;float: left;"><a target="_blank" href="www.SuperSlide2.com"><img src="image/002.jpeg" /></a></div>
-                	<div  style="width: 300px;float: right;"><img src="image/006.jpeg" /></div>
+                <li style="width: 480px">
+                	<a target="_blank" href="www.SuperSlide2.com"><img src="image/002.jpeg" /></a>
                 </li>
-                <li style="width: 600px">
-					<div style="width: 600px;float: left;"><a target="_blank" href="www.SuperSlide2.com"><img src="image/003.jpeg" /></a></div>
-                	<div  style="width: 300px;float: right;"><img src="image/006.jpeg" /></div>
+                <li style="width: 480px">
+					<a target="_blank" href="www.SuperSlide2.com"><img src="image/003.jpeg" /></a>
                 </li>
-                <li style="width: 600px">
-					<div style="width: 600px;float: left;"><a target="_blank" href="www.SuperSlide2.com"><img src="image/004.jpeg" /></a></div>
-                	<div  style="width: 300px;float: right;"><img src="image/006.jpeg" /></div>
+                <li style="width: 480px">
+					<a target="_blank" href="www.SuperSlide2.com"><img src="image/004.jpeg" /></a>
                 </li>
             </ul>
         </div>
@@ -134,6 +131,155 @@
 
     </div>
     <script type="text/javascript">jQuery(".picFocus").slide({ mainCell:".bd ul",effect:"left",autoPlay:true });</script>
+
+    <style type="text/css">
+		/* css 重置 */
+		*{margin:0; padding:0; list-style:none; }
+		body{ background:#fff; font:normal 12px/22px 宋体;  }
+		img{ border:0;  }
+		a{ text-decoration:none; color:#333;  }
+		a:hover{ color:#1974A1;  }
+		.js{width:90%; margin:10px auto 0 auto; }
+		.js p{ padding:5px 0; font-weight:bold; overflow:hidden;  }
+		.js p span{ float:right; }
+		.js p span a{ color:#f00; text-decoration:underline;   }
+		.js textarea{ height:100px;  width:98%; padding:5px; border:1px solid #ccc; border-top:2px solid #aaa;  border-left:2px solid #aaa;  }
+
+		/* 本例子css */
+		.outBox{ width:450px; border:1px solid #ddd; text-align:left;  }
+		.outBox .hd{ height:30px; line-height:30px; background:#f4f4f4; padding:0 20px; border-bottom:1px solid #ddd;  position:relative;  }
+		.outBox .hd ul{ float:left; position:absolute; left:20px; top:-1px; height:32px;   }
+		.outBox .hd ul li{ float:left; padding:0 15px; cursor:pointer;  }
+		.outBox .hd ul li.on{ height:30px;  background:#fff; border:1px solid #ddd; border-bottom:2px solid #fff; }
+
+		.inBox{ padding:15px 15px 0 15px;  }
+		.inBox .inHd{ height:24px; line-height:24px; border-bottom:1px solid #ccc; padding:0 10px;   }
+		.inBox .inHd ul{ overflow:hidden; zoom:1; }
+		.inBox .inHd ul li{ height:24px; width:60px; text-align:center; float:left; cursor:pointer;  }
+		.inBox .inHd ul li.on{ background:#ccc; color:#fff;  }
+		.inBox .inBd ul{ padding:15px;  zoom:1; overflow:hidden;   }
+		.inBox .inBd li{ height:24px; line-height:24px; overflow:hidden; zoom:1;  }
+		.inBox .inBd li .date{ float:right; color:#999;  }
+
+	</style>
+
+    <div class="outBox" style="margin:0 auto;float: left;width: 500px">
+        <div class="hd">
+            <ul><li>教育</li><li>培训</li><li>出国</li></ul>
+        </div>
+        <div class="bd">
+
+            <!-- inBox S -->
+            <div class="inBox">
+                <div class="inHd">
+                    <ul><li>栏目一</li><li>栏目二</li><li>栏目三</li></ul>
+                </div>
+                <div class="inBd">
+                    <ul>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">中国打破了世界软件巨头规则</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">口语：会说中文就能说英语！</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">农场摘菜不如在线学外语好玩</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">数理化老师竟也看学习资料？</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">学英语送ipad2,45天突破听说</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">学外语，上北外！</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">那些无法理解的荒唐事</a></li>
+                    </ul>
+                    <ul>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">名师教作文：３妙招巧写高分</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">耶鲁小子：教你备考SAT</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">施强：高端专业语言教学</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">数理化老师竟也看学习资料？</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">【推荐】名校英语方法曝光！</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">2012高考“考点”大曝光!!</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">涨价仍爆棚假日旅游冰火两重天</a></li>
+                    </ul>
+                    <ul>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">澳大利亚八大名校招生说明会</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">2012世界大学排名新鲜出炉</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">新加坡留学，国际双语课程</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">高考后留学日本名校随你选</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">教育培训行业优势资源推介</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">即刻预约今年最后一场教育展</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">女友坚持警局完婚不抛弃</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- inBox S -->
+            <div class="inBox">
+                <div class="inHd">
+                    <ul><li>栏目三</li><li>栏目四</li><li>栏目五</li></ul>
+                </div>
+                <div class="inBd">
+                    <ul>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">中国打破了世界软件巨头规则</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">口语：会说中文就能说英语！</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">农场摘菜不如在线学外语好玩</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">数理化老师竟也看学习资料？</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">学英语送ipad2,45天突破听说</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">学外语，上北外！</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">那些无法理解的荒唐事</a></li>
+                    </ul>
+                    <ul>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">名师教作文：３妙招巧写高分</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">耶鲁小子：教你备考SAT</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">施强：高端专业语言教学</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">数理化老师竟也看学习资料？</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">【推荐】名校英语方法曝光！</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">2012高考“考点”大曝光!!</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">涨价仍爆棚假日旅游冰火两重天</a></li>
+                    </ul>
+                    <ul>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">澳大利亚八大名校招生说明会</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">2012世界大学排名新鲜出炉</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">新加坡留学，国际双语课程</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">高考后留学日本名校随你选</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">教育培训行业优势资源推介</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">即刻预约今年最后一场教育展</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">女友坚持警局完婚不抛弃</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- inBox S -->
+            <div class="inBox">
+                <div class="inHd">
+                    <ul><li>栏目六</li><li>栏目七</li><li>栏目八</li></ul>
+                </div>
+                <div class="inBd">
+                    <ul>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">中国打破了世界软件巨头规则</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">口语：会说中文就能说英语！</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">农场摘菜不如在线学外语好玩</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">数理化老师竟也看学习资料？</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">学英语送ipad2,45天突破听说</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">学外语，上北外！</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">那些无法理解的荒唐事</a></li>
+                    </ul>
+                    <ul>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">名师教作文：３妙招巧写高分</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">耶鲁小子：教你备考SAT</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">施强：高端专业语言教学</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">数理化老师竟也看学习资料？</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">【推荐】名校英语方法曝光！</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">2012高考“考点”大曝光!!</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">涨价仍爆棚假日旅游冰火两重天</a></li>
+                    </ul>
+                    <ul>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">澳大利亚八大名校招生说明会</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">2012世界大学排名新鲜出炉</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">新加坡留学，国际双语课程</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">高考后留学日本名校随你选</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">教育培训行业优势资源推介</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">即刻预约今年最后一场教育展</a></li>
+                        <li><span class="date">2011-11-11</span><a href="http://www.SuperSlide2.com" target="_blank">女友坚持警局完婚不抛弃</a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+        </div><!-- bd E -->
+    </div>
 
 
 
