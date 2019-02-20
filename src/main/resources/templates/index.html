@@ -277,6 +277,18 @@
                 </div>
             </div>
 
+            <script type="text/javascript">
+			/*
+			SuperSlide组合注意：
+			1、内外层mainCell、targetCell、prevCell、nextCell等对象不能相同，除非特殊应用；
+			2、注意书写顺序，通常先写内层js调用，再写外层js调用
+			*/
+
+			/* 内层inBox渐显切换，注意titCell、mainCell等不能与外层相同 */
+			jQuery(".inBox").slide({ titCell:".inHd li",mainCell:".inBd" });
+			/* 外层outBox左滚动切换 */
+			jQuery(".outBox").slide({ effect:"left" });
+		</script>
 
         </div><!-- bd E -->
     </div>
