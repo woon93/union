@@ -1,155 +1,156 @@
-<!DOCTYPE html>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>HEAD</title>
-    <meta http-equiv="Content-Language" content="zh-cn">
-    <script type="text/javascript" src="/js/jquery-1.9.1.min.js.下载"></script>
-    <!--<script src="/js/head.js"></script>-->
-    <script type="text/javascript" src="/js/jquery1.42.min.js"></script>
-    <script type="text/javascript" src="/js/jquery.SuperSlide.2.1.3.js"></script>
-    <link href="/css/head.css" rel="stylesheet" media="screen" type="text/css">
-
-
-    <style type="text/css">
-    .infoInput{
-        width: 300px;
-        height:20px;
-        margin-bottom: 10px;
-    }item
-   </style>
+    <title>银川市总工会</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Language" content="zh-cn" />
+    <meta name="keywords" content="银川市总工会" />
+    <meta name="description" content="银川市总工会" />
+    <meta name="copyright" content="Copyright 2014. 银川市总工会.All Rights Reserved." />
+    <link href="/css/layout.css" rel="stylesheet" media="screen" type="text/css">
+    <script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
+$(function(){
+	// 导航
+	$('.nav a').hover(function(){
+		$('.nav a').removeClass('active');
+		$(this).addClass('active');
+	}, function(){
+	});
+	// 二级导航
+	$('.sidebar-nav a').hover(function(){
+		$('.sidebar-nav a').removeClass('active');
+		$(this).addClass('active');
+	}, function(){
+	});
+});
+</script>
 
 </head>
 <body>
 
 <!--顶部导航条开始-->
 <div class="header">
-    <span class="left">欢迎进入！</span>
-    <span class="left">&nbsp;&nbsp;&nbsp;&nbsp;
-        <script language="JavaScript">
-        dayName = new Array("星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六")
-        monName = new Array("1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月")
-        now = new Date();
-        document.write("今天是："+	now.getFullYear()+"年"+monName[now.getMonth()]+now.getDate()+"日 "+"  "+dayName[now.getDay()])
-        </script>
-    </span>
-    <span class="middle" style="padding-left:120px;margin-right: 5px;">
-        <div id="item" style="margin-top:-5px">
-            <ul class="">
-                <li>
-                    新闻公告
-                    <ul class="second">
-                        <li class="li-2">最新动态</li>
-                        <li class="li-2">公告公示</li>
-                    </ul>
-                </li>
-                <li>
-                    业务工作
-                    <ul class="second">
-                        <li class="li-2">宣传教育</li>
-                        <li class="li-2">权益保障</li>
-                        <li class="li-2">女职工工作</li>
-                    </ul>
-                </li>
-                <li>
-                    信息中心
-                    <ul class="second">
-                        <li class="li-2">政策法规</li>
-                        <li class="li-2">调查研究</li>
-                        <li class="li-2">职工风采</li>
-                    </ul>
-                </li>
-                <li>
-                    帮助指南
-                    <ul class="second"></ul>
-                </li>
-            </ul>
-        </div>
-    </span>
-    <img  class="head_picture" src=""  alt="">
-    <span class="right"><a style="color: white" href="">登录</a>&nbsp;/&nbsp;<a style="color: white" href="">注册</a></span>
-</div>
-<!--<div class="menu">-->
-<!--</div>-->
-
-<!--业务部分-->
-<div style="width: 20%; float: left;">
-    &nbsp
-</div>
-<div id="work" style="width: 60%; float: left;">
-    <style type="text/css">
-		/* css 重置 */
-		*{margin:0; padding:0; list-style:none; }
-		body{ background:#fff; font:normal 12px/22px 宋体;  }
-		img{ border:0;  }
-		a{ text-decoration:none; color:#333;  }
-		.js{width:90%; margin:10px auto 0 auto; }
-		.js p{ padding:5px 0; font-weight:bold; overflow:hidden;  }
-		.js p span{ float:right; }
-		.js p span a{ color:#f00; text-decoration:underline;   }
-		.js textarea{ height:50px;  width:98%; padding:5px; border:1px solid #ccc; border-top:2px solid #aaa;  border-left:2px solid #aaa;  }
-
-
-		/* 本例子css */
-		.sideMenu{  border:1px solid #ddd;  }
-		.sideMenu h3{ height:32px; line-height:32px; padding-left:10px;  border-top:1px solid #e3e3e3; background:#f4f4f4; cursor:pointer;
-			font:normal 14px/32px "Microsoft YaHei";
-		}
-		.sideMenu h3 em{ float:right; display:block; width:40px; height:32px;   background:url(images/icoAdd.png) 16px 12px no-repeat; cursor:pointer; }
-		.sideMenu h3.on em{ background-position:16px -57px; }
-		.sideMenu ul{ padding:8px 25px; color:#999; display:none; /* 默认都隐藏 */ }
-
-		</style>
-
-    <div class="sideMenu" style="margin:0 auto">
-        <h3><em></em>书签切换系列</h3>
-        <ul>
-            <li>淘宝首页右侧公告</li>
-            <li>京东首页产品切换</li>
-            <li>苏宁易购首页品牌切换</li>
-            <li>1号店双重切换</li>
-            <li>腾讯健康频道切换</li>
-        </ul>
-
-        <h3 class="on"><em></em>幻灯片/焦点图系列</h3>
-        <!-- 假设当前频道为“幻灯片/焦点图系列”，手动或后台程序添加titOnClassName类名（默认是'on'），相当于设置参数defaultIndex:1。若设置参数returnDefault:true，则鼠标移出.sideMen0.3秒可以返回当前频道 -->
-
-        <ul>
-            <li>淘宝首页焦点图</li>
-            <li>腾讯娱乐频道焦点图</li>
-            <li>腾讯电影频道焦点图</li>
-            <li>网易游戏频道焦点图</li>
-            <li>易迅首页焦点图</li>
-        </ul>
-        <h3><em></em>带按钮切换</h3>
-        <ul>
-            <li>淘宝首页今日活动</li>
-            <li>豆瓣读书频道</li>
-            <li>天猫首页品牌切换</li>
-            <li>格瓦拉首页活动进行中</li>
-            <li>腾讯博客图片滚动</li>
-        </ul>
-
-
-    </div><!-- sideMenu End -->
-
-    <script type="text/javascript">
-			jQuery(".sideMenu").slide({
-				titCell:"h3", //鼠标触发对象
-				targetCell:"ul", //与titCell一一对应，第n个titCell控制第n个targetCell的显示隐藏
-				effect:"slideDown", //targetCell下拉效果
-				delayTime:300 , //效果时间
-				triggerTime:150, //鼠标延迟触发时间（默认150）
-				defaultPlay:true,//默认是否执行效果（默认true）
-				returnDefault:true //鼠标从.sideMen移走后返回默认状态（默认false）
-				});
+    <div class="websize">
+        <span>欢迎进入银川市总工会网站！</span>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;<script language="JavaScript">
+		<!-- Begin
+		dayName = new Array("", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日")
+		monName = new Array("1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月")
+		now = new Date
+		//  End -->
 		</script>
+		<script language="JavaScript">
+			<!-- Begin
+			var strDay;
+			if ((now.getDate() == 1) || (now.getDate() != 11) && (now.getDate() % 10 == 1))   // Correction for 11th and 1st/21st/31st
+			 strDay = "日 ";
+			else if ((now.getDate() == 2) || (now.getDate() != 12) && (now.getDate() % 10 == 2))  // Correction for 12th and 2nd/22nd/32nd
+			 strDay = "日 ";
+			else if ((now.getDate() == 3) || (now.getDate() != 13) && (now.getDate() % 10 == 3))  // Correction for 13th and 3rd/23rd/33rd
+			 strDay = "rd ";
+			else
+			 strDay = "日 ";
+			document.write("<b>今天是：</b>"+	now.getFullYear()+"年"+monName[now.getMonth()]+now.getDate()	+strDay+"  "+dayName[now.getDay()])
+		//  End -->
+		</script>
+		</span>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;<iframe name="weather_inc" src="http://i.tianqi.com/index.php?c=code&amp;id=5" width="120" height="26" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></span>
 
-</div>
-
-
-
+        <a target="_self" onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://单位网址/'); return false;" href="http://单位网址/"><i></i>设为首页</a>
+        <a class="last" target="_self" onclick="window.external.AddFavorite('http://单位网址/', '单位名称'); return false;" href="http://单位网址/"><i class="join"></i>加入收藏</a>
+    </div>
 </div>
 <!--顶部导航条结束-->
+
+<!--菜单开始-->
+<div class="banner websize">
+
+    <style type="text/css">
+.searchfo_was{
+    height: 31px;
+    width: 253px;
+    position: absolute;
+    float: right;
+    left: 733px;
+    top: 217px;}
+.txt_was{float: left;width: 200px;height: 30px;border: 1px solid #03A9F4;}
+.serch_was{right:2px;width: 50px;height: 32px;background-color: #00BCD4;;color:white;float: left;position: absolute;
+    text-decoration: none;padding-left: 4px;font-size: 14px;}
+</style>
+
+    <!--搜索-->
+
+    <script type="text/javascript">
+
+function submitsearch() {
+    if ($("#textfield").val() == "请输入关键字" || $("#textfield").val() == "") {
+        alert("请输入查询关键字!");
+        return;
+    }
+    else {
+        $("#search").attr("action", $("#znjs").val() + "index.html?searchword=" + encodeURI($("#textfield").val()));
+        $("#search").submit();
+    }
+}
+</script>
+
+
+<div class="pagebody websize clearfix">
+    <div class="article-con">
+        <div class="title">
+            <h2>当前位置：<a href="../../../" target="_blank" title="首页" class="CurrChnlCls">首页</a>><a href="../../" target="_blank" title="新闻信息" class="CurrChnlCls">新闻信息</a>><a href="../" target="_blank" title="党建纪检" class="CurrChnlCls">党建纪检</a></h2>
+        </div>
+        <div class="article-title">银川市总工会召开党风廉政建设工作会议</div>
+        <script>
+            var sub = '';
+            if(sub != ""){//当副标题不为空的时候显示
+            document.write('</br><div class="subtitle">'+sub+'</div>');
+             }
+        </script>
+    </div>
+    <div class="article-i"><span>2019-02-20 15:42</span>
+        <script>
+var so = '银川市总工会';
+ if(so != ""){//当来源不为空的时候显示
+       document.write('&nbsp;&nbsp;<span>来源：'+so+'</span>');
+ }
+var au = '';
+ if(au != ""){//当作者不为空的时候显示
+       document.write('&nbsp;&nbsp;作者：'+au);
+ }
+</script>
+    </div>
+    <div class="article-content"><div class="view TRS_UEDITOR trs_paper_default trs_word trs_key4format"><p style="text-indent: 2em; font-family: arial, helvetica, sans-serif; font-size: 16px; text-align: justify;"><span style="font-family: arial, helvetica, sans-serif; font-size: 16px;">2月18日，银川市总工会召开了2019年度党风廉政建设工作会议，会议传达了十九届中央纪委三次全会、自治区纪委十二届三次全会、银川市纪委十四届四次全会精神，纪检监察组长姚永伟对市工会2019年党风廉政建设工作进行安排部署，市人大常委会副主任、总工会主席张自华出席会议并与党组成员签订了党风廉政建设责任书。</span></p><p style="text-indent: 2em; font-family: arial, helvetica, sans-serif; font-size: 16px; text-align: justify;"><span style="font-family: arial, helvetica, sans-serif; font-size: 16px;"><span style="font-family: arial, helvetica, sans-serif; font-size: 16px;">张自华对市总工会进一步落实全面从严治党、加强党风廉政建设工作提出了具体要求。他指出，要不断强化理论武装，认清全面从严治党和加强党风廉政建设工作的重要性；要强化纪律意识和规矩意识，坚持敢于负责、勇于担当的工作态度；要强化责任意识，坚决落实</span>“两个责任”和“一岗双责”；要强化监督问责，切实提升工作效能、转变工作作风。要求党组及其成员要终把从严治觉和党风廉政建设的责任扛在肩上，带头做党风廉政建设的领导者、执行者、推动者；班子成员和领导干部要认真履行“一岗双责”，带头树立纪律意识、规矩意识、责任意识和担当意识；纪检监察组要加大监督检查力度，运用好监督执纪的“四种形态”，加强监督执纪问责和调查处置，切实把纪律和规矩挺在前面，立起来、严起来，执行到位。</span></p><p style="font-family: arial, helvetica, sans-serif; font-size: 16px;"><br/></p></div>
+    </div>
+    <div class="newscontent" style="line-height:30px;color:red;font-weight:bold;font-size:16px;">
+        <script>
+var file = '';
+ if(file != ""){//当作者不为空的时候显示
+       document.write('附件下载：</br>'+file);
+ }
+</script>
+    </div>
+</div>
+
+<!--页面底部开始-->
+<div class="footer websize">
+    <div class="foot">
+        <p>主办单位：银川市总工会</p>
+        <p>Copyright(C) 2008-2014 银川市总工会版权所有　地址：银川市凤凰北街172号</p>
+    </div>
+    <style>
+.footercopy2{ position:relative;margin:-80px 0 0 200px;float:left;}
+</style>
+    <div class="footercopy2">
+        <script type="text/javascript">document.write(unescape("%3Cspan id='_ideConac' %3E%3C/span%3E%3Cscript src='http://dcs.conac.cn/js/30/419/0000/60438617/CA304190000604386170000.js' type='text/javascript'%3E%3C/script%3E"));</script>
+    </div>
+
+</div>
+<!--页面底部结束-->
+
+<div class="gotop"><a href="javascript:scroll(0,0)"  target="_self">返回顶部</a> </div><!--返回顶部代码-->
+
 </body>
 </html>
