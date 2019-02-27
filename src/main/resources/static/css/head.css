@@ -82,6 +82,7 @@ body {
   padding:0;
   margin:0;
 }
+
 /* 父容器加上text-align，使子元素居中显示，比较美观 */
 #item {
   text-align: center;
@@ -155,7 +156,7 @@ body {
 .col3 { float: right; width: 215px; }
 
 .title { height: 33px; line-height: 33px; padding-right: 12px; background: url(titlebg.png) repeat-x; text-align: right; }
-.title h2 { float: left; font-weight: bold; padding: 0 17px; font-size: 14px; background: url(titlebg.png) repeat-x 0 -33px; color: #FFF; }
+.title h2 { float: left; font-weight: bold; padding: 0 17px; font-size: 14px; background: url(titlebg.png) repeat-x 0 -33px; color: #000; }
 .title p{float: left; }
 .title p i{padding: 0 17px; font-weight: bold;font-size: 14px;font-style:normal;  color: #cb280e;}
 .title p i.active{background: url(titlebg.png) repeat-x 0 -33px;color:#FFF;}
@@ -253,8 +254,8 @@ body {
 .pic-list li p{display:block;width:179px;height:22px;line-height:22px;overflow:hidden;white-space:nowrap;text-align:center;}
 
 .article-con{padding:1px;border: 1px solid #e2e2e2;}
-.article-con a{color:#FFF;}
-.article-con a:hover{color:#FFF;}
+.article-con a{color:black;}
+.article-con a:hover{color:green;}
 .article-con h2{background: url(titlebg.png) repeat-x 0 -66px;font-weight:normal;font-size:12px;}
 .article-title{padding:20px 30px 10px 30px;line-height:30px;font-size:22px;text-align:center; color:#000;font-family: "é»‘ä½“","å¾®è½¯é›…é»‘";font-weight:bold;}
 .article-con .subtitle{padding:2px 30px 10px 30px;line-height:30px;font-size:18px;text-align:center;color:#000;font-family: "é»‘ä½“","å¾®è½¯é›…é»‘";font-weight:bold;}
