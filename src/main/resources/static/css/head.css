@@ -73,8 +73,9 @@ body {
   margin:0 auto;
   transform:translateY(4%);
   background-color: #FFF;
-  font-size: 40px;
+  /*font-size: 40px;*/
 }
+
 /* =======================================mune测试================================================== */
 /* 消除默认样式 */
 *{
@@ -148,7 +149,7 @@ body {
 
 /*å†…å®¹ç¬¬ä¸€éƒ¨åˆ†*/
 .pagebody-index{padding:10px 0 0;}
-.pagebody{padding:10px 0;}
+.pagebody{padding:30px 0;}
 .col1, .col2, .col3 { border: 1px solid #e1e1e1; background-color: #fff; margin-bottom: 10px; padding: 1px; }
 .col1, .col2 { float: left; margin-right: 10px; }
 .col1 { width: 355px; }
