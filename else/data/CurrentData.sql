@@ -174,6 +174,7 @@ CREATE TABLE `newsmst` (
 
 LOCK TABLES `newsmst` WRITE;
 /*!40000 ALTER TABLE `newsmst` DISABLE KEYS */;
+INSERT INTO `newsmst` VALUES (1,'板块一','分类一','银川市总工会召开党风廉政建设工作会议','2月18日，银川市总工会召开了2019年度党风廉政建设工作会议，会议传达了十九届中央纪委三次全会、自治区纪委十二届三次全会、银川市纪委十四届四次全会精神，纪检监察组长姚永伟对市工会2019年党风廉政建设工作进行安排部署，市人大常委会副主任、总工会主席张自华出席会议并与党组成员签订了党风廉政建设责任书。','0',0,0,'0','1001','1001','2019-02-02 00:00:00','1002','2019-02-02 00:00:00','0');
 /*!40000 ALTER TABLE `newsmst` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -279,4 +280,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-01 23:45:34
+-- Dump completed on 2019-03-02 11:03:21
