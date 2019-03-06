@@ -19,7 +19,7 @@ public class NewsService {
         NewsDtoExample newsDtoExample = new NewsDtoExample();
         NewsDtoExample.Criteria criteria = newsDtoExample.createCriteria();
 
-        criteria.andClassEqualTo(newsDto.getClass());
+        criteria.andClassEqualTo(newsDto.getClazz());
 
         StringBuilder sortKey = new StringBuilder();
         sortKey.append("PUBTIM  DESC");

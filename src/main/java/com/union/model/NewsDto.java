@@ -7,7 +7,7 @@ public class NewsDto {
 
     private String area;
 
-    private String class;
+    private String clazz;
 
     private String title;
 
@@ -49,12 +49,12 @@ public class NewsDto {
         this.area = area == null ? null : area.trim();
     }
 
-    public String getClass() {
-        return class;
+    public String getClazz() {
+        return clazz;
     }
 
-    public void setClass(String class) {
-        this.class = class == null ? null : class.trim();
+    public void setClazz(String clazz) {
+        this.clazz = clazz == null ? null : clazz.trim();
     }
 
     public String getTitle() {
