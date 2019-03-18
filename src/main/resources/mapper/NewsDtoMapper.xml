@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.union.dao.NewsDtoMapper" >
+  <resultMap id="BaseResultMap" type="com.union.model.NewsDto" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="AREA" property="area" jdbcType="VARCHAR" />
+    <result column="CLASS" property="class" jdbcType="VARCHAR" />
+    <result column="TITLE" property="title" jdbcType="VARCHAR" />
+    <result column="PICID" property="picid" jdbcType="CHAR" />
+    <result column="GLANCN" property="glancn" jdbcType="INTEGER" />
+    <result column="LIKE" property="like" jdbcType="INTEGER" />
+    <result column="GRADE" property="grade" jdbcType="CHAR" />
+    <result column="WRTID" property="wrtid" jdbcType="CHAR" />
+    <result column="ADTID" property="adtid" jdbcType="CHAR" />
+    <result column="PUBTIM" property="pubtim" jdbcType="TIMESTAMP" />
+    <result column="MDFID" property="mdfid" jdbcType="CHAR" />
+    <result column="MDFTM" property="mdftm" jdbcType="TIMESTAMP" />
+    <result column="DELFLG" property="delflg" jdbcType="CHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.union.model.NewsDto" extends="BaseResultMap" >
+    <result column="CONTNT" property="contnt" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, AREA, CLASS, TITLE, PICID, GLANCN, LIKE, GRADE, WRTID, ADTID, PUBTIM, MDFID, 
+    MDFTM, DELFLG
+  </sql>
+  <sql id="Blob_Column_List" >
+    CONTNT
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.union.model.NewsDtoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from newsmst
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.union.model.NewsDtoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from newsmst
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from newsmst
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from newsmst
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.union.model.NewsDtoExample" >
+    delete from newsmst
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.union.model.NewsDto" >
+    insert into newsmst (ID, AREA, CLASS, 
+      TITLE, PICID, GLANCN, 
+      LIKE, GRADE, WRTID, ADTID, 
+      PUBTIM, MDFID, MDFTM, 
+      DELFLG, CONTNT)
+    values (#{id,jdbcType=INTEGER}, #{area,jdbcType=VARCHAR}, #{class,jdbcType=VARCHAR}, 
+      #{title,jdbcType=VARCHAR}, #{picid,jdbcType=CHAR}, #{glancn,jdbcType=INTEGER}, 
+      #{like,jdbcType=INTEGER}, #{grade,jdbcType=CHAR}, #{wrtid,jdbcType=CHAR}, #{adtid,jdbcType=CHAR}, 
+      #{pubtim,jdbcType=TIMESTAMP}, #{mdfid,jdbcType=CHAR}, #{mdftm,jdbcType=TIMESTAMP}, 
+      #{delflg,jdbcType=CHAR}, #{contnt,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.union.model.NewsDto" >
+    insert into newsmst
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="area != null" >
+        AREA,
+      </if>
+      <if test="class != null" >
+        CLASS,
+      </if>
+      <if test="title != null" >
+        TITLE,
+      </if>
+      <if test="picid != null" >
+        PICID,
+      </if>
+      <if test="glancn != null" >
+        GLANCN,
+      </if>
+      <if test="like != null" >
+        LIKE,
+      </if>
+      <if test="grade != null" >
+        GRADE,
+      </if>
+      <if test="wrtid != null" >
+        WRTID,
+      </if>
+      <if test="adtid != null" >
+        ADTID,
+      </if>
+      <if test="pubtim != null" >
+        PUBTIM,
+      </if>
+      <if test="mdfid != null" >
+        MDFID,
+      </if>
+      <if test="mdftm != null" >
+        MDFTM,
+      </if>
+      <if test="delflg != null" >
+        DELFLG,
+      </if>
+      <if test="contnt != null" >
+        CONTNT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="area != null" >
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="class != null" >
+        #{class,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="picid != null" >
+        #{picid,jdbcType=CHAR},
+      </if>
+      <if test="glancn != null" >
+        #{glancn,jdbcType=INTEGER},
+      </if>
+      <if test="like != null" >
+        #{like,jdbcType=INTEGER},
+      </if>
+      <if test="grade != null" >
+        #{grade,jdbcType=CHAR},
+      </if>
+      <if test="wrtid != null" >
+        #{wrtid,jdbcType=CHAR},
+      </if>
+      <if test="adtid != null" >
+        #{adtid,jdbcType=CHAR},
+      </if>
+      <if test="pubtim != null" >
+        #{pubtim,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfid != null" >
+        #{mdfid,jdbcType=CHAR},
+      </if>
+      <if test="mdftm != null" >
+        #{mdftm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delflg != null" >
+        #{delflg,jdbcType=CHAR},
+      </if>
+      <if test="contnt != null" >
+        #{contnt,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.union.model.NewsDtoExample" resultType="java.lang.Integer" >
+    select count(*) from newsmst
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update newsmst
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.area != null" >
+        AREA = #{record.area,jdbcType=VARCHAR},
+      </if>
+      <if test="record.class != null" >
+        CLASS = #{record.class,jdbcType=VARCHAR},
+      </if>
+      <if test="record.title != null" >
+        TITLE = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.picid != null" >
+        PICID = #{record.picid,jdbcType=CHAR},
+      </if>
+      <if test="record.glancn != null" >
+        GLANCN = #{record.glancn,jdbcType=INTEGER},
+      </if>
+      <if test="record.like != null" >
+        LIKE = #{record.like,jdbcType=INTEGER},
+      </if>
+      <if test="record.grade != null" >
+        GRADE = #{record.grade,jdbcType=CHAR},
+      </if>
+      <if test="record.wrtid != null" >
+        WRTID = #{record.wrtid,jdbcType=CHAR},
+      </if>
+      <if test="record.adtid != null" >
+        ADTID = #{record.adtid,jdbcType=CHAR},
+      </if>
+      <if test="record.pubtim != null" >
+        PUBTIM = #{record.pubtim,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.mdfid != null" >
+        MDFID = #{record.mdfid,jdbcType=CHAR},
+      </if>
+      <if test="record.mdftm != null" >
+        MDFTM = #{record.mdftm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.delflg != null" >
+        DELFLG = #{record.delflg,jdbcType=CHAR},
+      </if>
+      <if test="record.contnt != null" >
+        CONTNT = #{record.contnt,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update newsmst
+    set ID = #{record.id,jdbcType=INTEGER},
+      AREA = #{record.area,jdbcType=VARCHAR},
+      CLASS = #{record.class,jdbcType=VARCHAR},
+      TITLE = #{record.title,jdbcType=VARCHAR},
+      PICID = #{record.picid,jdbcType=CHAR},
+      GLANCN = #{record.glancn,jdbcType=INTEGER},
+      LIKE = #{record.like,jdbcType=INTEGER},
+      GRADE = #{record.grade,jdbcType=CHAR},
+      WRTID = #{record.wrtid,jdbcType=CHAR},
+      ADTID = #{record.adtid,jdbcType=CHAR},
+      PUBTIM = #{record.pubtim,jdbcType=TIMESTAMP},
+      MDFID = #{record.mdfid,jdbcType=CHAR},
+      MDFTM = #{record.mdftm,jdbcType=TIMESTAMP},
+      DELFLG = #{record.delflg,jdbcType=CHAR},
+      CONTNT = #{record.contnt,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update newsmst
+    set ID = #{record.id,jdbcType=INTEGER},
+      AREA = #{record.area,jdbcType=VARCHAR},
+      CLASS = #{record.class,jdbcType=VARCHAR},
+      TITLE = #{record.title,jdbcType=VARCHAR},
+      PICID = #{record.picid,jdbcType=CHAR},
+      GLANCN = #{record.glancn,jdbcType=INTEGER},
+      LIKE = #{record.like,jdbcType=INTEGER},
+      GRADE = #{record.grade,jdbcType=CHAR},
+      WRTID = #{record.wrtid,jdbcType=CHAR},
+      ADTID = #{record.adtid,jdbcType=CHAR},
+      PUBTIM = #{record.pubtim,jdbcType=TIMESTAMP},
+      MDFID = #{record.mdfid,jdbcType=CHAR},
+      MDFTM = #{record.mdftm,jdbcType=TIMESTAMP},
+      DELFLG = #{record.delflg,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.union.model.NewsDto" >
+    update newsmst
+    <set >
+      <if test="area != null" >
+        AREA = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="class != null" >
+        CLASS = #{class,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        TITLE = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="picid != null" >
+        PICID = #{picid,jdbcType=CHAR},
+      </if>
+      <if test="glancn != null" >
+        GLANCN = #{glancn,jdbcType=INTEGER},
+      </if>
+      <if test="like != null" >
+        LIKE = #{like,jdbcType=INTEGER},
+      </if>
+      <if test="grade != null" >
+        GRADE = #{grade,jdbcType=CHAR},
+      </if>
+      <if test="wrtid != null" >
+        WRTID = #{wrtid,jdbcType=CHAR},
+      </if>
+      <if test="adtid != null" >
+        ADTID = #{adtid,jdbcType=CHAR},
+      </if>
+      <if test="pubtim != null" >
+        PUBTIM = #{pubtim,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfid != null" >
+        MDFID = #{mdfid,jdbcType=CHAR},
+      </if>
+      <if test="mdftm != null" >
+        MDFTM = #{mdftm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delflg != null" >
+        DELFLG = #{delflg,jdbcType=CHAR},
+      </if>
+      <if test="contnt != null" >
+        CONTNT = #{contnt,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.union.model.NewsDto" >
+    update newsmst
+    set AREA = #{area,jdbcType=VARCHAR},
+      CLASS = #{class,jdbcType=VARCHAR},
+      TITLE = #{title,jdbcType=VARCHAR},
+      PICID = #{picid,jdbcType=CHAR},
+      GLANCN = #{glancn,jdbcType=INTEGER},
+      LIKE = #{like,jdbcType=INTEGER},
+      GRADE = #{grade,jdbcType=CHAR},
+      WRTID = #{wrtid,jdbcType=CHAR},
+      ADTID = #{adtid,jdbcType=CHAR},
+      PUBTIM = #{pubtim,jdbcType=TIMESTAMP},
+      MDFID = #{mdfid,jdbcType=CHAR},
+      MDFTM = #{mdftm,jdbcType=TIMESTAMP},
+      DELFLG = #{delflg,jdbcType=CHAR},
+      CONTNT = #{contnt,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.union.model.NewsDto" >
+    update newsmst
+    set AREA = #{area,jdbcType=VARCHAR},
+      CLASS = #{class,jdbcType=VARCHAR},
+      TITLE = #{title,jdbcType=VARCHAR},
+      PICID = #{picid,jdbcType=CHAR},
+      GLANCN = #{glancn,jdbcType=INTEGER},
+      LIKE = #{like,jdbcType=INTEGER},
+      GRADE = #{grade,jdbcType=CHAR},
+      WRTID = #{wrtid,jdbcType=CHAR},
+      ADTID = #{adtid,jdbcType=CHAR},
+      PUBTIM = #{pubtim,jdbcType=TIMESTAMP},
+      MDFID = #{mdfid,jdbcType=CHAR},
+      MDFTM = #{mdftm,jdbcType=TIMESTAMP},
+      DELFLG = #{delflg,jdbcType=CHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
