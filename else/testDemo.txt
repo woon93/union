@@ -71,6 +71,8 @@ public class DataCompare<T extends CommonServiceDto, D extends BaseDto> {
 
     private String filePath = "C:\\dk\\compareData_";
 
+    private String logPath = "C:\\dk\\compareLog_";
+
     private T commonServiceDto;
 
     /** bean転記用のMapper */
@@ -281,7 +283,7 @@ public class DataCompare<T extends CommonServiceDto, D extends BaseDto> {
         return this.compareAja2mp(this.commonServiceDto, this.wrkKey, kyCd, addCd);
     }
 
-    public boolean compareAja2mp(T dto, String wrkKey, String kyCd, String addCd) {
+    private boolean compareAja2mp(T dto, String wrkKey, String kyCd, String addCd) {
         if (!Aje020Constants.IS_DEBUG || !Aje020Constants.IS_WORK) {
             return true;
         }
@@ -296,6 +298,8 @@ public class DataCompare<T extends CommonServiceDto, D extends BaseDto> {
             System.err.println("======AJA2MP==>>>===The size of the arrays is different !!!=====ERROR=====");
             System.err.println("======AJA2MP==>>>===Aja2mp size :" + dtoList.size());
             System.err.println("======AJA2MP==>>>===WrkAja2mp01 size :" + wrkDtoList.size());
+            this.writeAja2mp(this.getName("AJA2MP", "SizeError"), true, dtoList);
+            this.writeAja2mp(this.getName("WRK_AJA2MP", "SizeError"), true, wrkDtoList);
             return false;
         }
         StringBuffer bf = new StringBuffer();
@@ -337,8 +341,8 @@ public class DataCompare<T extends CommonServiceDto, D extends BaseDto> {
 
             if (!StringUtil.equals(hasdDto, hasdWrkDto)) {
                 // this.writeText(this.filePath, true, bf.toString());
-                this.writeAja2mp(this.filePath + "AJA2MP" + ".csv", true, dtoList);
-                this.writeAja2mp(this.filePath + "WRK_AJA2MP" + ".csv", true, wrkDtoList);
+                this.writeAja2mp(this.getName("AJA2MP"), true, dtoList);
+                this.writeAja2mp(this.getName("WRK_AJA2MP"), true, wrkDtoList);
                 System.err.println("======AJA2MP==>>>===HashCodes are not equal  !!!=====ERROR=====");
                 System.err.println("======AJA2MP==>>>===The sorting (from 0) : " + i);
                 System.err.println("======AJA2MP==>>>===Total size : " + dtoList.size());
@@ -360,7 +364,7 @@ public class DataCompare<T extends CommonServiceDto, D extends BaseDto> {
         return this.compareAja1mp(this.commonServiceDto, this.wrkKey, kyCd, addCd);
     }
 
-    public boolean compareAja1mp(T dto, String wrkKey, String kyCd, String addCd) {
+    private boolean compareAja1mp(T dto, String wrkKey, String kyCd, String addCd) {
         if (!Aje020Constants.IS_DEBUG || !Aje020Constants.IS_WORK) {
             return true;
         }
@@ -376,6 +380,8 @@ public class DataCompare<T extends CommonServiceDto, D extends BaseDto> {
             System.err.println("======AJA1MP==>>>===The size of the arrays is different !!!=====ERROR=====");
             System.err.println("======AJA1MP==>>>===Aja1mp size :" + dtoList.size());
             System.err.println("======AJA1MP==>>>===WrkAja1mp01 size :" + wrkDtoList.size());
+            this.writeAja1mp(this.getName("AJA1MP", "SizeError"), true, dtoList);
+            this.writeAja1mp(this.getName("WRK_AJA1MP", "SizeError"), true, wrkDtoList);
             return false;
         }
         StringBuffer bf = new StringBuffer();
@@ -417,8 +423,8 @@ public class DataCompare<T extends CommonServiceDto, D extends BaseDto> {
 
             if (!StringUtil.equals(hasdDto, hasdWrkDto)) {
                 // this.writeText(this.filePath, true, bf.toString());
-                this.writeAja1mp(this.filePath + "AJA1MP" + ".csv", true, dtoList);
-                this.writeAja1mp(this.filePath + "WRK_AJA1MP" + ".csv", true, wrkDtoList);
+                this.writeAja1mp(this.getName("AJA1MP"), true, dtoList);
+                this.writeAja1mp(this.getName("WRK_AJA1MP"), true, wrkDtoList);
                 System.err.println("======AJA1MP==>>>===HashCodes are not equal  !!!=====ERROR=====");
                 System.err.println("======AJA1MP==>>>===The sorting (from 0) : " + i);
                 System.err.println("======AJA1MP==>>>===Total size : " + dtoList.size());
@@ -444,7 +450,7 @@ public class DataCompare<T extends CommonServiceDto, D extends BaseDto> {
         return this.compareAjb1mp(this.commonServiceDto, this.wrkKey, kyCd, addCd, bukTsChky, shYm);
     }
 
-    public boolean compareAjb1mp(T dto, String wrkKey, String kyCd, String addCd, Short bukTsChky, int shYm) {
+    private boolean compareAjb1mp(T dto, String wrkKey, String kyCd, String addCd, Short bukTsChky, int shYm) {
 
         if (!Aje020Constants.IS_DEBUG || !Aje020Constants.IS_WORK) {
             return true;
@@ -461,6 +467,8 @@ public class DataCompare<T extends CommonServiceDto, D extends BaseDto> {
             System.err.println("======AJB1MP==>>>===The size of the arrays is different !!!=====ERROR=====");
             System.err.println("======AJB1MP==>>>===Ajb1mp size :" + dtoList.size());
             System.err.println("======AJB1MP==>>>===WrkAjb1mp01 size :" + wrkDtoList.size());
+            this.writeAjb1mp(this.getName("AJB1MP", "SizeError"), true, dtoList);
+            this.writeAjb1mp(this.getName("WRK_AJB1MP", "SizeError"), true, wrkDtoList);
             return false;
         }
         StringBuffer bf = new StringBuffer();
@@ -502,8 +510,8 @@ public class DataCompare<T extends CommonServiceDto, D extends BaseDto> {
 
             if (!StringUtil.equals(hasdDto, hasdWrkDto)) {
                 // this.writeText(this.filePath, true, bf.toString());
-                this.writeAjb1mp(this.filePath + "AJB1MP" + ".csv", true, dtoList);
-                this.writeAjb1mp(this.filePath + "WRK_AJB1MP" + ".csv", true, wrkDtoList);
+                this.writeAjb1mp(this.getName("AJB1MP"), true, dtoList);
+                this.writeAjb1mp(this.getName("WRK_AJB1MP"), true, wrkDtoList);
                 System.err.println("======AJB1MP==>>>===HashCodes are not equal  !!!=====ERROR=====");
                 System.err.println("======AJB1MP==>>>===The sorting (from 0) : " + i);
                 System.err.println("======AJB1MP==>>>===Total size : " + dtoList.size());
@@ -525,7 +533,7 @@ public class DataCompare<T extends CommonServiceDto, D extends BaseDto> {
         return this.compareAje1fp(this.commonServiceDto, this.wrkKey, kyCd, addCd);
     }
 
-    public boolean compareAje1fp(T dto, String wrkKey, String kyCd, String addCd) {
+    private boolean compareAje1fp(T dto, String wrkKey, String kyCd, String addCd) {
         if (!Aje020Constants.IS_DEBUG || !Aje020Constants.IS_WORK) {
             return true;
         }
@@ -540,6 +548,8 @@ public class DataCompare<T extends CommonServiceDto, D extends BaseDto> {
             System.err.println("======AJE1FP==>>>===The size of the arrays is different !!!=====ERROR=====");
             System.err.println("======AJE1FP==>>>===Aje1fp size :" + dtoList.size());
             System.err.println("======AJE1FP==>>>===WrkAje1fp01 size :" + wrkDtoList.size());
+            this.writeAje1fp(this.getName("AJE1FP", "SizeError"), true, dtoList);
+            this.writeAje1fp(this.getName("WRK_AJE1FP", "SizeError"), true, wrkDtoList);
             return false;
         }
         StringBuffer bf = new StringBuffer();
@@ -581,8 +591,8 @@ public class DataCompare<T extends CommonServiceDto, D extends BaseDto> {
 
             if (!StringUtil.equals(hasdDto, hasdWrkDto)) {
                 // this.writeText(this.filePath, true, bf.toString());
-                this.writeAje1fp(this.filePath + "AJE1FP" + ".csv", true, dtoList);
-                this.writeAje1fp(this.filePath + "WRK_AJE1FP" + ".csv", true, wrkDtoList);
+                this.writeAje1fp(this.getName("AJE1FP"), true, dtoList);
+                this.writeAje1fp(this.getName("WRK_AJE1FP"), true, wrkDtoList);
                 System.err.println("======AJE1FP==>>>===HashCodes are not equal  !!!=====ERROR=====");
                 System.err.println("======AJE1FP==>>>===The sorting (from 0) : " + i);
                 System.err.println("======AJE1FP==>>>===Total size : " + dtoList.size());
@@ -604,7 +614,7 @@ public class DataCompare<T extends CommonServiceDto, D extends BaseDto> {
         return this.compareAjm1fp(this.commonServiceDto, this.wrkKey, kyCd, addCd);
     }
 
-    public boolean compareAjm1fp(T dto, String wrkKey, String kyCd, String addCd) {
+    private boolean compareAjm1fp(T dto, String wrkKey, String kyCd, String addCd) {
         if (!Aje020Constants.IS_DEBUG || !Aje020Constants.IS_WORK) {
             return true;
         }
@@ -619,6 +629,8 @@ public class DataCompare<T extends CommonServiceDto, D extends BaseDto> {
             System.err.println("======AJM1FP==>>>===The size of the arrays is different !!!=====ERROR=====");
             System.err.println("======AJM1FP==>>>===Ajm1fp size :" + dtoList.size());
             System.err.println("======AJM1FP==>>>===WrkAjm1fp01 size :" + wrkDtoList.size());
+            this.writeAjm1fp(this.getName("AJM1FP", "SizeError"), true, dtoList);
+            this.writeAjm1fp(this.getName("WRK_AJM1FP", "SizeError"), true, wrkDtoList);
             return false;
         }
         StringBuffer bf = new StringBuffer();
@@ -660,8 +672,8 @@ public class DataCompare<T extends CommonServiceDto, D extends BaseDto> {
 
             if (!StringUtil.equals(hasdDto, hasdWrkDto)) {
                 // this.writeText(this.filePath, true, bf.toString());
-                this.writeAjm1fp(this.filePath + "AJM1FP" + ".csv", true, dtoList);
-                this.writeAjm1fp(this.filePath + "WRK_AJM1FP" + ".csv", true, wrkDtoList);
+                this.writeAjm1fp(this.getName("AJM1FP"), true, dtoList);
+                this.writeAjm1fp(this.getName("WRK_AJM1FP"), true, wrkDtoList);
                 System.err.println("======AJM1FP==>>>===HashCodes are not equal  !!!=====ERROR=====");
                 System.err.println("======AJM1FP==>>>===The sorting (from 0) : " + i);
                 System.err.println("======AJM1FP==>>>===Total size : " + dtoList.size());
@@ -683,7 +695,7 @@ public class DataCompare<T extends CommonServiceDto, D extends BaseDto> {
         return this.compareAjl1fp(this.commonServiceDto, this.wrkKey, kyCd, addCd);
     }
 
-    public boolean compareAjl1fp(T dto, String wrkKey, String kyCd, String addCd) {
+    private boolean compareAjl1fp(T dto, String wrkKey, String kyCd, String addCd) {
         if (!Aje020Constants.IS_DEBUG || !Aje020Constants.IS_WORK) {
             return true;
         }
@@ -698,6 +710,8 @@ public class DataCompare<T extends CommonServiceDto, D extends BaseDto> {
             System.err.println("======AJL1FP==>>>===The size of the arrays is different !!!=====ERROR=====");
             System.err.println("======AJL1FP==>>>===Ajl1fp size :" + dtoList.size());
             System.err.println("======AJL1FP==>>>===WrkAjl1fp01 size :" + wrkDtoList.size());
+            this.writeAjl1fp(this.getName("AJL1FP", "SizeError"), true, dtoList);
+            this.writeAjl1fp(this.getName("WRK_AJL1FP", "SizeError"), true, wrkDtoList);
             return false;
         }
         StringBuffer bf = new StringBuffer();
@@ -739,8 +753,8 @@ public class DataCompare<T extends CommonServiceDto, D extends BaseDto> {
 
             if (!StringUtil.equals(hasdDto, hasdWrkDto)) {
                 // this.writeText(this.filePath, true, bf.toString());
-                this.writeAjl1fp(this.filePath + "AJL1FP" + ".csv", true, dtoList);
-                this.writeAjl1fp(this.filePath + "WRK_AJL1FP" + ".csv", true, wrkDtoList);
+                this.writeAjl1fp(this.getName("AJL1FP"), true, dtoList);
+                this.writeAjl1fp(this.getName("WRK_AJL1FP"), true, wrkDtoList);
                 System.err.println("======AJL1FP==>>>===HashCodes are not equal  !!!=====ERROR=====");
                 System.err.println("======AJL1FP==>>>===The sorting (from 0) : " + i);
                 System.err.println("======AJL1FP==>>>===Total size : " + dtoList.size());
@@ -762,7 +776,7 @@ public class DataCompare<T extends CommonServiceDto, D extends BaseDto> {
         return this.compareAjd1mp(this.commonServiceDto, this.wrkKey, kyCd, addCd);
     }
 
-    public boolean compareAjd1mp(T dto, String wrkKey, String kyCd, String addCd) {
+    private boolean compareAjd1mp(T dto, String wrkKey, String kyCd, String addCd) {
         if (!Aje020Constants.IS_DEBUG || !Aje020Constants.IS_WORK) {
             return true;
         }
@@ -777,6 +791,8 @@ public class DataCompare<T extends CommonServiceDto, D extends BaseDto> {
             System.err.println("======AJD1MP==>>>===The size of the arrays is different !!!=====ERROR=====");
             System.err.println("======AJD1MP==>>>===Ajd1mp size :" + dtoList.size());
             System.err.println("======AJD1MP==>>>===WrkAjd1mp01 size :" + wrkDtoList.size());
+            this.writeAjd1mp(this.getName("AJD1MP", "SizeError"), true, dtoList);
+            this.writeAjd1mp(this.getName("WRK_AJD1MP", "SizeError"), true, wrkDtoList);
             return false;
         }
         StringBuffer bf = new StringBuffer();
@@ -818,8 +834,8 @@ public class DataCompare<T extends CommonServiceDto, D extends BaseDto> {
 
             if (!StringUtil.equals(hasdDto, hasdWrkDto)) {
                 // this.writeText(this.filePath, true, bf.toString());
-                this.writeAjd1mp(this.filePath + "AJD1MP" + ".csv", true, dtoList);
-                this.writeAjd1mp(this.filePath + "WRK_AJD1MP" + ".csv", true, wrkDtoList);
+                this.writeAjd1mp(this.getName("AJD1MP"), true, dtoList);
+                this.writeAjd1mp(this.getName("WRK_AJD1MP"), true, wrkDtoList);
                 System.err.println("======AJD1MP==>>>===HashCodes are not equal  !!!=====ERROR=====");
                 System.err.println("======AJD1MP==>>>===The sorting (from 0) : " + i);
                 System.err.println("======AJD1MP==>>>===Total size : " + dtoList.size());
@@ -1452,7 +1468,7 @@ public class DataCompare<T extends CommonServiceDto, D extends BaseDto> {
         this.wrkAjd1mp01SharedService = wrkAjd1mp01SharedService;
     }
 
-    public File createFile(String filePath) {
+    private File createFile(String filePath) {
         File newF = new File(filePath);
         if (!newF.exists()) {
             try {
@@ -1464,7 +1480,7 @@ public class DataCompare<T extends CommonServiceDto, D extends BaseDto> {
         return newF;
     }
 
-    public boolean writeText(String filePath, boolean append, String content) {
+    private boolean writeText(String filePath, boolean append, String content) {
         boolean flag = false;
         File targetF = this.createFile(filePath);
         try {
@@ -1482,7 +1498,27 @@ public class DataCompare<T extends CommonServiceDto, D extends BaseDto> {
         return flag;
     }
 
-    public String getRow(String content, String start, String end, String start2, String end2) {
+    public boolean printLog(String content) {
+        return this.printLog(null, content);
+    }
+
+    public boolean printLog(String name, String content) {
+        boolean suc = false;
+        String textName =this.logPath + StringUtil.getEmptyIfNull(name) + ".txt";
+        this.createFile(textName);
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(textName, true));
+            bw.write(content + "\r\n");
+            bw.flush();
+            bw.close();
+            suc = true;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return suc;
+    }
+
+    private String getRow(String content, String start, String end, String start2, String end2) {
         StringBuffer row = new StringBuffer();
         StringBuffer buffer = new StringBuffer();
         buffer.append(content);
@@ -1533,10 +1569,11 @@ public class DataCompare<T extends CommonServiceDto, D extends BaseDto> {
         try {
             // List<String> contentList = this.list2CSVD(contents, start, end, start2, end2);
             List<String> contentList = new ArrayList<>();
-            LocalDate today = LocalDate.now();
-            LocalTime localTime = LocalTime.now();
-            contentList.add("\r\n" + "  +++++day:" + today.getMonthValue() + "-" + today.getDayOfMonth()
-                    + " // time:" + localTime + "  +++++" + "\r\n");
+            contentList.add(this.getTime());
+            contentList.add(this.getStackLog());
+            if (contents == null || contents.isEmpty()) {
+                return false;
+            }
             String header = this.getRow(contents.get(0).toString(), " ", "=", "(", null);
             contentList.add(header);
 
@@ -1566,10 +1603,11 @@ public class DataCompare<T extends CommonServiceDto, D extends BaseDto> {
         try {
             // List<String> contentList = this.list2CSVD(contents, start, end, start2, end2);
             List<String> contentList = new ArrayList<>();
-            LocalDate today = LocalDate.now();
-            LocalTime localTime = LocalTime.now();
-            contentList.add("\r\n" + "  +++++day:" + today.getMonthValue() + "-" + today.getDayOfMonth()
-                    + " // time:" + localTime + "  +++++" + "\r\n");
+            contentList.add(this.getTime());
+            contentList.add(this.getStackLog());
+            if (contents == null || contents.isEmpty()) {
+                return false;
+            }
             String header = this.getRow(contents.get(0).toString(), " ", "=", "(", null);
             contentList.add(header);
 
@@ -1599,10 +1637,11 @@ public class DataCompare<T extends CommonServiceDto, D extends BaseDto> {
         try {
             // List<String> contentList = this.list2CSVD(contents, start, end, start2, end2);
             List<String> contentList = new ArrayList<>();
-            LocalDate today = LocalDate.now();
-            LocalTime localTime = LocalTime.now();
-            contentList.add("\r\n" + "  +++++day:" + today.getMonthValue() + "-" + today.getDayOfMonth()
-                    + " // time:" + localTime + "  +++++" + "\r\n");
+            contentList.add(this.getTime());
+            contentList.add(this.getStackLog());
+            if (contents == null || contents.isEmpty()) {
+                return false;
+            }
             String header = this.getRow(contents.get(0).toString(), " ", "=", "(", null);
             contentList.add(header);
 
@@ -1632,10 +1671,11 @@ public class DataCompare<T extends CommonServiceDto, D extends BaseDto> {
         try {
             // List<String> contentList = this.list2CSVD(contents, start, end, start2, end2);
             List<String> contentList = new ArrayList<>();
-            LocalDate today = LocalDate.now();
-            LocalTime localTime = LocalTime.now();
-            contentList.add("\r\n" + "  +++++day:" + today.getMonthValue() + "-" + today.getDayOfMonth()
-                    + " // time:" + localTime + "  +++++" + "\r\n");
+            contentList.add(this.getTime());
+            contentList.add(this.getStackLog());
+            if (contents == null || contents.isEmpty()) {
+                return false;
+            }
             String header = this.getRow(contents.get(0).toString(), " ", "=", "(", null);
             contentList.add(header);
 
@@ -1665,10 +1705,11 @@ public class DataCompare<T extends CommonServiceDto, D extends BaseDto> {
         try {
             // List<String> contentList = this.list2CSVD(contents, start, end, start2, end2);
             List<String> contentList = new ArrayList<>();
-            LocalDate today = LocalDate.now();
-            LocalTime localTime = LocalTime.now();
-            contentList.add("\r\n" + "  +++++day:" + today.getMonthValue() + "-" + today.getDayOfMonth()
-                    + " // time:" + localTime + "  +++++" + "\r\n");
+            contentList.add(this.getTime());
+            contentList.add(this.getStackLog());
+            if (contents == null || contents.isEmpty()) {
+                return false;
+            }
             String header = this.getRow(contents.get(0).toString(), " ", "=", "(", null);
             contentList.add(header);
 
@@ -1698,10 +1739,11 @@ public class DataCompare<T extends CommonServiceDto, D extends BaseDto> {
         try {
             // List<String> contentList = this.list2CSVD(contents, start, end, start2, end2);
             List<String> contentList = new ArrayList<>();
-            LocalDate today = LocalDate.now();
-            LocalTime localTime = LocalTime.now();
-            contentList.add("\r\n" + "  +++++day:" + today.getMonthValue() + "-" + today.getDayOfMonth()
-                    + " // time:" + localTime + "  +++++" + "\r\n");
+            contentList.add(this.getTime());
+            contentList.add(this.getStackLog());
+            if (contents == null || contents.isEmpty()) {
+                return false;
+            }
             String header = this.getRow(contents.get(0).toString(), " ", "=", "(", null);
             contentList.add(header);
 
@@ -1731,10 +1773,11 @@ public class DataCompare<T extends CommonServiceDto, D extends BaseDto> {
         try {
             // List<String> contentList = this.list2CSVD(contents, start, end, start2, end2);
             List<String> contentList = new ArrayList<>();
-            LocalDate today = LocalDate.now();
-            LocalTime localTime = LocalTime.now();
-            contentList.add("\r\n" + "  +++++day:" + today.getMonthValue() + "-" + today.getDayOfMonth()
-                    + " // time:" + localTime + "  +++++" + "\r\n");
+            contentList.add(this.getTime());
+            contentList.add(this.getStackLog());
+            if (contents == null || contents.isEmpty()) {
+                return false;
+            }
             String header = this.getRow(contents.get(0).toString(), " ", "=", "(", null);
             contentList.add(header);
 
@@ -1758,6 +1801,42 @@ public class DataCompare<T extends CommonServiceDto, D extends BaseDto> {
         return flag;
     }
 
+    private String getTime() {
+        LocalDate today = LocalDate.now();
+        LocalTime localTime = LocalTime.now();
+        String time = "\r\n" + "  +++++day:" + today.getMonthValue() + "-" + today.getDayOfMonth()
+                + " // time:" + localTime + "  +++++";
+        return time;
+    }
+
+    private String getName(String id) {
+        return this.getName(id, null);
+    }
+
+    private String getName(String id, String claz) {
+        LocalDate today = LocalDate.now();
+        LocalTime localTime = LocalTime.now().withNano(0);
+        String name = "";
+        if (StringUtils.isBlank(claz)) {
+            name = this.filePath + id + ".csv";
+        } else {
+            name = this.filePath + id + "_" + StringUtil.getEmptyIfNull(claz) + "_" + today.getMonthValue() + "-" + today.getDayOfMonth() + "_"
+                    + localTime.getHour() + localTime.getMinute() + localTime.getSecond() + ".csv";
+//            name.replaceAll("/", "-");
+//            name.replaceAll(":", "");
+        }
+        return name;
+    }
+
+    public String getStackLog() {
+        // StackTraceElement stack[] = Thread.currentThread().getStackTrace(); // 获取线程运行栈信息
+        StackTraceElement stack[] = (new Throwable()).getStackTrace(); // 获取线程运行栈信息
+        // for(int i=0;i<stack.length;i++) {
+        StackTraceElement s = stack[6];
+        return "\r\n" + "+++++ClassName:%s" + s.getClassName() + "+++MethodName:%s" + s.getMethodName()
+                + "+++FileName:%s" + s.getFileName()
+                + "+++LineNumber:%s" + s.getLineNumber() + "+++++";
+    }
     // public List<String> list2CSVD(List<D> contents, String start, String end, String start2, String end2) {
     // List<String> csvList = new ArrayList<>();
     // LocalDate today = LocalDate.now();
